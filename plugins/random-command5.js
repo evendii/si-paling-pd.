@@ -154,8 +154,76 @@ let id = m.chat
   }
   }
 
+if (command == 'dlytmp3') {
+  if (!text) throw 'Url Mana?'
+let f = await fetch(`https://api.webraku.xyz/api/ytmp3?url=${text}&apikey=Nathan`)
+let xc = await f.json()
+let r = xc.result
+let caption = `*Title:* ${r.title}
+*Size:* ${r.size}
+*View:* ${r.views}
+*Like:* ${r.likes}
+*Dislike:* ${r.dislike}
+*Channel:* ${r.channel}
+*Upload:* ${r.uploadDate}
+*Desc:* ${r.desc}`
+await conn.sendButton(m.chat, caption, author, r.thumb, [
+                ['Get', `${usedPrefix}get ${r.result}`]
+            ], m)
 }
-handler.command = handler.help = ['cdnjs', 'readqr', 'animechan', 'whatanime', 'isgd', 'resmush', 'toascii', 'calc']
+
+if (command == 'dlytmp4') {
+  if (!text) throw 'Url Mana?'
+let f = await fetch(`https://api.webraku.xyz/api/ytmp4?url=${text}&apikey=Nathan`)
+let xc = await f.json()
+let r = xc.result
+let caption = `*Title:* ${r.title}
+*Size:* ${r.size}
+*Quality:* ${r.quality}
+*View:* ${r.views}
+*Like:* ${r.likes}
+*Dislike:* ${r.dislike}
+*Channel:* ${r.channel}
+*Upload:* ${r.uploadDate}
+*Desc:* ${r.desc}`
+await conn.sendButton(m.chat, caption, author, r.thumb, [
+                ['Get', `${usedPrefix}get ${r.result}`]
+            ], m)
+}
+
+if (command == 'lirikjoox') {
+  if (!text) throw 'Text Mana?'
+let f = await fetch(`https://yog-apikey.herokuapp.com/api/music/joox?apikey=YogGanz&query=${text}`)
+let xc = await f.json()
+let r = xc.result
+let caption = `*Title:* ${r.title}
+*Size:* ${r.size}
+*Quality:* ${r.quality}
+*View:* ${r.views}
+*Like:* ${r.likes}
+*Dislike:* ${r.dislike}
+*Channel:* ${r.channel}
+*Upload:* ${r.uploadDate}
+*Desc:* ${r.desc}`
+await conn.sendButton(m.chat, caption, author, r.img, [
+                ['Get', `${usedPrefix}get ${r.lirik.result}`]
+            ], m)
+}
+
+if (command == 'chordlagu') {
+  if (!text) throw 'Text Mana?'
+let f = await fetch(`https://yog-apikey.herokuapp.com/api/music/chordlagu?lagu=${text}&apikey=YogGanz`)
+let xc = await f.json()
+let r = xc.result
+let caption = `*Result:* ${r.result}`
+await conn.sendButton(m.chat, caption, author, null, [
+                ['Get', `${usedPrefix}get ${r.result}`]
+            ], m)
+}
+
+
+}
+handler.command = handler.help = ['cdnjs', 'readqr', 'animechan', 'whatanime', 'isgd', 'resmush', 'toascii', 'calc', 'dlytmp3', 'dlytmp4', 'lirikjoox', 'chordlagu']
 handler.tags = ['tools']
 
 export default handler

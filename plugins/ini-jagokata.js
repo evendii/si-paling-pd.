@@ -1,42 +1,57 @@
-import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 
-let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
-if (!text) throw 'Kata apa?'
+let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
-let pe = await quotes(text)
-let x = pe.getRandom()
-  await conn.sendButton(m.chat, `*Quote:*
-${x.quote}
-
-${x.bio}
-${x.author}
-`, wm, null, [
+if (command == 'katabijak') {
+let pe = await fetch(`https://api.webraku.xyz/api/bijak?apikey=Nathan`)
+let x = await pe.json()
+  await conn.sendButton(m.chat, `*Bijak:*
+${x.result}`, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
+            }
+            
+if (command == 'kataquotes') {
+let pe = await fetch(`https://api.webraku.xyz/api/quotes?apikey=Nathan`)
+let xc = await pe.json()
+let x = xc.result
+  await conn.sendButton(m.chat, `*Quote:*
+${x.quotes}
 
+*Author:*
+${x.author}`, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+            }
+            
+if (command == 'katafakta') {
+let pe = await fetch(`https://api.webraku.xyz/api/fakta?apikey=Nathan`)
+let x = await pe.json()
+  await conn.sendButton(m.chat, `*Result:*
+${x.result}`, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+            }
+            
+if (command == 'aesthetic') {
+let pe = `https://api.webraku.xyz/api/aesthetic?apikey=Nathan`
+  await conn.sendButton(m.chat, `*Nih:*
+${command}`, wm, pe, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+            }
+            
+if (command == 'whois') {
+if (!text) throw 'Link Mana?'
+let pe = await fetch(`https://api.webraku.xyz/api/whois?domain=${text}&apikey=Nathan`)
+let x = await pe.json()
+  await conn.sendButton(m.chat, `*Result:*
+${x.result}`, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+            }
+            
+            
 }
-handler.command = handler.help = ['kata']
+handler.command = handler.help = ['katabijak', 'kataquotes', 'katafakta', 'aesthetic', 'whois']
 handler.tags = ['quotes']
-
-export default handler
-
-function quotes(input) {
-	return new Promise((resolve, reject) => {
-		fetch('https://jagokata.com/kata-bijak/kata-' + input.replace(/\s/g, '_') + '.html?page=1')
-			.then(res => res.text())
-			.then(res => {
-				const $ = cheerio.load(res)
-				data = []
-				$('div[id="main"]').find('ul[id="citatenrijen"] > li').each(function (index, element) {
-					x = $(this).find('div[class="citatenlijst-auteur"] > a').text().trim()
-					y = $(this).find('span[class="auteur-beschrijving"]').text().trim()
-					z = $(element).find('q[class="fbquote"]').text().trim()
-					data.push({ author: x, bio: y, quote: z })
-				})
-				data.splice(2, 1)
-				if (data.length == 0) return resolve({ creator: 'Hinata-Md', status: false })
-				resolve({ creator: 'Hinata-Md', status: true, data })
-			}).catch(reject)
-	})
-}
