@@ -1,9 +1,9 @@
 import axios from 'axios'
 import FormData from 'form-data'
 import fetch from 'node-fetch'
-import { stream, PassThrough} from 'stream'
+import { stream } from 'stream'
 
-let handler = async (m, { conn, args, text, usedPrefix, command, isPrems }) => {
+let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 let urut = text.split`|`
   let one = urut[1]
   let two = urut[2]
