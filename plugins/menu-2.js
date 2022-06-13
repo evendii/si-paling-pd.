@@ -18,11 +18,11 @@ switch (template) {
             axios
                 .get(`https://api.lolhuman.xyz/api/quran?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
-                    var text = 'List Surah:\n'
+                    var teks = 'List Surah:\n'
                     for (var x in data.result) {
-                        text += `${x}. ${data.result[x]}\n`
+                        teks += `${x}. ${data.result[x]}\n`
                     }
-                    m.reply(text)
+                    m.reply(teks)
                 })
                 .catch(console.error)
             break
@@ -32,13 +32,13 @@ switch (template) {
                 .get(`https://api.lolhuman.xyz/api/quran/${text}?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
                     var ayat = data.result.ayat
-                    var text = `QS. ${data.result.surah} : 1-${ayat.length}\n\n`
+                    var teks = `QS. ${data.result.surah} : 1-${ayat.length}\n\n`
                     for (var x of ayat) {
-                        text += `${x.arab}\n${x.ayat}. ${x.latin}\n${x.indonesia}\n\n`
+                        teks += `${x.arab}\n${x.ayat}. ${x.latin}\n${x.indonesia}\n\n`
                     }
-                    text = text.replace(/<u>/g, '_').replace(/<\/u>/g, '_')
-                    text = text.replace(/<strong>/g, '*').replace(/<\/strong>/g, '*')
-                    m.reply(text)
+                    teks = teks.replace(/<u>/g, '_').replace(/<\/u>/g, '_')
+                    teks = teks.replace(/<strong>/g, '*').replace(/<\/strong>/g, '*')
+                    m.reply(teks)
                 })
                 .catch(console.error)
             break
@@ -50,12 +50,12 @@ switch (template) {
             axios
                 .get(`https://api.lolhuman.xyz/api/asmaulhusna?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
-                    var text = `No : ${data.result.index}\n`
-                    text += `Latin: ${data.result.latin}\n`
-                    text += `Arab : ${data.result.ar}\n`
-                    text += `Indonesia : ${data.result.id}\n`
-                    text += `English : ${data.result.en}`
-                    m.reply(text)
+                    var teks = `No : ${data.result.index}\n`
+                    teks += `Latin: ${data.result.latin}\n`
+                    teks += `Arab : ${data.result.ar}\n`
+                    teks += `Indonesia : ${data.result.id}\n`
+                    teks += `English : ${data.result.en}`
+                    m.reply(teks)
                 })
                 .catch(console.error)
             break
@@ -64,12 +64,12 @@ switch (template) {
             axios
                 .get(`https://api.lolhuman.xyz/api/kisahnabi/${text}?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
-                    var text = `Name : ${data.result.name}\n`
-                    text += `Lahir : ${data.result.thn_kelahiran}\n`
-                    text += `Umur : ${data.result.age}\n`
-                    text += `Tempat : ${data.result.place}\n`
-                    text += `Story : \n${data.result.story}`
-                    m.reply(text)
+                    var teks = `Name : ${data.result.name}\n`
+                    teks += `Lahir : ${data.result.thn_kelahiran}\n`
+                    teks += `Umur : ${data.result.age}\n`
+                    teks += `Tempat : ${data.result.place}\n`
+                    teks += `Story : \n${data.result.story}`
+                    m.reply(teks)
                 })
                 .catch(console.error)
             break
@@ -78,25 +78,25 @@ switch (template) {
             axios
                 .get(`https://api.lolhuman.xyz/api/sholat/${text}?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
-                    var text = `Wilayah : ${data.result.wilayah}\n`
-                    text += `Tanggal : ${data.result.tanggal}\n`
-                    text += `Sahur : ${data.result.sahur}\n`
-                    text += `Imsak : ${data.result.imsak}\n`
-                    text += `Subuh : ${data.result.subuh}\n`
-                    text += `Terbit : ${data.result.terbit}\n`
-                    text += `Dhuha : ${data.result.dhuha}\n`
-                    text += `Dzuhur : ${data.result.dzuhur}\n`
-                    text += `Ashar : ${data.result.ashar}\n`
-                    text += `Maghrib : ${data.result.imsak}\n`
-                    text += `Isya : ${data.result.isya}`
-                    m.reply(text)
+                    var teks = `Wilayah : ${data.result.wilayah}\n`
+                    teks += `Tanggal : ${data.result.tanggal}\n`
+                    teks += `Sahur : ${data.result.sahur}\n`
+                    teks += `Imsak : ${data.result.imsak}\n`
+                    teks += `Subuh : ${data.result.subuh}\n`
+                    teks += `Terbit : ${data.result.terbit}\n`
+                    teks += `Dhuha : ${data.result.dhuha}\n`
+                    teks += `Dzuhur : ${data.result.dzuhur}\n`
+                    teks += `Ashar : ${data.result.ashar}\n`
+                    teks += `Maghrib : ${data.result.imsak}\n`
+                    teks += `Isya : ${data.result.isya}`
+                    m.reply(teks)
                 })
                 .catch(console.error)
             break
 
         // Downloader //
         case 'ytplay':
-            if (!text) return await m.reply(`Example: ${usedPrefix + command} melukis senja`)
+            if (!teks) return await m.reply(`Example: ${usedPrefix + command} melukis senja`)
             axios
                 .get(`https://api.lolhuman.xyz/api/ytsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
                 .then(({ data }) => {
@@ -115,15 +115,15 @@ switch (template) {
             axios
                 .get(`https://api.lolhuman.xyz/api/ytsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
                 .then(({ data }) => {
-                    var text = ''
+                    var teks = ''
                     for (var x of data.result) {
-                        text += `Title : ${x.title}\n`
-                        text += `Views : ${x.views}\n`
-                        text += `Published : ${x.published}\n`
-                        text += `Thumbnail : ${x.thumbnail}\n`
-                        text += `Link : https://www.youtube.com/watch?v=${x.videoId}\n\n`
+                        teks += `Title : ${x.title}\n`
+                        teks += `Views : ${x.views}\n`
+                        teks += `Published : ${x.published}\n`
+                        teks += `Thumbnail : ${x.thumbnail}\n`
+                        teks += `Link : https://www.youtube.com/watch?v=${x.videoId}\n\n`
                     }
-                    m.reply(text)
+                    m.reply(teks)
                 })
                 .catch(console.error)
             break
@@ -185,15 +185,15 @@ switch (template) {
         case 'spotifysearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis Senja`)
             axios.get(`https://api.lolhuman.xyz/api/spotifysearch?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
-                var text = ''
+                var teks = ''
                 for (var x of data.result) {
-                    text += `Title : ${x.title}\n`
-                    text += `Artists : ${x.artists}\n`
-                    text += `Duration : ${x.duration}\n`
-                    text += `Link : ${x.link}\n`
-                    text += `Preview : ${x.preview_url}\n\n\n`
+                    teks += `Title : ${x.title}\n`
+                    teks += `Artists : ${x.artists}\n`
+                    teks += `Duration : ${x.duration}\n`
+                    teks += `Link : ${x.link}\n`
+                    teks += `Preview : ${x.preview_url}\n\n\n`
                 }
-                m.reply(text)
+                m.reply(teks)
             })
             break
         case 'jooxplay':
@@ -248,11 +248,11 @@ switch (template) {
         case 'zippyshare':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www51.zippyshare.com/v/5W0TOBz1/file.html`)
             axios.get(`https://api.lolhuman.xyz/api/zippyshare?apikey=9b817532fadff8fc7cb86862&url=${text}`).then(({ data }) => {
-                var text = `File Name : ${data.result.name_file}\n`
-                text += `Size : ${data.result.size}\n`
-                text += `Date Upload : ${data.result.date_upload}\n`
-                text += `Download Url : ${data.result.download_url}`
-                m.reply(text)
+                var teks = `File Name : ${data.result.name_file}\n`
+                teks += `Size : ${data.result.size}\n`
+                teks += `Date Upload : ${data.result.date_upload}\n`
+                teks += `Download Url : ${data.result.download_url}`
+                m.reply(teks)
             })
             break
         case 'pinterest':
@@ -406,63 +406,63 @@ switch (template) {
         case 'otakudesu':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://otakudesu.tv/lengkap/pslcns-sub-indo/`)
             axios.get(`https://api.lolhuman.xyz/api/otakudesu?apikey=9b817532fadff8fc7cb86862&url=${text}`).then(({ data }) => {
-                var text = `Title : ${data.result.title}\n`
-                text += `Japanese : ${data.result.japanese}\n`
-                text += `Judul : ${data.result.judul}\n`
-                text += `Type : ${data.result.type}\n`
-                text += `Episode : ${data.result.episodes}\n`
-                text += `Aired : ${data.result.aired}\n`
-                text += `Producers : ${data.result.producers}\n`
-                text += `Genre : ${data.result.genres}\n`
-                text += `Duration : ${data.result.duration}\n`
-                text += `Studios : ${data.result.status}\n`
-                text += `Rating : ${data.result.rating}\n`
-                text += `Credit : ${data.result.credit}\n`
+                var teks = `Title : ${data.result.title}\n`
+                teks += `Japanese : ${data.result.japanese}\n`
+                teks += `Judul : ${data.result.judul}\n`
+                teks += `Type : ${data.result.type}\n`
+                teks += `Episode : ${data.result.episodes}\n`
+                teks += `Aired : ${data.result.aired}\n`
+                teks += `Producers : ${data.result.producers}\n`
+                teks += `Genre : ${data.result.genres}\n`
+                teks += `Duration : ${data.result.duration}\n`
+                teks += `Studios : ${data.result.status}\n`
+                teks += `Rating : ${data.result.rating}\n`
+                teks += `Credit : ${data.result.credit}\n`
                 for (var x in data.result.link_dl) {
-                    text += `\n\n*${data.result.link_dl[x].title}*\n`
+                    teks += `\n\n*${data.result.link_dl[x].title}*\n`
                     for (var y in data.result.link_dl[x].link_dl) {
                         ini_info = data.result.link_dl[x].link_dl[y]
-                        text += `\n\`\`\`Reso : \`\`\`${ini_info.reso}\n`
-                        text += `\`\`\`Size : \`\`\`${ini_info.size}\n`
-                        text += `\`\`\`Link : \`\`\`\n`
+                        teks += `\n\`\`\`Reso : \`\`\`${ini_info.reso}\n`
+                        teks += `\`\`\`Size : \`\`\`${ini_info.size}\n`
+                        teks += `\`\`\`Link : \`\`\`\n`
                         down_link = ini_info.link_dl
                         for (var z in down_link) {
-                            text += `${z} - ${down_link[z]}\n`
+                            teks += `${z} - ${down_link[z]}\n`
                         }
                     }
                 }
-                m.reply(text)
+                m.reply(teks)
             })
             break
         case 'otakudesusearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Gotoubun No Hanayome`)
             axios.get(`https://api.lolhuman.xyz/api/otakudesusearch?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
-                var text = `Title : ${data.result.title}\n`
-                text += `Japanese : ${data.result.japanese}\n`
-                text += `Judul : ${data.result.judul}\n`
-                text += `Type : ${data.result.type}\n`
-                text += `Episode : ${data.result.episodes}\n`
-                text += `Aired : ${data.result.aired}\n`
-                text += `Producers : ${data.result.producers}\n`
-                text += `Genre : ${data.result.genres}\n`
-                text += `Duration : ${data.result.duration}\n`
-                text += `Studios : ${data.result.status}\n`
-                text += `Rating : ${data.result.rating}\n`
-                text += `Credit : ${data.result.credit}\n`
+                var teks = `Title : ${data.result.title}\n`
+                teks += `Japanese : ${data.result.japanese}\n`
+                teks += `Judul : ${data.result.judul}\n`
+                teks += `Type : ${data.result.type}\n`
+                teks += `Episode : ${data.result.episodes}\n`
+                teks += `Aired : ${data.result.aired}\n`
+                teks += `Producers : ${data.result.producers}\n`
+                teks += `Genre : ${data.result.genres}\n`
+                teks += `Duration : ${data.result.duration}\n`
+                teks += `Studios : ${data.result.status}\n`
+                teks += `Rating : ${data.result.rating}\n`
+                teks += `Credit : ${data.result.credit}\n`
                 for (var x in data.result.link_dl) {
-                    text += `\n\n*${data.result.link_dl[x].title}*\n`
+                    teks += `\n\n*${data.result.link_dl[x].title}*\n`
                     for (var y in data.result.link_dl[x].link_dl) {
                         var info = data.result.link_dl[x].link_dl[y]
-                        text += `\n\`\`\`Reso : \`\`\`${info.reso}\n`
-                        text += `\`\`\`Size : \`\`\`${info.size}\n`
-                        text += `\`\`\`Link : \`\`\`\n`
+                        teks += `\n\`\`\`Reso : \`\`\`${info.reso}\n`
+                        teks += `\`\`\`Size : \`\`\`${info.size}\n`
+                        teks += `\`\`\`Link : \`\`\`\n`
                         var link = info.link_dl
                         for (var z in link) {
-                            text += `${z} - ${link[z]}\n`
+                            teks += `${z} - ${link[z]}\n`
                         }
                     }
                 }
-                m.reply(text)
+                m.reply(teks)
             })
             break
 
@@ -470,76 +470,76 @@ switch (template) {
         case 'kbbi':
             if (!text) return m.reply(`Example: ${usedPrefix + command} kursi`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/kbbi?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = `\`\`\`Kata : ${data.result[0].nama}\`\`\`\n`
-            text += `\`\`\`Kata Dasar : ${data.result[0].kata_dasar}\`\`\`\n`
-            text += `\`\`\`Pelafalan : ${data.result[0].pelafalan}\`\`\`\n`
-            text += `\`\`\`Bentuk Tidak Baku : ${data.result[0].bentuk_tidak_baku}\`\`\`\n\n`
+            var teks = `\`\`\`Kata : ${data.result[0].nama}\`\`\`\n`
+            teks += `\`\`\`Kata Dasar : ${data.result[0].kata_dasar}\`\`\`\n`
+            teks += `\`\`\`Pelafalan : ${data.result[0].pelafalan}\`\`\`\n`
+            teks += `\`\`\`Bentuk Tidak Baku : ${data.result[0].bentuk_tidak_baku}\`\`\`\n\n`
             for (var x of data.result) {
-                text += `\`\`\`Kode : ${x.makna[0].kelas[0].kode}\`\`\`\n`
-                text += `\`\`\`Kelas : ${x.makna[0].kelas[0].nama}\`\`\`\n`
-                text += `\`\`\`Artinya : \n${x.makna[0].kelas[0].deskripsi}\`\`\`\n\n`
-                text += `\`\`\`Makna Lain : \n${x.makna[0].submakna}\`\`\`\n `
-                text += `\`\`\`Contoh Kalimat : \n${x.makna[0].contoh}\`\`\`\n`
+                teks += `\`\`\`Kode : ${x.makna[0].kelas[0].kode}\`\`\`\n`
+                teks += `\`\`\`Kelas : ${x.makna[0].kelas[0].nama}\`\`\`\n`
+                teks += `\`\`\`Artinya : \n${x.makna[0].kelas[0].deskripsi}\`\`\`\n\n`
+                teks += `\`\`\`Makna Lain : \n${x.makna[0].submakna}\`\`\`\n `
+                teks += `\`\`\`Contoh Kalimat : \n${x.makna[0].contoh}\`\`\`\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'brainly':
             if (!text) return m.reply(`Example: ${usedPrefix + command} siapakah sukarno`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/brainly?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = 'Beberapa Pembahasan Dari Brainly :\n\n'
+            var teks = 'Beberapa Pembahasan Dari Brainly :\n\n'
             for (var x of data.result) {
-                text += `==============================\n`
-                text += `\`\`\`Pertanyaan :\`\`\`\n${x.question.content}\n\n`
-                text += `\`\`\`Jawaban :\`\`\`\n${x.answer[0].content}\n`
-                text += `==============================\n\n`
+                teks += `==============================\n`
+                teks += `\`\`\`Pertanyaan :\`\`\`\n${x.question.content}\n\n`
+                teks += `\`\`\`Jawaban :\`\`\`\n${x.answer[0].content}\n`
+                teks += `==============================\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'jarak':
             if (!text) return m.reply(`Example: ${usedPrefix + command} jakarta - yogyakarta`)
-            var text1 = full_args.split('-')[0].trim()
-            var text2 = full_args.split('-')[1].trim()
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/jaraktempuh?apikey=9b817532fadff8fc7cb86862&kota1=${text1}&kota2=${text2}`)
-            var text = `Informasi Jarak dari ${text1} ke ${text2} :\n\n`
-            text += `\`\`\`◪ Asal :\`\`\` ${data.result.from.name}\n`
-            text += `\`\`\`◪ Garis Lintang :\`\`\` ${data.result.from.latitude}\n`
-            text += `\`\`\`◪ Garis Bujur :\`\`\` ${data.result.from.longitude}\n\n`
-            text += `\`\`\`◪ Tujuan :\`\`\` ${data.result.to.name}\n`
-            text += `\`\`\`◪ Garis Lintang :\`\`\` ${data.result.to.latitude}\n`
-            text += `\`\`\`◪ Garis Bujur :\`\`\` ${data.result.to.longitude}\n\n`
-            text += `\`\`\`◪ Jarak Tempuh :\`\`\` ${data.result.jarak}\n`
-            text += `\`\`\`◪ Waktu Tempuh :\`\`\`\n`
-            text += `   ╭───────────────❏\n`
-            text += `❍┤ Kereta Api : ${data.result.kereta_api}\n`
-            text += `❍┤ Pesawat : ${data.result.pesawat}\n`
-            text += `❍┤ Mobil : ${data.result.mobil}\n`
-            text += `❍┤ Motor : ${data.result.motor}\n`
-            text += `❍┤ Jalan Kaki : ${data.result.jalan_kaki}\n`
-            text += `   ╰───────────────❏\n`
-            m.reply(text)
+            var teks1 = text.split('-')[0].trim()
+            var teks2 = text.split('-')[1].trim()
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/jaraktempuh?apikey=9b817532fadff8fc7cb86862&kota1=${teks1}&kota2=${teks2}`)
+            var teks = `Informasi Jarak dari ${teks1} ke ${teks2} :\n\n`
+            teks += `\`\`\`◪ Asal :\`\`\` ${data.result.from.name}\n`
+            teks += `\`\`\`◪ Garis Lintang :\`\`\` ${data.result.from.latitude}\n`
+            teks += `\`\`\`◪ Garis Bujur :\`\`\` ${data.result.from.longitude}\n\n`
+            teks += `\`\`\`◪ Tujuan :\`\`\` ${data.result.to.name}\n`
+            teks += `\`\`\`◪ Garis Lintang :\`\`\` ${data.result.to.latitude}\n`
+            teks += `\`\`\`◪ Garis Bujur :\`\`\` ${data.result.to.longitude}\n\n`
+            teks += `\`\`\`◪ Jarak Tempuh :\`\`\` ${data.result.jarak}\n`
+            teks += `\`\`\`◪ Waktu Tempuh :\`\`\`\n`
+            teks += `   ╭───────────────❏\n`
+            teks += `❍┤ Kereta Api : ${data.result.kereta_api}\n`
+            teks += `❍┤ Pesawat : ${data.result.pesawat}\n`
+            teks += `❍┤ Mobil : ${data.result.mobil}\n`
+            teks += `❍┤ Motor : ${data.result.motor}\n`
+            teks += `❍┤ Jalan Kaki : ${data.result.jalan_kaki}\n`
+            teks += `   ╰───────────────❏\n`
+            m.reply(teks)
             break
         case 'urbandictionary':
             var { data } = await axios.get(`http://lolhuman.herokuapp.com/api/urdict?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             for (var x of data.result) {
-                var text = `\`\`\`Meaning :\n${x.definition}\`\`\`\n\n`
-                text += `\`\`\`Link : ${x.permalink}\`\`\`\n\n`
-                text += `\`\`\`Sounds Url : ${x.sound_urls[0]}\`\`\`\n\n`
-                text += `\`\`\`Like : ${x.thumbs_up}\`\`\`\n\n`
-                text += `\`\`\`Dislike : ${x.thumbs_down}\`\`\`\n\n`
-                text += `\`\`\`Created On : \n${x.written_on}\`\`\`\n\n`
-                text += `\`\`\`Author : ${x.author}\`\`\`\n\n`
-                text += `\`\`\`Word : ${x.word}\`\`\`\n\n`
-                text += `\`\`\`Defined Id : ${x.defid}\`\`\`\n\n`
-                text += `\`\`\`Example : ${x.example}\`\`\`\n\n`
+                var teks = `\`\`\`Meaning :\n${x.definition}\`\`\`\n\n`
+                teks += `\`\`\`Link : ${x.permalink}\`\`\`\n\n`
+                teks += `\`\`\`Sounds Url : ${x.sound_urls[0]}\`\`\`\n\n`
+                teks += `\`\`\`Like : ${x.thumbs_up}\`\`\`\n\n`
+                teks += `\`\`\`Dislike : ${x.thumbs_down}\`\`\`\n\n`
+                teks += `\`\`\`Created On : \n${x.written_on}\`\`\`\n\n`
+                teks += `\`\`\`Author : ${x.author}\`\`\`\n\n`
+                teks += `\`\`\`Word : ${x.word}\`\`\`\n\n`
+                teks += `\`\`\`Defined Id : ${x.defid}\`\`\`\n\n`
+                teks += `\`\`\`Example : ${x.example}\`\`\`\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'chord':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis senja`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/chord?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = `Title : ${data.result.title}\n`
-            text += `Chord : \n${data.result.chord}`
-            m.reply(text)
+            var teks = `Title : ${data.result.title}\n`
+            teks += `Chord : \n${data.result.chord}`
+            m.reply(teks)
             break
         case 'heroml':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Fanny`)
@@ -591,8 +591,8 @@ switch (template) {
             if (!text) return m.reply(`Example: ${usedPrefix + command} en Tahu Bacem`)
             var kode_negara = args[0]
             args.shift()
-            var text = args.join(' ')
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/translate/auto/${kode_negara}?apikey=9b817532fadff8fc7cb86862&text=${text}`)
+            var teks = args.join(' ')
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/translate/auto/${kode_negara}?apikey=9b817532fadff8fc7cb86862&text=${teks}`)
             init_txt = `From : ${data.result.from}\n`
             init_txt += `To : ${data.result.to}\n`
             init_txt += `Original : ${data.result.original}\n`
@@ -603,75 +603,75 @@ switch (template) {
         case 'brainly':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Soekarno adalah`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/brainly?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = 'Result : \n'
+            var teks = 'Result : \n'
             for (var x of data.result) {
-                text += `${x.title}\n`
-                text += `${x.url}\n\n`
+                teks += `${x.title}\n`
+                teks += `${x.url}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'jadwaltv':
             if (!text) return m.reply(`Example: ${usedPrefix + command} RCTI`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jadwaltv/${text}?apikey=9b817532fadff8fc7cb86862`)
-            var text = `Jadwal TV ${args[0].toUpperCase()}\n`
+            var teks = `Jadwal TV ${args[0].toUpperCase()}\n`
             for (var x in data.result) {
-                text += `${x} - ${data.result[x]}\n`
+                teks += `${x} - ${data.result[x]}\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'jadwaltvnow':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=9b817532fadff8fc7cb86862`)
-            var text = `Jadwal TV Now :\n`
+            var teks = `Jadwal TV Now :\n`
             for (var x in data.result) {
-                text += `${x.toUpperCase()}${data.result[x]}\n\n`
+                teks += `${x.toUpperCase()}${data.result[x]}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'newsinfo':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/newsinfo?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Result :\n'
+            var teks = 'Result :\n'
             for (var x of data.result) {
-                text += `Title : ${x.title}\n`
-                text += `Author : ${x.author}\n`
-                text += `Source : ${x.source.name}\n`
-                text += `Url : ${x.url}\n`
-                text += `Published : ${x.publishedAt}\n`
-                text += `Description : ${x.description}\n\n`
+                teks += `Title : ${x.title}\n`
+                teks += `Author : ${x.author}\n`
+                teks += `Source : ${x.source.name}\n`
+                teks += `Url : ${x.url}\n`
+                teks += `Published : ${x.publishedAt}\n`
+                teks += `Description : ${x.description}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'cnnindonesia':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cnnindonesia?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Result :\n'
+            var teks = 'Result :\n'
             for (var x of data.result) {
-                text += `Judul : ${x.judul}\n`
-                text += `Link : ${x.link}\n`
-                text += `Tipe : ${x.tipe}\n`
-                text += `Published : ${x.waktu}\n\n`
+                teks += `Judul : ${x.judul}\n`
+                teks += `Link : ${x.link}\n`
+                teks += `Tipe : ${x.tipe}\n`
+                teks += `Published : ${x.waktu}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'cnnnasional':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cnnindonesia/nasional?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Result :\n'
+            var teks = 'Result :\n'
             for (var x of data.result) {
-                text += `Judul : ${x.judul}\n`
-                text += `Link : ${x.link}\n`
-                text += `Tipe : ${x.tipe}\n`
-                text += `Published : ${x.waktu}\n\n`
+                teks += `Judul : ${x.judul}\n`
+                teks += `Link : ${x.link}\n`
+                teks += `Tipe : ${x.tipe}\n`
+                teks += `Published : ${x.waktu}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'cnninternasional':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cnnindonesia/internasional?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Result :\n'
+            var teks = 'Result :\n'
             for (var x of data.result) {
-                text += `Judul : ${x.judul}\n`
-                text += `Link : ${x.link}\n`
-                text += `Tipe : ${x.tipe}\n`
-                text += `Published : ${x.waktu}\n\n`
+                teks += `Judul : ${x.judul}\n`
+                teks += `Link : ${x.link}\n`
+                teks += `Tipe : ${x.tipe}\n`
+                teks += `Published : ${x.waktu}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'infogempa':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/infogempa?apikey=9b817532fadff8fc7cb86862`)
@@ -691,74 +691,74 @@ switch (template) {
         case 'cuaca':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Yogyakarta`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cuaca/${text}?apikey=9b817532fadff8fc7cb86862`)
-            var text = `Tempat : ${data.result.tempat}\n`
-            text += `Cuaca : ${data.result.cuaca}\n`
-            text += `Angin : ${data.result.angin}\n`
-            text += `Description : ${data.result.description}\n`
-            text += `Kelembapan : ${data.result.kelembapan}\n`
-            text += `Suhu : ${data.result.suhu}\n`
-            text += `Udara : ${data.result.udara}\n`
-            text += `Permukaan laut : ${data.result.permukaan_laut}\n`
+            var teks = `Tempat : ${data.result.tempat}\n`
+            teks += `Cuaca : ${data.result.cuaca}\n`
+            teks += `Angin : ${data.result.angin}\n`
+            teks += `Description : ${data.result.description}\n`
+            teks += `Kelembapan : ${data.result.kelembapan}\n`
+            teks += `Suhu : ${data.result.suhu}\n`
+            teks += `Udara : ${data.result.udara}\n`
+            teks += `Permukaan laut : ${data.result.permukaan_laut}\n`
             conn.sendMessage(m.chat, { location: { degreesLatitude: data.result.latitude, degreesLongitude: data.result.longitude } })
-            m.reply(text)
+            m.reply(teks)
             break
         case 'covidindo':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/corona/indonesia?apikey=9b817532fadff8fc7cb86862`)
-            var text = `Positif : ${data.result.positif}\n`
-            text += `Sembuh : ${data.result.sembuh}\n`
-            text += `Dirawat : ${data.result.dirawat}\n`
-            text += `Meninggal : ${data.result.meninggal}`
-            m.reply(text)
+            var teks = `Positif : ${data.result.positif}\n`
+            teks += `Sembuh : ${data.result.sembuh}\n`
+            teks += `Dirawat : ${data.result.dirawat}\n`
+            teks += `Meninggal : ${data.result.meninggal}`
+            m.reply(teks)
             break
         case 'covidglobal':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/corona/global?apikey=9b817532fadff8fc7cb86862`)
-            var text = `Positif : ${data.result.positif}\n`
-            text += `Sembuh : ${data.result.sembuh}\n`
-            text += `Dirawat : ${data.result.dirawat}\n`
-            text += `Meninggal : ${data.result.meninggal}`
-            m.reply(text)
+            var teks = `Positif : ${data.result.positif}\n`
+            teks += `Sembuh : ${data.result.sembuh}\n`
+            teks += `Dirawat : ${data.result.dirawat}\n`
+            teks += `Meninggal : ${data.result.meninggal}`
+            m.reply(teks)
             break
         case 'kodepos':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Slemanan or ${usedPrefix + command} 66154`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/kodepos?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = `Provinsi : ${data.result[0].province}\n`
-            text += `Kabupaten : ${data.result[0].city}\n`
-            text += `Kecamatan : ${data.result[0].subdistrict}\n`
-            text += `Kelurahan : ${data.result[0].urban}\n`
-            text += `Kode Pos : ${data.result[0].postalcode}`
-            m.reply(text)
+            var teks = `Provinsi : ${data.result[0].province}\n`
+            teks += `Kabupaten : ${data.result[0].city}\n`
+            teks += `Kecamatan : ${data.result[0].subdistrict}\n`
+            teks += `Kelurahan : ${data.result[0].urban}\n`
+            teks += `Kode Pos : ${data.result[0].postalcode}`
+            m.reply(teks)
             break
         case 'jadwalbola':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jadwalbola?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Jadwal Bola :\n'
+            var teks = 'Jadwal Bola :\n'
             for (var x of data.result) {
-                text += `Hari : ${x.hari}\n`
-                text += `Jam : ${x.jam}\n`
-                text += `Event : ${x.event}\n`
-                text += `Match : ${x.match}\n`
-                text += `TV : ${x.tv}\n\n`
+                teks += `Hari : ${x.hari}\n`
+                teks += `Jam : ${x.jam}\n`
+                teks += `Event : ${x.event}\n`
+                teks += `Match : ${x.match}\n`
+                teks += `TV : ${x.tv}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'indbeasiswa':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/indbeasiswa?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Info Beasiswa :\n'
+            var teks = 'Info Beasiswa :\n'
             for (var x of data.result) {
-                text += `Title : ${x.title}\n`
-                text += `Link : ${x.link}\n\n`
+                teks += `Title : ${x.title}\n`
+                teks += `Link : ${x.link}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'hoax':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/turnbackhoax?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Info Hoax :\n'
+            var teks = 'Info Hoax :\n'
             for (var x of data.result) {
-                text += `Title : ${x.title}\n`
-                text += `Link : ${x.link}\n`
-                text += `Posted : ${x.posted}\n`
-                text += `Description : ${x.desc}\n\n`
+                teks += `Title : ${x.title}\n`
+                teks += `Link : ${x.link}\n`
+                teks += `Posted : ${x.posted}\n`
+                teks += `Description : ${x.desc}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'nsfwcheck':
             
@@ -800,16 +800,16 @@ switch (template) {
             break
         case 'drakorongoing':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/drakorongoing?apikey=9b817532fadff8fc7cb86862`)
-            var text = 'Ongoing Drakor\n\n'
+            var teks = 'Ongoing Drakor\n\n'
             for (var x of data.result) {
-                text += `Title : ${x.title}\n`
-                text += `Link : ${x.link}\n`
-                text += `Thumbnail : ${x.thumbnail}\n`
-                text += `Year : ${x.category}\n`
-                text += `Total Episode : ${x.total_episode}\n`
-                text += `Genre : ${x.genre.join(', ')}\n\n`
+                teks += `Title : ${x.title}\n`
+                teks += `Link : ${x.link}\n`
+                teks += `Thumbnail : ${x.thumbnail}\n`
+                teks += `Year : ${x.category}\n`
+                teks += `Total Episode : ${x.total_episode}\n`
+                teks += `Genre : ${x.genre.join(', ')}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'wattpad':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www.wattpad.com/707367860-kumpulan-quote-tere-liye-tere-liye-quote-quote`)
@@ -830,23 +830,23 @@ switch (template) {
         case 'wattpadsearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Tere Liye`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/wattpadsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = 'Wattpad Seach : \n'
+            var teks = 'Wattpad Seach : \n'
             for (var x of data.result) {
-                text += `Title : ${x.title}\n`
-                text += `Url : ${x.url}\n`
-                text += `Part : ${x.parts}\n`
-                text += `Motify date : ${x.modifyDate}\n`
-                text += `Create date: ${x.createDate}\n`
-                text += `Coment count: ${x.commentCount}\n\n`
+                teks += `Title : ${x.title}\n`
+                teks += `Url : ${x.url}\n`
+                teks += `Part : ${x.parts}\n`
+                teks += `Motify date : ${x.modifyDate}\n`
+                teks += `Create date: ${x.createDate}\n`
+                teks += `Coment count: ${x.commentCount}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'cerpen':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cerpen?apikey=9b817532fadff8fc7cb86862`)
-            var text = `Title : ${data.result.title}\n`
-            text += `Creator : ${data.result.creator}\n`
-            text += `Story :\n${data.result.cerpen}`
-            m.reply(text)
+            var teks = `Title : ${data.result.title}\n`
+            teks += `Creator : ${data.result.creator}\n`
+            teks += `Story :\n${data.result.cerpen}`
+            m.reply(teks)
             break
         case 'ceritahoror':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/ceritahoror?apikey=9b817532fadff8fc7cb86862`)
@@ -883,40 +883,40 @@ switch (template) {
         case 'playstore':
             if (!text) return m.reply(`Example: ${usedPrefix + command} telegram`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/playstore?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = 'Play Store Search : \n'
+            var teks = 'Play Store Search : \n'
             for (var x of data.result) {
-                text += `Name : ${x.title}\n`
-                text += `ID : ${x.appId}\n`
-                text += `Developer : ${x.developer}\n`
-                text += `Link : ${x.url}\n`
-                text += `Price : ${x.priceText}\n`
-                text += `Price : ${x.price}\n\n`
+                teks += `Name : ${x.title}\n`
+                teks += `ID : ${x.appId}\n`
+                teks += `Developer : ${x.developer}\n`
+                teks += `Link : ${x.url}\n`
+                teks += `Price : ${x.priceText}\n`
+                teks += `Price : ${x.price}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'shopee':
             if (!text) return m.reply(`Example: ${usedPrefix + command} tas gendong`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/shopee?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = 'Shopee Search : \n'
+            var teks = 'Shopee Search : \n'
             for (var x of data.result) {
-                text += `Name : ${x.name}\n`
-                text += `Terjual : ${x.sold}\n`
-                text += `Stock : ${x.stock}\n`
-                text += `Lokasi : ${x.shop_loc}\n`
-                text += `Link : ${x.link_produk}\n\n`
+                teks += `Name : ${x.name}\n`
+                teks += `Terjual : ${x.sold}\n`
+                teks += `Stock : ${x.stock}\n`
+                teks += `Lokasi : ${x.shop_loc}\n`
+                teks += `Link : ${x.link_produk}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
         case 'google':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/gsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
-            var text = 'Google Search : \n'
+            var teks = 'Google Search : \n'
             for (var x of data.result) {
-                text += `Title : ${x.title}\n`
-                text += `Link : ${x.link}\n`
-                text += `Desc : ${x.desc}\n\n`
+                teks += `Title : ${x.title}\n`
+                teks += `Link : ${x.link}\n`
+                teks += `Desc : ${x.desc}\n\n`
             }
-            m.reply(text)
+            m.reply(teks)
             break
 
         // Random Text //
@@ -936,7 +936,7 @@ switch (template) {
         case 'katabijak':
         case 'pantun':
         case 'bucin':
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/${text}?apikey=9b817532fadff8fc7cb86862`)
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/${teks}?apikey=9b817532fadff8fc7cb86862`)
             m.reply(data.result)
             break
         case 'randomnama':
@@ -963,37 +963,37 @@ switch (template) {
             break
         case 'jodoh':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Tahu & Bacem`)
-            axios.get(`https://api.lolhuman.xyz/api/jodoh/${full_args.split('&')[0]}/${full_args.split('&')[1]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
-                var text = `Positif : ${data.result.positif}\n`
-                text += `Negative : ${data.result.negatif}\n`
-                text += `Deskripsi : ${data.result.deskripsi}`
-                m.reply(text)
+            axios.get(`https://api.lolhuman.xyz/api/jodoh/${text.split('&')[0]}/${text.split('&')[1]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
+                var teks = `Positif : ${data.result.positif}\n`
+                teks += `Negative : ${data.result.negatif}\n`
+                teks += `Deskripsi : ${data.result.deskripsi}`
+                m.reply(teks)
             })
             break
         case 'weton':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 12 12 2020`)
             axios.get(`https://api.lolhuman.xyz/api/weton/${args[0]}/${args[1]}/${args[2]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
-                var text = `Weton : ${data.result.weton}\n`
-                text += `Pekerjaan : ${data.result.pekerjaan}\n`
-                text += `Rejeki : ${data.result.rejeki}\n`
-                text += `Jodoh : ${data.result.jodoh}`
-                m.reply(text)
+                var teks = `Weton : ${data.result.weton}\n`
+                teks += `Pekerjaan : ${data.result.pekerjaan}\n`
+                teks += `Rejeki : ${data.result.rejeki}\n`
+                teks += `Jodoh : ${data.result.jodoh}`
+                m.reply(teks)
             })
             break
         case 'jadian':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 12 12 2020`)
             axios.get(`https://api.lolhuman.xyz/api/jadian/${args[0]}/${args[1]}/${args[2]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
-                var text = `Karakteristik : ${data.result.karakteristik}\n`
-                text += `Deskripsi : ${data.result.deskripsi}`
-                m.reply(text)
+                var teks = `Karakteristik : ${data.result.karakteristik}\n`
+                teks += `Deskripsi : ${data.result.deskripsi}`
+                m.reply(teks)
             })
             break
         case 'tebakumur':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Hinata MD`)
             axios.get(`https://api.lolhuman.xyz/api/tebakumur?apikey=9b817532fadff8fc7cb86862&name=${text}`).then(({ data }) => {
-                var text = `Nama : ${data.result.name}\n`
-                text += `Umur : ${data.result.age}`
-                m.reply(text)
+                var teks = `Nama : ${data.result.name}\n`
+                teks += `Umur : ${data.result.age}`
+                m.reply(teks)
             })
             break
 
@@ -1036,7 +1036,7 @@ switch (template) {
             }
             if (command === 'quotemaker3') {
                 url = `https://api.lolhuman.xyz/api/quotemaker3?apikey=9b817532fadff8fc7cb86862`
-                form.append('text', full_args)
+                form.append('text', text)
             }
             if (command === 'roundsticker') {
                 url = `https://api.lolhuman.xyz/api/convert/towebpwround?apikey=9b817532fadff8fc7cb86862`
