@@ -1,6 +1,7 @@
 import axios from 'axios'
 import FormData from 'form-data'
 import fetch from 'node-fetch'
+import { stream, PassThrough} from 'stream'
 
 let handler = async (m, { conn, args, text, usedPrefix, command, isPrems }) => {
 let urut = text.split`|`
@@ -12,303 +13,303 @@ let template = (args[0] || '').toLowerCase()
 if (!args[0]) {
 let caption = `*Contoh Penggunaan*
 
-${usedPrefix + command} ${template} 1977
-${usedPrefix + command} ${template} aden
-${usedPrefix + command} ${template} advanceglow
-${usedPrefix + command} ${template} ahegao
-${usedPrefix + command} ${template} alquran
-${usedPrefix + command} ${template} alquranaudio
-${usedPrefix + command} ${template} anal
-${usedPrefix + command} ${template} anime
-${usedPrefix + command} ${template} animearmpits
-${usedPrefix + command} ${template} animebellybutton
-${usedPrefix + command} ${template} animebooty
-${usedPrefix + command} ${template} animefeets
-${usedPrefix + command} ${template} animethighss
-${usedPrefix + command} ${template} arcade8bit
-${usedPrefix + command} ${template} art
-${usedPrefix + command} ${template} artinama
-${usedPrefix + command} ${template} asmaulhusna
-${usedPrefix + command} ${template} asupan
-${usedPrefix + command} ${template} avenger
-${usedPrefix + command} ${template} baka
-${usedPrefix + command} ${template} battlefield4
-${usedPrefix + command} ${template} beautifulflower
-${usedPrefix + command} ${template} biganimetiddies
-${usedPrefix + command} ${template} birthdaycake
-${usedPrefix + command} ${template} birthdayday
-${usedPrefix + command} ${template} bj
-${usedPrefix + command} ${template} blackpink
-${usedPrefix + command} ${template} bloodfrosted
-${usedPrefix + command} ${template} blowjob
-${usedPrefix + command} ${template} bokeh
-${usedPrefix + command} ${template} box3d
-${usedPrefix + command} ${template} brainly
-${usedPrefix + command} ${template} brannan
-${usedPrefix + command} ${template} breakwall
-${usedPrefix + command} ${template} brooklyn
-${usedPrefix + command} ${template} bts
-${usedPrefix + command} ${template} bucin
-${usedPrefix + command} ${template} burnpaper
-${usedPrefix + command} ${template} carvedwood
-${usedPrefix + command} ${template} ceritahoror
-${usedPrefix + command} ${template} cerpen
-${usedPrefix + command} ${template} character
-${usedPrefix + command} ${template} chiisaihentai
-${usedPrefix + command} ${template} chord
-${usedPrefix + command} ${template} clarendon
-${usedPrefix + command} ${template} classic
-${usedPrefix + command} ${template} cloud
-${usedPrefix + command} ${template} cnnindonesia
-${usedPrefix + command} ${template} cnninternasional
-${usedPrefix + command} ${template} cnnnasional
-${usedPrefix + command} ${template} coffe
-${usedPrefix + command} ${template} covidglobal
-${usedPrefix + command} ${template} covidindo
-${usedPrefix + command} ${template} cuaca
-${usedPrefix + command} ${template} cuddle
-${usedPrefix + command} ${template} cum
-${usedPrefix + command} ${template} cum_jpg
-${usedPrefix + command} ${template} cup
-${usedPrefix + command} ${template} cup1
-${usedPrefix + command} ${template} deluxesilver
-${usedPrefix + command} ${template} drakorongoing
-${usedPrefix + command} ${template} earlybird
-${usedPrefix + command} ${template} ecchi
-${usedPrefix + command} ${template} elf
-${usedPrefix + command} ${template} ero
-${usedPrefix + command} ${template} erofeet
-${usedPrefix + command} ${template} erok
-${usedPrefix + command} ${template} erokemo
-${usedPrefix + command} ${template} eron
-${usedPrefix + command} ${template} eroyuri
-${usedPrefix + command} ${template} exo
-${usedPrefix + command} ${template} faktaunik
-${usedPrefix + command} ${template} fallleaves
-${usedPrefix + command} ${template} fbdl
-${usedPrefix + command} ${template} feed
-${usedPrefix + command} ${template} feet
-${usedPrefix + command} ${template} feetg
-${usedPrefix + command} ${template} femdom
-${usedPrefix + command} ${template} fireworksparkle
-${usedPrefix + command} ${template} flamming
-${usedPrefix + command} ${template} fox_girl
-${usedPrefix + command} ${template} freefire
-${usedPrefix + command} ${template} futanari
-${usedPrefix + command} ${template} futureneon
-${usedPrefix + command} ${template} galaxybat
-${usedPrefix + command} ${template} galaxystyle
-${usedPrefix + command} ${template} galaxywallpaper
-${usedPrefix + command} ${template} gasm
-${usedPrefix + command} ${template} genshin
-${usedPrefix + command} ${template} gimage
-${usedPrefix + command} ${template} gimage2
-${usedPrefix + command} ${template} gingham
-${usedPrefix + command} ${template} glitch
-${usedPrefix + command} ${template} glittergold
-${usedPrefix + command} ${template} glossychrome
-${usedPrefix + command} ${template} glowingneon
-${usedPrefix + command} ${template} golderrose
-${usedPrefix + command} ${template} goldplaybutton
-${usedPrefix + command} ${template} google
-${usedPrefix + command} ${template} greenbush
-${usedPrefix + command} ${template} greenneon
-${usedPrefix + command} ${template} halloween
-${usedPrefix + command} ${template} harrypotter
-${usedPrefix + command} ${template} heartshaped
-${usedPrefix + command} ${template} hentai
-${usedPrefix + command} ${template} hentai4everyone
-${usedPrefix + command} ${template} hentaifemdom
-${usedPrefix + command} ${template} hentaiparadise
-${usedPrefix + command} ${template} heroml
-${usedPrefix + command} ${template} hoax
-${usedPrefix + command} ${template} holo
-${usedPrefix + command} ${template} holoero
-${usedPrefix + command} ${template} hologram3d
-${usedPrefix + command} ${template} holographic
-${usedPrefix + command} ${template} hololewd
-${usedPrefix + command} ${template} horrorblood
-${usedPrefix + command} ${template} hudson
-${usedPrefix + command} ${template} husbu
-${usedPrefix + command} ${template} icecold
-${usedPrefix + command} ${template} igdl
-${usedPrefix + command} ${template} igdl2
-${usedPrefix + command} ${template} indbeasiswa
-${usedPrefix + command} ${template} infogempa
-${usedPrefix + command} ${template} inkwell
-${usedPrefix + command} ${template} jadian
-${usedPrefix + command} ${template} jadwalbola
-${usedPrefix + command} ${template} jadwalsholat
-${usedPrefix + command} ${template} jadwaltv
-${usedPrefix + command} ${template} jadwaltvnow
-${usedPrefix + command} ${template} jarak
-${usedPrefix + command} ${template} jodoh
-${usedPrefix + command} ${template} jokerlogo
-${usedPrefix + command} ${template} jooxplay
-${usedPrefix + command} ${template} katabijak
-${usedPrefix + command} ${template} kbbi
-${usedPrefix + command} ${template} kelvin
-${usedPrefix + command} ${template} kemonomimi
-${usedPrefix + command} ${template} kisahnabi
-${usedPrefix + command} ${template} kiss
-${usedPrefix + command} ${template} kodepos
-${usedPrefix + command} ${template} konachan
-${usedPrefix + command} ${template} kuni
-${usedPrefix + command} ${template} kusonime
-${usedPrefix + command} ${template} kusonimesearch
-${usedPrefix + command} ${template} lark
-${usedPrefix + command} ${template} letterleaves
-${usedPrefix + command} ${template} lewd
-${usedPrefix + command} ${template} lewdanimegirls
-${usedPrefix + command} ${template} lewdk
-${usedPrefix + command} ${template} lewdkemo
-${usedPrefix + command} ${template} lighttext
-${usedPrefix + command} ${template} lionlogo
-${usedPrefix + command} ${template} lirik
-${usedPrefix + command} ${template} listsurah
-${usedPrefix + command} ${template} lk21
-${usedPrefix + command} ${template} lofi
-${usedPrefix + command} ${template} loli
-${usedPrefix + command} ${template} love
-${usedPrefix + command} ${template} lovemessage
-${usedPrefix + command} ${template} luxury
-${usedPrefix + command} ${template} luxurygold
-${usedPrefix + command} ${template} manga
-${usedPrefix + command} ${template} marvelstudio
-${usedPrefix + command} ${template} maven
-${usedPrefix + command} ${template} mayfair
-${usedPrefix + command} ${template} megumin
-${usedPrefix + command} ${template} metaldark
-${usedPrefix + command} ${template} metallogo
-${usedPrefix + command} ${template} minion
-${usedPrefix + command} ${template} mlstalk
-${usedPrefix + command} ${template} moon
-${usedPrefix + command} ${template} multicolor3d
-${usedPrefix + command} ${template} nashville
-${usedPrefix + command} ${template} nature3d
-${usedPrefix + command} ${template} natureleaves
-${usedPrefix + command} ${template} neko
-${usedPrefix + command} ${template} neon
-${usedPrefix + command} ${template} neonlight
-${usedPrefix + command} ${template} newsinfo
-${usedPrefix + command} ${template} newyearcard
-${usedPrefix + command} ${template} ninjalogo
-${usedPrefix + command} ${template} noeltext
-${usedPrefix + command} ${template} nsfwcheck
-${usedPrefix + command} ${template} nsfw_avatar
-${usedPrefix + command} ${template} ocr
-${usedPrefix + command} ${template} otakudesu
-${usedPrefix + command} ${template} otakudesusearch
-${usedPrefix + command} ${template} pantun
-${usedPrefix + command} ${template} pencil
-${usedPrefix + command} ${template} perpetua
-${usedPrefix + command} ${template} pinterest
-${usedPrefix + command} ${template} pinterest2
-${usedPrefix + command} ${template} pinterestdl
-${usedPrefix + command} ${template} pixiv
-${usedPrefix + command} ${template} pixivdl
-${usedPrefix + command} ${template} playstore
-${usedPrefix + command} ${template} poke
-${usedPrefix + command} ${template} pornhub
-${usedPrefix + command} ${template} pubg
-${usedPrefix + command} ${template} puppycute
-${usedPrefix + command} ${template} pussy
-${usedPrefix + command} ${template} pussy_jpg
-${usedPrefix + command} ${template} qrreader
-${usedPrefix + command} ${template} quotemaker3
-${usedPrefix + command} ${template} quotes
-${usedPrefix + command} ${template} quotesanime
-${usedPrefix + command} ${template} quotesdilan
-${usedPrefix + command} ${template} quotesimage
-${usedPrefix + command} ${template} randomnama
-${usedPrefix + command} ${template} reyes
-${usedPrefix + command} ${template} rise
-${usedPrefix + command} ${template} roadwarning
-${usedPrefix + command} ${template} romance
-${usedPrefix + command} ${template} roundsticker
-${usedPrefix + command} ${template} royaltext
-${usedPrefix + command} ${template} sagiri
-${usedPrefix + command} ${template} sandengraved
-${usedPrefix + command} ${template} sandsummer
-${usedPrefix + command} ${template} sandwriting
-${usedPrefix + command} ${template} shadow
-${usedPrefix + command} ${template} shinobu
-${usedPrefix + command} ${template} shopee
-${usedPrefix + command} ${template} shortlink
-${usedPrefix + command} ${template} shota
-${usedPrefix + command} ${template} sideoppai
-${usedPrefix + command} ${template} silverplaybutton
-${usedPrefix + command} ${template} slumber
-${usedPrefix + command} ${template} smoke
-${usedPrefix + command} ${template} smug
-${usedPrefix + command} ${template} snow3d
-${usedPrefix + command} ${template} solo
-${usedPrefix + command} ${template} solog
-${usedPrefix + command} ${template} space
-${usedPrefix + command} ${template} spotify
-${usedPrefix + command} ${template} spotifysearch
-${usedPrefix + command} ${template} ssweb
-${usedPrefix + command} ${template} ssweb2
-${usedPrefix + command} ${template} stalkgithub
-${usedPrefix + command} ${template} stalkig
-${usedPrefix + command} ${template} stalktiktok
-${usedPrefix + command} ${template} stalktwitter
-${usedPrefix + command} ${template} starsnight
-${usedPrefix + command} ${template} steel3d
-${usedPrefix + command} ${template} stickerwm
-${usedPrefix + command} ${template} stinson
-${usedPrefix + command} ${template} strawberry
-${usedPrefix + command} ${template} summer3d
-${usedPrefix + command} ${template} summernature
-${usedPrefix + command} ${template} summersand
-${usedPrefix + command} ${template} tebakumur
-${usedPrefix + command} ${template} telesticker
-${usedPrefix + command} ${template} text1917
-${usedPrefix + command} ${template} textbyname
-${usedPrefix + command} ${template} textcake
-${usedPrefix + command} ${template} thunder
-${usedPrefix + command} ${template} tiktok
-${usedPrefix + command} ${template} tiktokmusic
-${usedPrefix + command} ${template} tiktoknowm
-${usedPrefix + command} ${template} tits
-${usedPrefix + command} ${template} toaster
-${usedPrefix + command} ${template} toxic
-${usedPrefix + command} ${template} translate
-${usedPrefix + command} ${template} trap
-${usedPrefix + command} ${template} twtdl
-${usedPrefix + command} ${template} undergrass
-${usedPrefix + command} ${template} underwater
-${usedPrefix + command} ${template} urbandictionary
-${usedPrefix + command} ${template} valencia
-${usedPrefix + command} ${template} waifu
-${usedPrefix + command} ${template} walden
-${usedPrefix + command} ${template} wallgravity
-${usedPrefix + command} ${template} wallnime
-${usedPrefix + command} ${template} wallpaper
-${usedPrefix + command} ${template} wallpapersearch
-${usedPrefix + command} ${template} wallpapersearch2
-${usedPrefix + command} ${template} wancak
-${usedPrefix + command} ${template} watercolor
-${usedPrefix + command} ${template} wattpad
-${usedPrefix + command} ${template} wattpadsearch
-${usedPrefix + command} ${template} wetglass
-${usedPrefix + command} ${template} weton
-${usedPrefix + command} ${template} wikipedia
-${usedPrefix + command} ${template} willow
-${usedPrefix + command} ${template} wolflogo
-${usedPrefix + command} ${template} wolfmetal
-${usedPrefix + command} ${template} wooden3d
-${usedPrefix + command} ${template} woodenboard
-${usedPrefix + command} ${template} woodheart
-${usedPrefix + command} ${template} writegalacy
-${usedPrefix + command} ${template} xpro2
-${usedPrefix + command} ${template} yaoi
-${usedPrefix + command} ${template} ytmp3
-${usedPrefix + command} ${template} ytmp4
-${usedPrefix + command} ${template} ytplay
-${usedPrefix + command} ${template} ytsearch
-${usedPrefix + command} ${template} yuri
-${usedPrefix + command} ${template} zippyshare`
+${usedPrefix + command} 1977
+${usedPrefix + command} aden
+${usedPrefix + command} advanceglow
+${usedPrefix + command} ahegao
+${usedPrefix + command} alquran
+${usedPrefix + command} alquranaudio
+${usedPrefix + command} anal
+${usedPrefix + command} anime
+${usedPrefix + command} animearmpits
+${usedPrefix + command} animebellybutton
+${usedPrefix + command} animebooty
+${usedPrefix + command} animefeets
+${usedPrefix + command} animethighss
+${usedPrefix + command} arcade8bit
+${usedPrefix + command} art
+${usedPrefix + command} artinama
+${usedPrefix + command} asmaulhusna
+${usedPrefix + command} asupan
+${usedPrefix + command} avenger
+${usedPrefix + command} baka
+${usedPrefix + command} battlefield4
+${usedPrefix + command} beautifulflower
+${usedPrefix + command} biganimetiddies
+${usedPrefix + command} birthdaycake
+${usedPrefix + command} birthdayday
+${usedPrefix + command} bj
+${usedPrefix + command} blackpink
+${usedPrefix + command} bloodfrosted
+${usedPrefix + command} blowjob
+${usedPrefix + command} bokeh
+${usedPrefix + command} box3d
+${usedPrefix + command} brainly
+${usedPrefix + command} brannan
+${usedPrefix + command} breakwall
+${usedPrefix + command} brooklyn
+${usedPrefix + command} bts
+${usedPrefix + command} bucin
+${usedPrefix + command} burnpaper
+${usedPrefix + command} carvedwood
+${usedPrefix + command} ceritahoror
+${usedPrefix + command} cerpen
+${usedPrefix + command} character
+${usedPrefix + command} chiisaihentai
+${usedPrefix + command} chord
+${usedPrefix + command} clarendon
+${usedPrefix + command} classic
+${usedPrefix + command} cloud
+${usedPrefix + command} cnnindonesia
+${usedPrefix + command} cnninternasional
+${usedPrefix + command} cnnnasional
+${usedPrefix + command} coffe
+${usedPrefix + command} covidglobal
+${usedPrefix + command} covidindo
+${usedPrefix + command} cuaca
+${usedPrefix + command} cuddle
+${usedPrefix + command} cum
+${usedPrefix + command} cum_jpg
+${usedPrefix + command} cup
+${usedPrefix + command} cup1
+${usedPrefix + command} deluxesilver
+${usedPrefix + command} drakorongoing
+${usedPrefix + command} earlybird
+${usedPrefix + command} ecchi
+${usedPrefix + command} elf
+${usedPrefix + command} ero
+${usedPrefix + command} erofeet
+${usedPrefix + command} erok
+${usedPrefix + command} erokemo
+${usedPrefix + command} eron
+${usedPrefix + command} eroyuri
+${usedPrefix + command} exo
+${usedPrefix + command} faktaunik
+${usedPrefix + command} fallleaves
+${usedPrefix + command} fbdl
+${usedPrefix + command} feed
+${usedPrefix + command} feet
+${usedPrefix + command} feetg
+${usedPrefix + command} femdom
+${usedPrefix + command} fireworksparkle
+${usedPrefix + command} flamming
+${usedPrefix + command} fox_girl
+${usedPrefix + command} freefire
+${usedPrefix + command} futanari
+${usedPrefix + command} futureneon
+${usedPrefix + command} galaxybat
+${usedPrefix + command} galaxystyle
+${usedPrefix + command} galaxywallpaper
+${usedPrefix + command} gasm
+${usedPrefix + command} genshin
+${usedPrefix + command} gimage
+${usedPrefix + command} gimage2
+${usedPrefix + command} gingham
+${usedPrefix + command} glitch
+${usedPrefix + command} glittergold
+${usedPrefix + command} glossychrome
+${usedPrefix + command} glowingneon
+${usedPrefix + command} golderrose
+${usedPrefix + command} goldplaybutton
+${usedPrefix + command} google
+${usedPrefix + command} greenbush
+${usedPrefix + command} greenneon
+${usedPrefix + command} halloween
+${usedPrefix + command} harrypotter
+${usedPrefix + command} heartshaped
+${usedPrefix + command} hentai
+${usedPrefix + command} hentai4everyone
+${usedPrefix + command} hentaifemdom
+${usedPrefix + command} hentaiparadise
+${usedPrefix + command} heroml
+${usedPrefix + command} hoax
+${usedPrefix + command} holo
+${usedPrefix + command} holoero
+${usedPrefix + command} hologram3d
+${usedPrefix + command} holographic
+${usedPrefix + command} hololewd
+${usedPrefix + command} horrorblood
+${usedPrefix + command} hudson
+${usedPrefix + command} husbu
+${usedPrefix + command} icecold
+${usedPrefix + command} igdl
+${usedPrefix + command} igdl2
+${usedPrefix + command} indbeasiswa
+${usedPrefix + command} infogempa
+${usedPrefix + command} inkwell
+${usedPrefix + command} jadian
+${usedPrefix + command} jadwalbola
+${usedPrefix + command} jadwalsholat
+${usedPrefix + command} jadwaltv
+${usedPrefix + command} jadwaltvnow
+${usedPrefix + command} jarak
+${usedPrefix + command} jodoh
+${usedPrefix + command} jokerlogo
+${usedPrefix + command} jooxplay
+${usedPrefix + command} katabijak
+${usedPrefix + command} kbbi
+${usedPrefix + command} kelvin
+${usedPrefix + command} kemonomimi
+${usedPrefix + command} kisahnabi
+${usedPrefix + command} kiss
+${usedPrefix + command} kodepos
+${usedPrefix + command} konachan
+${usedPrefix + command} kuni
+${usedPrefix + command} kusonime
+${usedPrefix + command} kusonimesearch
+${usedPrefix + command} lark
+${usedPrefix + command} letterleaves
+${usedPrefix + command} lewd
+${usedPrefix + command} lewdanimegirls
+${usedPrefix + command} lewdk
+${usedPrefix + command} lewdkemo
+${usedPrefix + command} lighttext
+${usedPrefix + command} lionlogo
+${usedPrefix + command} lirik
+${usedPrefix + command} listsurah
+${usedPrefix + command} lk21
+${usedPrefix + command} lofi
+${usedPrefix + command} loli
+${usedPrefix + command} love
+${usedPrefix + command} lovemessage
+${usedPrefix + command} luxury
+${usedPrefix + command} luxurygold
+${usedPrefix + command} manga
+${usedPrefix + command} marvelstudio
+${usedPrefix + command} maven
+${usedPrefix + command} mayfair
+${usedPrefix + command} megumin
+${usedPrefix + command} metaldark
+${usedPrefix + command} metallogo
+${usedPrefix + command} minion
+${usedPrefix + command} mlstalk
+${usedPrefix + command} moon
+${usedPrefix + command} multicolor3d
+${usedPrefix + command} nashville
+${usedPrefix + command} nature3d
+${usedPrefix + command} natureleaves
+${usedPrefix + command} neko
+${usedPrefix + command} neon
+${usedPrefix + command} neonlight
+${usedPrefix + command} newsinfo
+${usedPrefix + command} newyearcard
+${usedPrefix + command} ninjalogo
+${usedPrefix + command} noeltext
+${usedPrefix + command} nsfwcheck
+${usedPrefix + command} nsfw_avatar
+${usedPrefix + command} ocr
+${usedPrefix + command} otakudesu
+${usedPrefix + command} otakudesusearch
+${usedPrefix + command} pantun
+${usedPrefix + command} pencil
+${usedPrefix + command} perpetua
+${usedPrefix + command} pinterest
+${usedPrefix + command} pinterest2
+${usedPrefix + command} pinterestdl
+${usedPrefix + command} pixiv
+${usedPrefix + command} pixivdl
+${usedPrefix + command} playstore
+${usedPrefix + command} poke
+${usedPrefix + command} pornhub
+${usedPrefix + command} pubg
+${usedPrefix + command} puppycute
+${usedPrefix + command} pussy
+${usedPrefix + command} pussy_jpg
+${usedPrefix + command} qrreader
+${usedPrefix + command} quotemaker3
+${usedPrefix + command} quotes
+${usedPrefix + command} quotesanime
+${usedPrefix + command} quotesdilan
+${usedPrefix + command} quotesimage
+${usedPrefix + command} randomnama
+${usedPrefix + command} reyes
+${usedPrefix + command} rise
+${usedPrefix + command} roadwarning
+${usedPrefix + command} romance
+${usedPrefix + command} roundsticker
+${usedPrefix + command} royaltext
+${usedPrefix + command} sagiri
+${usedPrefix + command} sandengraved
+${usedPrefix + command} sandsummer
+${usedPrefix + command} sandwriting
+${usedPrefix + command} shadow
+${usedPrefix + command} shinobu
+${usedPrefix + command} shopee
+${usedPrefix + command} shortlink
+${usedPrefix + command} shota
+${usedPrefix + command} sideoppai
+${usedPrefix + command} silverplaybutton
+${usedPrefix + command} slumber
+${usedPrefix + command} smoke
+${usedPrefix + command} smug
+${usedPrefix + command} snow3d
+${usedPrefix + command} solo
+${usedPrefix + command} solog
+${usedPrefix + command} space
+${usedPrefix + command} spotify
+${usedPrefix + command} spotifysearch
+${usedPrefix + command} ssweb
+${usedPrefix + command} ssweb2
+${usedPrefix + command} stalkgithub
+${usedPrefix + command} stalkig
+${usedPrefix + command} stalktiktok
+${usedPrefix + command} stalktwitter
+${usedPrefix + command} starsnight
+${usedPrefix + command} steel3d
+${usedPrefix + command} stickerwm
+${usedPrefix + command} stinson
+${usedPrefix + command} strawberry
+${usedPrefix + command} summer3d
+${usedPrefix + command} summernature
+${usedPrefix + command} summersand
+${usedPrefix + command} tebakumur
+${usedPrefix + command} telesticker
+${usedPrefix + command} text1917
+${usedPrefix + command} textbyname
+${usedPrefix + command} textcake
+${usedPrefix + command} thunder
+${usedPrefix + command} tiktok
+${usedPrefix + command} tiktokmusic
+${usedPrefix + command} tiktoknowm
+${usedPrefix + command} tits
+${usedPrefix + command} toaster
+${usedPrefix + command} toxic
+${usedPrefix + command} translate
+${usedPrefix + command} trap
+${usedPrefix + command} twtdl
+${usedPrefix + command} undergrass
+${usedPrefix + command} underwater
+${usedPrefix + command} urbandictionary
+${usedPrefix + command} valencia
+${usedPrefix + command} waifu
+${usedPrefix + command} walden
+${usedPrefix + command} wallgravity
+${usedPrefix + command} wallnime
+${usedPrefix + command} wallpaper
+${usedPrefix + command} wallpapersearch
+${usedPrefix + command} wallpapersearch2
+${usedPrefix + command} wancak
+${usedPrefix + command} watercolor
+${usedPrefix + command} wattpad
+${usedPrefix + command} wattpadsearch
+${usedPrefix + command} wetglass
+${usedPrefix + command} weton
+${usedPrefix + command} wikipedia
+${usedPrefix + command} willow
+${usedPrefix + command} wolflogo
+${usedPrefix + command} wolfmetal
+${usedPrefix + command} wooden3d
+${usedPrefix + command} woodenboard
+${usedPrefix + command} woodheart
+${usedPrefix + command} writegalacy
+${usedPrefix + command} xpro2
+${usedPrefix + command} yaoi
+${usedPrefix + command} ytmp3
+${usedPrefix + command} ytmp4
+${usedPrefix + command} ytplay
+${usedPrefix + command} ytsearch
+${usedPrefix + command} yuri
+${usedPrefix + command} zippyshare`
 conn.sendButton(m.chat, caption, wm, null, [
                 ['Menu', `${usedPrefix}menu`]
             ], m)
