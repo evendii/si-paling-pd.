@@ -1,14 +1,38 @@
 
-import axios from 'axios';
-import fetch from 'node-fetch';
-let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-let er = `
-*[❗] Format salah*`
+let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 let text1 = args[1]
-if (!args[0]) throw er
+let er = `
+*[❗] Ketik seperti ini*
+*◉ ${usedPrefix + command} <tipe> <menu>*
 
-switch (command) {
-        // Islami //
+*—◉ Cth:*
+*◉ ${usedPrefix + command}* fa 😎
+
+*—◉ tipe* 
+
+*◉ wha = whatsapp* 
+*◉ ap = apple*
+*◉ fa = facebook*
+*◉ ig = Instagram*
+*◉ go = google*
+*◉ ht = htc*
+*◉ mi = microsoft*
+*◉ mo = mozilla*
+*◉ op = openmoji*
+*◉ pi = pixel*
+*◉ sa = samsung*
+*◉ tw = twitter*
+
+*—◉ Gunakan menu*`
+
+if (!args[0]) throw er
+let template = (args[0] || '').toLowerCase()
+if (!args[1]) throw er
+if (/emo/i.test(command)) {
+try {
+switch (template) {
+
+ // Islami //
         case 'listsurah':
             axios
                 .get(`https://api.lolhuman.xyz/api/quran?apikey=9b817532fadff8fc7cb86862`)
@@ -1395,9 +1419,12 @@ switch (command) {
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ephoto1/${text1}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
             break
+            
 }
-}
-handler.help = ['m2 <tipe> <teks>']
+} catch (e) {
+throw er
+}}}
+handler.help = ['xmenu <tipe> <menu>']
 handler.tags = ['tools'] 
-handler.command = ['m2']
+handler.command = ['xmenu', 'smenu']
 export default handler
