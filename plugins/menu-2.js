@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 
 let template = (args[0] || '').toLowerCase()
-if (!args[1]) throw `Teksnya?`
+if (!args[0]) throw `Teksnya?`
 if (/emo/i.test(command)) {
 switch (template) {
 
