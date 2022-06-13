@@ -1,10 +1,11 @@
+import axios from 'axios';
+import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 
 let template = (args[0] || '').toLowerCase()
 if (!args[1]) throw `Teksnya?`
 if (/emo/i.test(command)) {
-try {
 switch (template) {
 
 
@@ -1395,7 +1396,6 @@ switch (template) {
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ephoto1/${args[1]}?apikey=9b817532fadff8fc7cb86862&text=${args[2]}` } })
             break
-}
 }
 }
 }
