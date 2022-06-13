@@ -9,310 +9,7 @@ let urut = text.split`|`
   let three = urut[2]
   
 let template = (args[0] || '').toLowerCase()
-if (!args[0]) return {
-let caption = `*Contoh Penggunaan*
-
-${usedPrefix + command} 1977| query
-${usedPrefix + command} aden| query
-${usedPrefix + command} advanceglow| query
-${usedPrefix + command} ahegao| query
-${usedPrefix + command} alquran| query
-${usedPrefix + command} alquranaudio| query
-${usedPrefix + command} anal| query
-${usedPrefix + command} anime| query
-${usedPrefix + command} animearmpits| query
-${usedPrefix + command} animebellybutton| query
-${usedPrefix + command} animebooty| query
-${usedPrefix + command} animefeets| query
-${usedPrefix + command} animethighss| query
-${usedPrefix + command} arcade8bit| query
-${usedPrefix + command} art| query
-${usedPrefix + command} artinama| query
-${usedPrefix + command} asmaulhusna| query
-${usedPrefix + command} asupan| query
-${usedPrefix + command} avenger| query
-${usedPrefix + command} baka| query
-${usedPrefix + command} battlefield4| query
-${usedPrefix + command} beautifulflower| query
-${usedPrefix + command} biganimetiddies| query
-${usedPrefix + command} birthdaycake| query
-${usedPrefix + command} birthdayday| query
-${usedPrefix + command} bj| query
-${usedPrefix + command} blackpink| query
-${usedPrefix + command} bloodfrosted| query
-${usedPrefix + command} blowjob| query
-${usedPrefix + command} bokeh| query
-${usedPrefix + command} box3d| query
-${usedPrefix + command} brainly| query
-${usedPrefix + command} brannan| query
-${usedPrefix + command} breakwall| query
-${usedPrefix + command} brooklyn| query
-${usedPrefix + command} bts| query
-${usedPrefix + command} bucin| query
-${usedPrefix + command} burnpaper| query
-${usedPrefix + command} carvedwood| query
-${usedPrefix + command} ceritahoror| query
-${usedPrefix + command} cerpen| query
-${usedPrefix + command} character| query
-${usedPrefix + command} chiisaihentai| query
-${usedPrefix + command} chord| query
-${usedPrefix + command} clarendon| query
-${usedPrefix + command} classic| query
-${usedPrefix + command} cloud| query
-${usedPrefix + command} cnnindonesia| query
-${usedPrefix + command} cnninternasional| query
-${usedPrefix + command} cnnnasional| query
-${usedPrefix + command} coffe| query
-${usedPrefix + command} covidglobal| query
-${usedPrefix + command} covidindo| query
-${usedPrefix + command} cuaca| query
-${usedPrefix + command} cuddle| query
-${usedPrefix + command} cum| query
-${usedPrefix + command} cum_jpg| query
-${usedPrefix + command} cup| query
-${usedPrefix + command} cup1| query
-${usedPrefix + command} deluxesilver| query
-${usedPrefix + command} drakorongoing| query
-${usedPrefix + command} earlybird| query
-${usedPrefix + command} ecchi| query
-${usedPrefix + command} elf| query
-${usedPrefix + command} ero| query
-${usedPrefix + command} erofeet| query
-${usedPrefix + command} erok| query
-${usedPrefix + command} erokemo| query
-${usedPrefix + command} eron| query
-${usedPrefix + command} eroyuri| query
-${usedPrefix + command} exo| query
-${usedPrefix + command} faktaunik| query
-${usedPrefix + command} fallleaves| query
-${usedPrefix + command} fbdl| query
-${usedPrefix + command} feed| query
-${usedPrefix + command} feet| query
-${usedPrefix + command} feetg| query
-${usedPrefix + command} femdom| query
-${usedPrefix + command} fireworksparkle| query
-${usedPrefix + command} flamming| query
-${usedPrefix + command} fox_girl| query
-${usedPrefix + command} freefire| query
-${usedPrefix + command} futanari| query
-${usedPrefix + command} futureneon| query
-${usedPrefix + command} galaxybat| query
-${usedPrefix + command} galaxystyle| query
-${usedPrefix + command} galaxywallpaper| query
-${usedPrefix + command} gasm| query
-${usedPrefix + command} genshin| query
-${usedPrefix + command} gimage| query
-${usedPrefix + command} gimage2| query
-${usedPrefix + command} gingham| query
-${usedPrefix + command} glitch| query
-${usedPrefix + command} glittergold| query
-${usedPrefix + command} glossychrome| query
-${usedPrefix + command} glowingneon| query
-${usedPrefix + command} golderrose| query
-${usedPrefix + command} goldplaybutton| query
-${usedPrefix + command} google| query
-${usedPrefix + command} greenbush| query
-${usedPrefix + command} greenneon| query
-${usedPrefix + command} halloween| query
-${usedPrefix + command} harrypotter| query
-${usedPrefix + command} heartshaped| query
-${usedPrefix + command} hentai| query
-${usedPrefix + command} hentai4everyone| query
-${usedPrefix + command} hentaifemdom| query
-${usedPrefix + command} hentaiparadise| query
-${usedPrefix + command} heroml| query
-${usedPrefix + command} hoax| query
-${usedPrefix + command} holo| query
-${usedPrefix + command} holoero| query
-${usedPrefix + command} hologram3d| query
-${usedPrefix + command} holographic| query
-${usedPrefix + command} hololewd| query
-${usedPrefix + command} horrorblood| query
-${usedPrefix + command} hudson| query
-${usedPrefix + command} husbu| query
-${usedPrefix + command} icecold| query
-${usedPrefix + command} igdl| query
-${usedPrefix + command} igdl2| query
-${usedPrefix + command} indbeasiswa| query
-${usedPrefix + command} infogempa| query
-${usedPrefix + command} inkwell| query
-${usedPrefix + command} jadian| query
-${usedPrefix + command} jadwalbola| query
-${usedPrefix + command} jadwalsholat| query
-${usedPrefix + command} jadwaltv| query
-${usedPrefix + command} jadwaltvnow| query
-${usedPrefix + command} jarak| query
-${usedPrefix + command} jodoh| query
-${usedPrefix + command} jokerlogo| query
-${usedPrefix + command} jooxplay| query
-${usedPrefix + command} katabijak| query
-${usedPrefix + command} kbbi| query
-${usedPrefix + command} kelvin| query
-${usedPrefix + command} kemonomimi| query
-${usedPrefix + command} kisahnabi| query
-${usedPrefix + command} kiss| query
-${usedPrefix + command} kodepos| query
-${usedPrefix + command} konachan| query
-${usedPrefix + command} kuni| query
-${usedPrefix + command} kusonime| query
-${usedPrefix + command} kusonimesearch| query
-${usedPrefix + command} lark| query
-${usedPrefix + command} letterleaves| query
-${usedPrefix + command} lewd| query
-${usedPrefix + command} lewdanimegirls| query
-${usedPrefix + command} lewdk| query
-${usedPrefix + command} lewdkemo| query
-${usedPrefix + command} lighttext| query
-${usedPrefix + command} lionlogo| query
-${usedPrefix + command} lirik| query
-${usedPrefix + command} listsurah| query
-${usedPrefix + command} lk21| query
-${usedPrefix + command} lofi| query
-${usedPrefix + command} loli| query
-${usedPrefix + command} love| query
-${usedPrefix + command} lovemessage| query
-${usedPrefix + command} luxury| query
-${usedPrefix + command} luxurygold| query
-${usedPrefix + command} manga| query
-${usedPrefix + command} marvelstudio| query
-${usedPrefix + command} maven| query
-${usedPrefix + command} mayfair| query
-${usedPrefix + command} megumin| query
-${usedPrefix + command} metaldark| query
-${usedPrefix + command} metallogo| query
-${usedPrefix + command} minion| query
-${usedPrefix + command} mlstalk| query
-${usedPrefix + command} moon| query
-${usedPrefix + command} multicolor3d| query
-${usedPrefix + command} nashville| query
-${usedPrefix + command} nature3d| query
-${usedPrefix + command} natureleaves| query
-${usedPrefix + command} neko| query
-${usedPrefix + command} neon| query
-${usedPrefix + command} neonlight| query
-${usedPrefix + command} newsinfo| query
-${usedPrefix + command} newyearcard| query
-${usedPrefix + command} ninjalogo| query
-${usedPrefix + command} noeltext| query
-${usedPrefix + command} nsfwcheck| query
-${usedPrefix + command} nsfw_avatar| query
-${usedPrefix + command} ocr| query
-${usedPrefix + command} otakudesu| query
-${usedPrefix + command} otakudesusearch| query
-${usedPrefix + command} pantun| query
-${usedPrefix + command} pencil| query
-${usedPrefix + command} perpetua| query
-${usedPrefix + command} pinterest| query
-${usedPrefix + command} pinterest2| query
-${usedPrefix + command} pinterestdl| query
-${usedPrefix + command} pixiv| query
-${usedPrefix + command} pixivdl| query
-${usedPrefix + command} playstore| query
-${usedPrefix + command} poke| query
-${usedPrefix + command} pornhub| query
-${usedPrefix + command} pubg| query
-${usedPrefix + command} puppycute| query
-${usedPrefix + command} pussy| query
-${usedPrefix + command} pussy_jpg| query
-${usedPrefix + command} qrreader| query
-${usedPrefix + command} quotemaker3| query
-${usedPrefix + command} quotes| query
-${usedPrefix + command} quotesanime| query
-${usedPrefix + command} quotesdilan| query
-${usedPrefix + command} quotesimage| query
-${usedPrefix + command} randomnama| query
-${usedPrefix + command} reyes| query
-${usedPrefix + command} rise| query
-${usedPrefix + command} roadwarning| query
-${usedPrefix + command} romance| query
-${usedPrefix + command} roundsticker| query
-${usedPrefix + command} royaltext| query
-${usedPrefix + command} sagiri| query
-${usedPrefix + command} sandengraved| query
-${usedPrefix + command} sandsummer| query
-${usedPrefix + command} sandwriting| query
-${usedPrefix + command} shadow| query
-${usedPrefix + command} shinobu| query
-${usedPrefix + command} shopee| query
-${usedPrefix + command} shortlink| query
-${usedPrefix + command} shota| query
-${usedPrefix + command} sideoppai| query
-${usedPrefix + command} silverplaybutton| query
-${usedPrefix + command} slumber| query
-${usedPrefix + command} smoke| query
-${usedPrefix + command} smug| query
-${usedPrefix + command} snow3d| query
-${usedPrefix + command} solo| query
-${usedPrefix + command} solog| query
-${usedPrefix + command} space| query
-${usedPrefix + command} spotify| query
-${usedPrefix + command} spotifysearch| query
-${usedPrefix + command} ssweb| query
-${usedPrefix + command} ssweb2| query
-${usedPrefix + command} stalkgithub| query
-${usedPrefix + command} stalkig| query
-${usedPrefix + command} stalktiktok| query
-${usedPrefix + command} stalktwitter| query
-${usedPrefix + command} starsnight| query
-${usedPrefix + command} steel3d| query
-${usedPrefix + command} stickerwm| query
-${usedPrefix + command} stinson| query
-${usedPrefix + command} strawberry| query
-${usedPrefix + command} summer3d| query
-${usedPrefix + command} summernature| query
-${usedPrefix + command} summersand| query
-${usedPrefix + command} tebakumur| query
-${usedPrefix + command} telesticker| query
-${usedPrefix + command} text1917| query
-${usedPrefix + command} textbyname| query
-${usedPrefix + command} textcake| query
-${usedPrefix + command} thunder| query
-${usedPrefix + command} tiktok| query
-${usedPrefix + command} tiktokmusic| query
-${usedPrefix + command} tiktoknowm| query
-${usedPrefix + command} tits| query
-${usedPrefix + command} toaster| query
-${usedPrefix + command} toxic| query
-${usedPrefix + command} translate| query
-${usedPrefix + command} trap| query
-${usedPrefix + command} twtdl| query
-${usedPrefix + command} undergrass| query
-${usedPrefix + command} underwater| query
-${usedPrefix + command} urbandictionary| query
-${usedPrefix + command} valencia| query
-${usedPrefix + command} waifu| query
-${usedPrefix + command} walden| query
-${usedPrefix + command} wallgravity| query
-${usedPrefix + command} wallnime| query
-${usedPrefix + command} wallpaper| query
-${usedPrefix + command} wallpapersearch| query
-${usedPrefix + command} wallpapersearch2| query
-${usedPrefix + command} wancak| query
-${usedPrefix + command} watercolor| query
-${usedPrefix + command} wattpad| query
-${usedPrefix + command} wattpadsearch| query
-${usedPrefix + command} wetglass| query
-${usedPrefix + command} weton| query
-${usedPrefix + command} wikipedia| query
-${usedPrefix + command} willow| query
-${usedPrefix + command} wolflogo| query
-${usedPrefix + command} wolfmetal| query
-${usedPrefix + command} wooden3d| query
-${usedPrefix + command} woodenboard| query
-${usedPrefix + command} woodheart| query
-${usedPrefix + command} writegalacy| query
-${usedPrefix + command} xpro2| query
-${usedPrefix + command} yaoi| query
-${usedPrefix + command} ytmp3| query
-${usedPrefix + command} ytmp4| query
-${usedPrefix + command} ytplay| query
-${usedPrefix + command} ytsearch| query
-${usedPrefix + command} yuri| query
-${usedPrefix + command} zippyshare| query`
-conn.sendButton(m.chat, caption, wm, null, [
-                ['Menu', `${usedPrefix}menu`]
-            ], m)
-            }
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix + command} cloud|teks`
             
 if (command) {
 switch (template) {
@@ -326,14 +23,14 @@ switch (template) {
                     for (var x in data.result) {
                         teks += `${x}. ${data.result[x]}\n`
                     }
-                    await conn.sendButton(m.chat, teks, wm, null, [
+                    conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
                 })
                 .catch(console.error)
             break
         case 'alquran':
-            if (args.length < 1) return m.reply(`Example: ${usedPrefix + command} 18 or ${usedPrefix + command} 18/10 or ${usedPrefix + command} 18/1-10`)
+            if (!one) return m.reply(`Example: ${usedPrefix + command} 18 or ${usedPrefix + command} 18/10 or ${usedPrefix + command} 18/1-10`)
             axios
                 .get(`https://api.lolhuman.xyz/api/quran/${one}?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
@@ -344,7 +41,7 @@ switch (template) {
                     }
                     teks = teks.replace(/<u>/g, '_').replace(/<\/u>/g, '_')
                     teks = teks.replace(/<strong>/g, '*').replace(/<\/strong>/g, '*')
-                    await conn.sendButton(m.chat, teks, wm, null, [
+                    conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
                 })
@@ -363,7 +60,7 @@ switch (template) {
                     teks += `Arab : ${data.result.ar}\n`
                     teks += `Indonesia : ${data.result.id}\n`
                     teks += `English : ${data.result.en}`
-                    await conn.sendButton(m.chat, teks, wm, null, [
+                    conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
                 })
@@ -379,7 +76,7 @@ switch (template) {
                     teks += `Umur : ${data.result.age}\n`
                     teks += `Tempat : ${data.result.place}\n`
                     teks += `Story : \n${data.result.story}`
-                    await conn.sendButton(m.chat, teks, wm, null, [
+                    conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
                 })
@@ -401,7 +98,7 @@ switch (template) {
                     teks += `Ashar : ${data.result.ashar}\n`
                     teks += `Maghrib : ${data.result.imsak}\n`
                     teks += `Isya : ${data.result.isya}`
-                    await conn.sendButton(m.chat, teks, wm, null, [
+                    conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
                 })
@@ -437,7 +134,7 @@ switch (template) {
                         teks += `Thumbnail : ${x.thumbnail}\n`
                         teks += `Link : https://www.youtube.com/watch?v=${x.videoId}\n\n`
                     }
-                    await conn.sendButton(m.chat, teks, wm, null, [
+                    conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
                 })
@@ -509,7 +206,7 @@ switch (template) {
                     teks += `Link : ${x.link}\n`
                     teks += `Preview : ${x.preview_url}\n\n\n`
                 }
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -570,7 +267,7 @@ switch (template) {
                 teks += `Size : ${data.result.size}\n`
                 teks += `Date Upload : ${data.result.date_upload}\n`
                 teks += `Download Url : ${data.result.download_url}`
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -751,7 +448,7 @@ switch (template) {
                         }
                     }
                 }
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -784,7 +481,7 @@ switch (template) {
                         }
                     }
                 }
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -805,7 +502,7 @@ switch (template) {
                 teks += `\`\`\`Makna Lain : \n${x.makna[0].submakna}\`\`\`\n `
                 teks += `\`\`\`Contoh Kalimat : \n${x.makna[0].contoh}\`\`\`\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -819,7 +516,7 @@ switch (template) {
                 teks += `\`\`\`Jawaban :\`\`\`\n${x.answer[0].content}\n`
                 teks += `==============================\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -844,7 +541,7 @@ switch (template) {
             teks += `❍┤ Motor : ${data.result.motor}\n`
             teks += `❍┤ Jalan Kaki : ${data.result.jalan_kaki}\n`
             teks += `   ╰───────────────❏\n`
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -862,7 +559,7 @@ switch (template) {
                 teks += `\`\`\`Defined Id : ${x.defid}\`\`\`\n\n`
                 teks += `\`\`\`Example : ${x.example}\`\`\`\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -871,7 +568,7 @@ switch (template) {
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/chord?apikey=9b817532fadff8fc7cb86862&query=${one}`)
             var teks = `Title : ${data.result.title}\n`
             teks += `Chord : \n${data.result.chord}`
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -942,7 +639,7 @@ switch (template) {
                 teks += `${x.title}\n`
                 teks += `${x.url}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -953,7 +650,7 @@ switch (template) {
             for (var x in data.result) {
                 teks += `${x} - ${data.result[x]}\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -963,7 +660,7 @@ switch (template) {
             for (var x in data.result) {
                 teks += `${x.toUpperCase()}${data.result[x]}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -978,7 +675,7 @@ switch (template) {
                 teks += `Published : ${x.publishedAt}\n`
                 teks += `Description : ${x.description}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -991,7 +688,7 @@ switch (template) {
                 teks += `Tipe : ${x.tipe}\n`
                 teks += `Published : ${x.waktu}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1004,7 +701,7 @@ switch (template) {
                 teks += `Tipe : ${x.tipe}\n`
                 teks += `Published : ${x.waktu}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1017,7 +714,7 @@ switch (template) {
                 teks += `Tipe : ${x.tipe}\n`
                 teks += `Published : ${x.waktu}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1048,7 +745,7 @@ switch (template) {
             teks += `Udara : ${data.result.udara}\n`
             teks += `Permukaan laut : ${data.result.permukaan_laut}\n`
             conn.sendMessage(m.chat, { location: { degreesLatitude: data.result.latitude, degreesLongitude: data.result.longitude } })
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1058,7 +755,7 @@ switch (template) {
             teks += `Sembuh : ${data.result.sembuh}\n`
             teks += `Dirawat : ${data.result.dirawat}\n`
             teks += `Meninggal : ${data.result.meninggal}`
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1068,7 +765,7 @@ switch (template) {
             teks += `Sembuh : ${data.result.sembuh}\n`
             teks += `Dirawat : ${data.result.dirawat}\n`
             teks += `Meninggal : ${data.result.meninggal}`
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1080,7 +777,7 @@ switch (template) {
             teks += `Kecamatan : ${data.result[0].subdistrict}\n`
             teks += `Kelurahan : ${data.result[0].urban}\n`
             teks += `Kode Pos : ${data.result[0].postalcode}`
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1094,7 +791,7 @@ switch (template) {
                 teks += `Match : ${x.match}\n`
                 teks += `TV : ${x.tv}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1105,7 +802,7 @@ switch (template) {
                 teks += `Title : ${x.title}\n`
                 teks += `Link : ${x.link}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1118,7 +815,7 @@ switch (template) {
                 teks += `Posted : ${x.posted}\n`
                 teks += `Description : ${x.desc}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1171,7 +868,7 @@ switch (template) {
                 teks += `Total Episode : ${x.total_episode}\n`
                 teks += `Genre : ${x.genre.join(', ')}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1203,7 +900,7 @@ switch (template) {
                 teks += `Create date: ${x.createDate}\n`
                 teks += `Coment count: ${x.commentCount}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1212,7 +909,7 @@ switch (template) {
             var teks = `Title : ${data.result.title}\n`
             teks += `Creator : ${data.result.creator}\n`
             teks += `Story :\n${data.result.cerpen}`
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1260,7 +957,7 @@ switch (template) {
                 teks += `Price : ${x.priceText}\n`
                 teks += `Price : ${x.price}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1275,7 +972,7 @@ switch (template) {
                 teks += `Lokasi : ${x.shop_loc}\n`
                 teks += `Link : ${x.link_produk}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1288,7 +985,7 @@ switch (template) {
                 teks += `Link : ${x.link}\n`
                 teks += `Desc : ${x.desc}\n\n`
             }
-            await conn.sendButton(m.chat, teks, wm, null, [
+            conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             break
@@ -1341,7 +1038,7 @@ switch (template) {
                 var teks = `Positif : ${data.result.positif}\n`
                 teks += `Negative : ${data.result.negatif}\n`
                 teks += `Deskripsi : ${data.result.deskripsi}`
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -1353,7 +1050,7 @@ switch (template) {
                 teks += `Pekerjaan : ${data.result.pekerjaan}\n`
                 teks += `Rejeki : ${data.result.rejeki}\n`
                 teks += `Jodoh : ${data.result.jodoh}`
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -1363,7 +1060,7 @@ switch (template) {
             axios.get(`https://api.lolhuman.xyz/api/jadian/${args[1]}/${args[2]}/${args[3]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var teks = `Karakteristik : ${data.result.karakteristik}\n`
                 teks += `Deskripsi : ${data.result.deskripsi}`
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
@@ -1373,7 +1070,7 @@ switch (template) {
             axios.get(`https://api.lolhuman.xyz/api/tebakumur?apikey=9b817532fadff8fc7cb86862&name=${one}`).then(({ data }) => {
                 var teks = `Nama : ${data.result.name}\n`
                 teks += `Umur : ${data.result.age}`
-                await conn.sendButton(m.chat, teks, wm, null, [
+                conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
             })
