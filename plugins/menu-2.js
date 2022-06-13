@@ -2,12 +2,14 @@ import axios from 'axios'
 import FormData from 'form-data'
 import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args, text, usedPrefix, command, isPrems }) => {
-let urut = text.split`|`
+let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
+let urut = args.slice(1).join('|')
   let one = urut[0]
   let two = urut[1]
   let three = urut[2]
-  
+
+let text = args.slice(1).join(' ')
+
 let template = (args[0] || '').toLowerCase()
 if (!args[0]) throw `Teksnya?`
 if (command) {
@@ -1338,7 +1340,7 @@ switch (template) {
 }
 }
 }
-handler.help = ['lol <command> <teks>']
+handler.help = ['lolmenu <command> <teks>']
 handler.tags = ['tools'] 
 handler.command = /^lol|lolmenu|m2$/i
 export default handler
