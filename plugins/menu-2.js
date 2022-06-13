@@ -4,17 +4,7 @@ import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 
-let er = `
-*[❗] Ketikan salah*`
-
-if (!args[0]) throw er
-let template = (args[0] || '').toLowerCase()
-if (!args[1]) throw er
-if (/emo/i.test(command)) {
-try {
-switch (template) {
-
-        case 'owner':
+        case 'xowner':
             const vcard =
                 'BEGIN:VCARD\n' + // metadata of the contact card
                 'VERSION:3.0\n' +
@@ -32,7 +22,7 @@ switch (template) {
             break
 
         // Islami //
-        case 'listsurah':
+        case 'xlistsurah':
             axios
                 .get(`https://api.lolhuman.xyz/api/quran?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
@@ -44,7 +34,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'alquran':
+        case 'xalquran':
             if (args.length < 1) return m.reply(`Example: ${usedPrefix + command} 18 or ${usedPrefix + command} 18/10 or ${usedPrefix + command} 18/1-10`)
             axios
                 .get(`https://api.lolhuman.xyz/api/quran/${args[0]}?apikey=9b817532fadff8fc7cb86862`)
@@ -60,11 +50,11 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'alquranaudio':
+        case 'xalquranaudio':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 18 or ${usedPrefix + command} 18/10`)
             conn.sendMessage(m.chat, { audio: { url: `https://api.lolhuman.xyz/api/quran/audio/${args[0]}?apikey=9b817532fadff8fc7cb86862` }, mimetype: 'audio/mp4' })
             break
-        case 'asmaulhusna':
+        case 'xasmaulhusna':
             axios
                 .get(`https://api.lolhuman.xyz/api/asmaulhusna?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
@@ -77,7 +67,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'kisahnabi':
+        case 'xkisahnabi':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Muhammad`)
             axios
                 .get(`https://api.lolhuman.xyz/api/kisahnabi/${text}?apikey=9b817532fadff8fc7cb86862`)
@@ -91,7 +81,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'jadwalsholat':
+        case 'xjadwalsholat':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Yogyakarta`)
             axios
                 .get(`https://api.lolhuman.xyz/api/sholat/${daerah}?apikey=9b817532fadff8fc7cb86862`)
@@ -113,7 +103,7 @@ switch (template) {
             break
 
         // Downloader //
-        case 'ytplay':
+        case 'xytplay':
             if (!text) return await m.reply(`Example: ${usedPrefix + command} melukis senja`)
             axios
                 .get(`https://api.lolhuman.xyz/api/ytsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
@@ -128,7 +118,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'ytsearch':
+        case 'xytsearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis Senja`)
             axios
                 .get(`https://api.lolhuman.xyz/api/ytsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
@@ -145,7 +135,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'ytmp3':
+        case 'xytmp3':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www.youtube.com/watch?v=qZIQAk-BUEc`)
             axios
                 .get(`https://api.lolhuman.xyz/api/ytaudio2?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
@@ -158,7 +148,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'ytmp4':
+        case 'xytmp4':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www.youtube.com/watch?v=qZIQAk-BUEc`)
             axios
                 .get(`https://api.lolhuman.xyz/api/ytvideo2?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
@@ -171,23 +161,23 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'telesticker':
+        case 'xtelesticker':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://t.me/addstickers/LINE_Menhera_chan_ENG`)
             axios.get(`https://api.lolhuman.xyz/api/telestick?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { sticker: { url: data.result.sticker.random() } })
             })
             break
-        case 'tiktoknowm':
+        case 'xtiktoknowm':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://vt.tiktok.com/ZSwWCk5o/`)
             axios.get(`https://api.lolhuman.xyz/api/tiktok?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { video: { url: data.result.link }, mimetype: 'video/mp4' })
             })
             break
-        case 'tiktokmusic':
+        case 'xtiktokmusic':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://vt.tiktok.com/ZSwWCk5o/`)
             conn.sendMessage(m.chat, { audio: { url: `https://api.lolhuman.xyz/api/tiktokmusic?apikey=9b817532fadff8fc7cb86862&url=${args[0]}` }, mimetype: 'audio/mp4', fileName: `${data.result.title}.mp3`, ptt: true })
             break
-        case 'spotify':
+        case 'xspotify':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://open.spotify.com/track/0ZEYRVISCaqz5yamWZWzaA`)
             axios.get(`https://api.lolhuman.xyz/api/spotify?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 var caption = `Title : ${data.result.title}\n`
@@ -200,7 +190,7 @@ switch (template) {
                 })
             })
             break
-        case 'spotifysearch':
+        case 'xspotifysearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis Senja`)
             axios.get(`https://api.lolhuman.xyz/api/spotifysearch?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var text = ''
@@ -214,7 +204,7 @@ switch (template) {
                 m.reply(text)
             })
             break
-        case 'jooxplay':
+        case 'xjooxplay':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis Senja`)
             axios.get(`https://api.lolhuman.xyz/api/jooxplay?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var caption = `Title : ${data.result.info.song}\n`
@@ -228,7 +218,7 @@ switch (template) {
                 })
             })
             break
-        case 'igdl':
+        case 'xigdl':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
             axios.get(`https://api.lolhuman.xyz/api/instagram?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 var url = data.result
@@ -239,7 +229,7 @@ switch (template) {
                 }
             })
             break
-        case 'igdl2':
+        case 'xigdl2':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www.instagram.com/p/CJ8XKFmJ4al/?igshid=1acpcqo44kgkn`)
             axios.get(`https://api.lolhuman.xyz/api/instagram2?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 for (var x of data.result) {
@@ -251,19 +241,19 @@ switch (template) {
                 }
             })
             break
-        case 'twtdl':
+        case 'xtwtdl':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://twitter.com/gofoodindonesia/status/1229369819511709697`)
             axios.get(`https://api.lolhuman.xyz/api/twitter?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { video: { url: data.result.link[data.result.link.length - 1].link }, mimetype: 'video/mp4' })
             })
             break
-        case 'fbdl':
+        case 'xfbdl':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://id-id.facebook.com/SamsungGulf/videos/video-bokeh/561108457758458/`)
             axios.get(`https://api.lolhuman.xyz/api/facebook?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { video: { url: data.result }, mimetype: 'video/mp4' })
             })
             break
-        case 'zippyshare':
+        case 'xzippyshare':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www51.zippyshare.com/v/5W0TOBz1/file.html`)
             axios.get(`https://api.lolhuman.xyz/api/zippyshare?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 var text = `File Name : ${data.result.name_file}\n`
@@ -273,13 +263,13 @@ switch (template) {
                 m.reply(text)
             })
             break
-        case 'pinterest':
+        case 'xpinterest':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             axios.get(`https://api.lolhuman.xyz/api/pinterest?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { image: { url: data.result } })
             })
             break
-        case 'pinterest2':
+        case 'xpinterest2':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             axios.get(`https://api.lolhuman.xyz/api/pinterest2?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 for (var x of data.result.slice(0, 5)) {
@@ -287,23 +277,23 @@ switch (template) {
                 }
             })
             break
-        case 'pinterestdl':
+        case 'xpinterestdl':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://id.pinterest.com/pin/696580267364426905/`)
             axios.get(`https://api.lolhuman.xyz/api/pinterestdl?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { image: { url: data.result[0] } })
             })
             break
-        case 'pixiv':
+        case 'xpixiv':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/pixiv?apikey=9b817532fadff8fc7cb86862&query=${text}` } })
             break
-        case 'pixivdl':
+        case 'xpixivdl':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 63456028`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/pixivdl/${args[0]}?apikey=9b817532fadff8fc7cb86862` } })
             break
 
         // AniManga //
-        case 'character':
+        case 'xcharacter':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Miku Nakano`)
             axios.get(`https://api.lolhuman.xyz/api/character?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var caption = `Id : ${data.result.id}\n`
@@ -318,7 +308,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.image.large }, caption })
             })
             break
-        case 'manga':
+        case 'xmanga':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Gotoubun No Hanayome`)
             axios.get(`https://api.lolhuman.xyz/api/manga?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var caption = `Id : ${data.result.id}\n`
@@ -344,7 +334,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.coverImage.large }, caption })
             })
             break
-        case 'anime':
+        case 'xanime':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Gotoubun No Hanayome`)
             axios.get(`https://api.lolhuman.xyz/api/anime?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var caption = `Id : ${data.result.id}\n`
@@ -372,7 +362,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.coverImage.large }, caption })
             })
             break
-        case 'wait':
+        case 'xwait':
             if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
             var form = new FormData()
             form.append('img', stream, 'tahu.jpg')
@@ -388,7 +378,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { video: { url: data.result.video }, mimetype: 'video/mp4', caption })
             })
             break
-        case 'kusonime':
+        case 'xkusonime':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://kusonime.com/nanatsu-no-taizai-bd-batch-subtitle-indonesia/`)
             axios.get(`https://api.lolhuman.xyz/api/kusonime?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 var caption = `Title : ${data.result.title}\n`
@@ -412,7 +402,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.thumbnail }, caption })
             })
             break
-        case 'kusonimesearch':
+        case 'xkusonimesearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Gotoubun No Hanayome`)
             axios.get(`https://api.lolhuman.xyz/api/kusonimesearch?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var caption = `Title : ${data.result.title}\n`
@@ -436,7 +426,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.thumbnail }, caption })
             })
             break
-        case 'otakudesu':
+        case 'xotakudesu':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://otakudesu.tv/lengkap/pslcns-sub-indo/`)
             axios.get(`https://api.lolhuman.xyz/api/otakudesu?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 var text = `Title : ${data.result.title}\n`
@@ -467,7 +457,7 @@ switch (template) {
                 m.reply(text)
             })
             break
-        case 'otakudesusearch':
+        case 'xotakudesusearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Gotoubun No Hanayome`)
             axios.get(`https://api.lolhuman.xyz/api/otakudesusearch?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 var text = `Title : ${data.result.title}\n`
@@ -500,7 +490,7 @@ switch (template) {
             break
 
         // Information //
-        case 'kbbi':
+        case 'xkbbi':
             if (!text) return m.reply(`Example: ${usedPrefix + command} kursi`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/kbbi?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = `\`\`\`Kata : ${data.result[0].nama}\`\`\`\n`
@@ -516,7 +506,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'brainly':
+        case 'xbrainly':
             if (!text) return m.reply(`Example: ${usedPrefix + command} siapakah sukarno`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/brainly?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = 'Beberapa Pembahasan Dari Brainly :\n\n'
@@ -528,7 +518,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'jarak':
+        case 'xjarak':
             if (!text) return m.reply(`Example: ${usedPrefix + command} jakarta - yogyakarta`)
             var text1 = text.split('-')[0].trim()
             var text2 = text.split('-')[1].trim()
@@ -551,7 +541,7 @@ switch (template) {
             text += `   ╰───────────────❏\n`
             m.reply(text)
             break
-        case 'urbandictionary':
+        case 'xurbandictionary':
             var { data } = await axios.get(`http://lolhuman.herokuapp.com/api/urdict?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             for (var x of data.result) {
                 var text = `\`\`\`Meaning :\n${x.definition}\`\`\`\n\n`
@@ -567,14 +557,14 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'chord':
+        case 'xchord':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis senja`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/chord?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = `Title : ${data.result.title}\n`
             text += `Chord : \n${data.result.chord}`
             m.reply(text)
             break
-        case 'heroml':
+        case 'xheroml':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Fanny`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/heroml/${text}?apikey=9b817532fadff8fc7cb86862`)
             var caption = `Name : ${data.result.hero_name}\n`
@@ -594,12 +584,12 @@ switch (template) {
             caption += `Mana regen : ${data.result.attr.mana_regen}\n`
             conn.sendMessage(m.chat, { image: { url: data.result.icon }, caption })
             break
-        case 'mlstalk':
+        case 'xmlstalk':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 84830127/2169`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/mobilelegend/${args[0]}?apikey=9b817532fadff8fc7cb86862`)
             m.reply(data.result)
             break
-        case 'genshin':
+        case 'xgenshin':
             if (!text) return m.reply(`Example: ${usedPrefix + command} jean`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/genshin/${text}?apikey=9b817532fadff8fc7cb86862`)
             var caption = `Name : ${data.result.title}\n`
@@ -608,19 +598,19 @@ switch (template) {
             await conn.sendMessage(m.chat, { image: { url: data.result.cover1 }, caption })
             await conn.sendMessage(m.chat, { audio: { url: data.result.cv[0].audio[0] }, mimetype: 'audio/mp4' })
             break
-        case 'qrreader':
+        case 'xqrreader':
             if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
             var form = new FormData()
             form.append('img', stream, { filename: 'tahu.jpg' })
             var { data } = await axios.post(`https://api.lolhuman.xyz/api/read-qr?apikey=9b817532fadff8fc7cb86862`, form)
             m.reply('Result: ' + data.result)
             break
-        case 'wikipedia':
+        case 'xwikipedia':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Tahu`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/wiki?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             m.reply(data.result)
             break
-        case 'translate':
+        case 'xtranslate':
             if (!text) return m.reply(`Example: ${usedPrefix + command} en Tahu Bacem`)
             var kode_negara = args[0]
             args.shift()
@@ -633,7 +623,7 @@ switch (template) {
             init_txt += `Pronunciation : ${data.result.pronunciation}\n`
             m.reply(init_txt)
             break
-        case 'brainly':
+        case 'xbrainly':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Soekarno adalah`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/brainly?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = 'Result : \n'
@@ -643,7 +633,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'jadwaltv':
+        case 'xjadwaltv':
             if (!text) return m.reply(`Example: ${usedPrefix + command} RCTI`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jadwaltv/${args[0]}?apikey=9b817532fadff8fc7cb86862`)
             var text = `Jadwal TV ${args[0].toUpperCase()}\n`
@@ -652,7 +642,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'jadwaltvnow':
+        case 'xjadwaltvnow':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=9b817532fadff8fc7cb86862`)
             var text = `Jadwal TV Now :\n`
             for (var x in data.result) {
@@ -660,7 +650,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'newsinfo':
+        case 'xnewsinfo':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/newsinfo?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Result :\n'
             for (var x of data.result) {
@@ -673,7 +663,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'cnnindonesia':
+        case 'xcnnindonesia':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cnnindonesia?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Result :\n'
             for (var x of data.result) {
@@ -684,7 +674,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'cnnnasional':
+        case 'xcnnnasional':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cnnindonesia/nasional?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Result :\n'
             for (var x of data.result) {
@@ -695,7 +685,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'cnninternasional':
+        case 'xcnninternasional':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cnnindonesia/internasional?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Result :\n'
             for (var x of data.result) {
@@ -706,7 +696,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'infogempa':
+        case 'xinfogempa':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/infogempa?apikey=9b817532fadff8fc7cb86862`)
             var caption = `Lokasi : ${data.result.lokasi}\n`
             caption += `Waktu : ${data.result.waktu}\n`
@@ -716,12 +706,12 @@ switch (template) {
             caption += `Koordinat : ${data.result.koordinat}`
             conn.sendMessage(m.chat, { image: { url: data.result.map }, caption })
             break
-        case 'lirik':
+        case 'xlirik':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Melukis Senja`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/lirik?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             m.reply(data.result)
             break
-        case 'cuaca':
+        case 'xcuaca':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Yogyakarta`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cuaca/${args[0]}?apikey=9b817532fadff8fc7cb86862`)
             var text = `Tempat : ${data.result.tempat}\n`
@@ -735,7 +725,7 @@ switch (template) {
             conn.sendMessage(m.chat, { location: { degreesLatitude: data.result.latitude, degreesLongitude: data.result.longitude } })
             m.reply(text)
             break
-        case 'covidindo':
+        case 'xcovidindo':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/corona/indonesia?apikey=9b817532fadff8fc7cb86862`)
             var text = `Positif : ${data.result.positif}\n`
             text += `Sembuh : ${data.result.sembuh}\n`
@@ -743,7 +733,7 @@ switch (template) {
             text += `Meninggal : ${data.result.meninggal}`
             m.reply(text)
             break
-        case 'covidglobal':
+        case 'xcovidglobal':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/corona/global?apikey=9b817532fadff8fc7cb86862`)
             var text = `Positif : ${data.result.positif}\n`
             text += `Sembuh : ${data.result.sembuh}\n`
@@ -751,7 +741,7 @@ switch (template) {
             text += `Meninggal : ${data.result.meninggal}`
             m.reply(text)
             break
-        case 'kodepos':
+        case 'xkodepos':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Slemanan or ${usedPrefix + command} 66154`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/kodepos?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = `Provinsi : ${data.result[0].province}\n`
@@ -761,7 +751,7 @@ switch (template) {
             text += `Kode Pos : ${data.result[0].postalcode}`
             m.reply(text)
             break
-        case 'jadwalbola':
+        case 'xjadwalbola':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jadwalbola?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Jadwal Bola :\n'
             for (var x of data.result) {
@@ -773,7 +763,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'indbeasiswa':
+        case 'xindbeasiswa':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/indbeasiswa?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Info Beasiswa :\n'
             for (var x of data.result) {
@@ -782,7 +772,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'hoax':
+        case 'xhoax':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/turnbackhoax?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Info Hoax :\n'
             for (var x of data.result) {
@@ -793,7 +783,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'nsfwcheck':
+        case 'xnsfwcheck':
             if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
             var form = new FormData()
             form.append('img', stream, { filename: 'tahu.jpg' })
@@ -804,7 +794,7 @@ switch (template) {
             }
             m.reply(`Is NSFW? ${is_nsfw}\nNSFW Score : ${data.result}`)
             break
-        case 'ocr':
+        case 'xocr':
             if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
             var form = new FormData()
             form.append('img', stream, { filename: 'tahu.jpg' })
@@ -813,7 +803,7 @@ switch (template) {
             break
 
         // Movie & Story
-        case 'lk21':
+        case 'xlk21':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Transformer`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/lk21?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var caption = `Title : ${data.result.title}\n`
@@ -831,7 +821,7 @@ switch (template) {
             caption += `Link Download : ${data.result.link_dl}`
             conn.sendMessage(m.chat, { image: { url: data.result.thumbnail }, caption })
             break
-        case 'drakorongoing':
+        case 'xdrakorongoing':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/drakorongoing?apikey=9b817532fadff8fc7cb86862`)
             var text = 'Ongoing Drakor\n\n'
             for (var x of data.result) {
@@ -844,7 +834,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'wattpad':
+        case 'xwattpad':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://www.wattpad.com/707367860-kumpulan-quote-tere-liye-tere-liye-quote-quote`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/wattpad?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`)
             var caption = `Title : ${data.result.title}\n`
@@ -860,7 +850,7 @@ switch (template) {
             caption += `Story : \n${data.result.story}`
             conn.sendMessage(m.chat, { image: { url: data.result.photo }, caption })
             break
-        case 'wattpadsearch':
+        case 'xwattpadsearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Tere Liye`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/wattpadsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = 'Wattpad Seach : \n'
@@ -874,14 +864,14 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'cerpen':
+        case 'xcerpen':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/cerpen?apikey=9b817532fadff8fc7cb86862`)
             var text = `Title : ${data.result.title}\n`
             text += `Creator : ${data.result.creator}\n`
             text += `Story :\n${data.result.cerpen}`
             m.reply(text)
             break
-        case 'ceritahoror':
+        case 'xceritahoror':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/ceritahoror?apikey=9b817532fadff8fc7cb86862`)
             var caption = `Title : ${data.result.title}\n`
             caption += `Desc : ${data.result.desc}\n`
@@ -890,16 +880,16 @@ switch (template) {
             break
 
         // Searching
-        case 'gimage':
-        case 'konachan':
-        case 'wallpapersearch':
+        case 'xgimage':
+        case 'xkonachan':
+        case 'xwallpapersearch':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             if (command === 'wallpapersearch') {
                 command = 'wallpaper'
             }
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/${args[1]}?apikey=9b817532fadff8fc7cb86862&query=${text}` } })
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862&query=${text}` } })
             break
-        case 'gimage2':
+        case 'xgimage2':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             axios.get(`https://api.lolhuman.xyz/api/gimage2?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 for (var x of data.result.slice(0, 5)) {
@@ -907,13 +897,13 @@ switch (template) {
                 }
             })
             break
-        case 'wallpapersearch2':
+        case 'xwallpapersearch2':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             axios.get(`https://api.lolhuman.xyz/api/wallpaper2?apikey=9b817532fadff8fc7cb86862&query=${text}`).then(({ data }) => {
                 conn.sendMessage(m.chat, { image: { url: data.result } })
             })
             break
-        case 'playstore':
+        case 'xplaystore':
             if (!text) return m.reply(`Example: ${usedPrefix + command} telegram`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/playstore?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = 'Play Store Search : \n'
@@ -927,7 +917,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'shopee':
+        case 'xshopee':
             if (!text) return m.reply(`Example: ${usedPrefix + command} tas gendong`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/shopee?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = 'Shopee Search : \n'
@@ -940,7 +930,7 @@ switch (template) {
             }
             m.reply(text)
             break
-        case 'google':
+        case 'xgoogle':
             if (!text) return m.reply(`Example: ${usedPrefix + command} loli kawaii`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/gsearch?apikey=9b817532fadff8fc7cb86862&query=${text}`)
             var text = 'Google Search : \n'
@@ -953,48 +943,48 @@ switch (template) {
             break
 
         // Random Text //
-        case 'quotes':
+        case 'xquotes':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/quotes?apikey=9b817532fadff8fc7cb86862`)
             m.reply(`_${data.result.quote}_\n\n*― ${data.result.by}*`)
             break
-        case 'quotesanime':
+        case 'xquotesanime':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/quotesnime?apikey=9b817532fadff8fc7cb86862`)
             m.reply(`_${data.result.quote}_\n\n*― ${data.result.character}*\n*― ${data.result.anime} ${data.result.episode}*`)
             break
-        case 'quotesdilan':
+        case 'xquotesdilan':
             quotedilan = await axios.get(`https://api.lolhuman.xyz/api/quotes/dilan?apikey=9b817532fadff8fc7cb86862`)
             m.reply(quotedilan.result)
             break
-        case 'faktaunik':
-        case 'katabijak':
-        case 'pantun':
-        case 'bucin':
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/${args[1]}?apikey=9b817532fadff8fc7cb86862`)
+        case 'xfaktaunik':
+        case 'xkatabijak':
+        case 'xpantun':
+        case 'xbucin':
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862`)
             m.reply(data.result)
             break
-        case 'randomnama':
+        case 'xrandomnama':
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/random/nama?apikey=9b817532fadff8fc7cb86862`)
             m.reply(data.result)
             break
 
         // Entertainment
-        case 'asupan':
+        case 'xasupan':
             axios.get(`https://api.lolhuman.xyz/api/asupan?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 conn.sendMessage(m.chat, { video: { url: data.result }, mimetype: 'video/mp4' })
             })
             break
-        case 'wancak':
+        case 'xwancak':
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/onecak?apikey=9b817532fadff8fc7cb86862` } })
             break
 
         // Primbon
-        case 'artinama':
+        case 'xartinama':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
             axios.get(`https://api.lolhuman.xyz/api/artinama?apikey=9b817532fadff8fc7cb86862&nama=${text}`).then(({ data }) => {
                 m.reply(data.result)
             })
             break
-        case 'jodoh':
+        case 'xjodoh':
             if (!text) return m.reply(`Example: ${usedPrefix + command} Tahu & Bacem`)
             axios.get(`https://api.lolhuman.xyz/api/jodoh/${text.split('&')[0]}/${text.split('&')[1]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var text = `Positif : ${data.result.positif}\n`
@@ -1003,7 +993,7 @@ switch (template) {
                 m.reply(text)
             })
             break
-        case 'weton':
+        case 'xweton':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 12 12 2020`)
             axios.get(`https://api.lolhuman.xyz/api/weton/${args[0]}/${args[1]}/${args[2]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var text = `Weton : ${data.result.weton}\n`
@@ -1013,7 +1003,7 @@ switch (template) {
                 m.reply(text)
             })
             break
-        case 'jadian':
+        case 'xjadian':
             if (!text) return m.reply(`Example: ${usedPrefix + command} 12 12 2020`)
             axios.get(`https://api.lolhuman.xyz/api/jadian/${args[0]}/${args[1]}/${args[2]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var text = `Karakteristik : ${data.result.karakteristik}\n`
@@ -1021,7 +1011,7 @@ switch (template) {
                 m.reply(text)
             })
             break
-        case 'tebakumur':
+        case 'xtebakumur':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
             axios.get(`https://api.lolhuman.xyz/api/tebakumur?apikey=9b817532fadff8fc7cb86862&name=${text}`).then(({ data }) => {
                 var text = `Nama : ${data.result.name}\n`
@@ -1030,38 +1020,38 @@ switch (template) {
             })
             break
 
-        case '1977':
-        case 'aden':
-        case 'brannan':
-        case 'brooklyn':
-        case 'clarendon':
-        case 'gingham':
-        case 'hudson':
-        case 'inkwell':
-        case 'earlybird':
-        case 'kelvin':
-        case 'lark':
-        case 'lofi':
-        case 'maven':
-        case 'mayfair':
-        case 'moon':
-        case 'nashville':
-        case 'perpetua':
-        case 'reyes':
-        case 'rise':
-        case 'slumber':
-        case 'stinson':
-        case 'toaster':
-        case 'valencia':
-        case 'walden':
-        case 'willow':
-        case 'xpro2':
-        case 'pencil':
-        case 'quotemaker3':
-        case 'roundsticker':
-        case 'stickerwm':
+        case 'x1977':
+        case 'xaden':
+        case 'xbrannan':
+        case 'xbrooklyn':
+        case 'xclarendon':
+        case 'xgingham':
+        case 'xhudson':
+        case 'xinkwell':
+        case 'xearlybird':
+        case 'xkelvin':
+        case 'xlark':
+        case 'xlofi':
+        case 'xmaven':
+        case 'xmayfair':
+        case 'xmoon':
+        case 'xnashville':
+        case 'xperpetua':
+        case 'xreyes':
+        case 'xrise':
+        case 'xslumber':
+        case 'xstinson':
+        case 'xtoaster':
+        case 'xvalencia':
+        case 'xwalden':
+        case 'xwillow':
+        case 'xxpro2':
+        case 'xpencil':
+        case 'xquotemaker3':
+        case 'xroundsticker':
+        case 'xstickerwm':
             if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
-            var url = `https://api.lolhuman.xyz/api/filter/${args[1]}?apikey=9b817532fadff8fc7cb86862`
+            var url = `https://api.lolhuman.xyz/api/filter/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862`
             var form = new FormData()
             form.append('img', stream, 'tahu.jpg')
 
@@ -1091,8 +1081,8 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'sticker':
-        case 's':
+        case 'xsticker':
+        case 'xs':
             if (!(isImage && isQuotedImage && isVideo && isQuotedVideo)) return m.reply(`Kirim media dengan caption ${usedPrefix + command} atau tag media yang sudah dikirim`)
             var stream = await downloadContentFromMessage(msg.message[mediaType], mediaType.replace('Message', ''))
             let stickerStream = new PassThrough()
@@ -1142,7 +1132,7 @@ switch (template) {
             break
 
         // Stalk
-        case 'stalkig':
+        case 'xstalkig':
             if (!text) return m.reply(`Example: ${usedPrefix + command} jessnolimit`)
             axios.get(`https://api.lolhuman.xyz/api/stalkig/${args[0]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var caption = `Username : ${data.result.username}\n`
@@ -1154,7 +1144,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.photo_profile }, caption })
             })
             break
-        case 'stalkgithub':
+        case 'xstalkgithub':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL-Human`)
             axios.get(`https://api.lolhuman.xyz/api/github/${args[0]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var caption = `Name : ${data.result.name}\n`
@@ -1167,7 +1157,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.avatar }, caption })
             })
             break
-        case 'stalktwitter':
+        case 'xstalktwitter':
             if (!text) return m.reply(`Example: ${usedPrefix + command} jokowi`)
             axios.get(`https://api.lolhuman.xyz/api/twitter/${args[0]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var caption = `Username : ${data.result.screen_name}\n`
@@ -1181,7 +1171,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.profile_picture }, caption })
             })
             break
-        case 'stalktiktok':
+        case 'xstalktiktok':
             if (!text) return m.reply(`Example: ${usedPrefix + command} bulansutena`)
             axios.get(`https://api.lolhuman.xyz/api/stalktiktok/${args[0]}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var caption = `Username : ${data.result.username}\n`
@@ -1196,15 +1186,15 @@ switch (template) {
             break
 
         // Other
-        case 'ssweb':
+        case 'xssweb':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ssweb?apikey=9b817532fadff8fc7cb86862&url=${args[0]}` } })
             break
-        case 'ssweb2':
+        case 'xssweb2':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/sswebfull?apikey=9b817532fadff8fc7cb86862&url=${args[0]}` } })
             break
-        case 'shortlink':
+        case 'xshortlink':
             if (!text) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
             axios.get(`https://api.lolhuman.xyz/api/ouoshortlink?apikey=9b817532fadff8fc7cb86862&url=${args[0]}`).then(({ data }) => {
                 m.reply(data.result)
@@ -1212,220 +1202,213 @@ switch (template) {
             break
 
         // Random Image //
-        case 'art':
-        case 'bts':
-        case 'exo':
-        case 'elf':
-        case 'loli':
-        case 'neko':
-        case 'waifu':
-        case 'shota':
-        case 'husbu':
-        case 'sagiri':
-        case 'shinobu':
-        case 'megumin':
-        case 'wallnime':
-        case 'quotesimage':
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/random/${args[1]}?apikey=9b817532fadff8fc7cb86862` } })
+        case 'xart':
+        case 'xbts':
+        case 'xexo':
+        case 'xelf':
+        case 'xloli':
+        case 'xneko':
+        case 'xwaifu':
+        case 'xshota':
+        case 'xhusbu':
+        case 'xsagiri':
+        case 'xshinobu':
+        case 'xmegumin':
+        case 'xwallnime':
+        case 'xquotesimage':
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/random/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862` } })
             break
 
-        case 'chiisaihentai':
-        case 'trap':
-        case 'blowjob':
-        case 'yaoi':
-        case 'ecchi':
-        case 'hentai':
-        case 'ahegao':
-        case 'hololewd':
-        case 'sideoppai':
-        case 'animefeets':
-        case 'animebooty':
-        case 'animethighss':
-        case 'hentaiparadise':
-        case 'animearmpits':
-        case 'hentaifemdom':
-        case 'lewdanimegirls':
-        case 'biganimetiddies':
-        case 'animebellybutton':
-        case 'hentai4everyone':
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/random/nsfw/${args[1]}?apikey=9b817532fadff8fc7cb86862` } })
+        case 'xchiisaihentai':
+        case 'xtrap':
+        case 'xblowjob':
+        case 'xyaoi':
+        case 'xecchi':
+        case 'xhentai':
+        case 'xahegao':
+        case 'xhololewd':
+        case 'xsideoppai':
+        case 'xanimefeets':
+        case 'xanimebooty':
+        case 'xanimethighss':
+        case 'xhentaiparadise':
+        case 'xanimearmpits':
+        case 'xhentaifemdom':
+        case 'xlewdanimegirls':
+        case 'xbiganimetiddies':
+        case 'xanimebellybutton':
+        case 'xhentai4everyone':
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/random/nsfw/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862` } })
             break
 
-        case 'bj':
-        case 'ero':
-        case 'cum':
-        case 'feet':
-        case 'yuri':
-        case 'trap':
-        case 'lewd':
-        case 'feed':
-        case 'eron':
-        case 'solo':
-        case 'gasm':
-        case 'poke':
-        case 'anal':
-        case 'holo':
-        case 'tits':
-        case 'kuni':
-        case 'kiss':
-        case 'erok':
-        case 'smug':
-        case 'baka':
-        case 'solog':
-        case 'feetg':
-        case 'lewdk':
-        case 'waifu':
-        case 'pussy':
-        case 'femdom':
-        case 'cuddle':
-        case 'hentai':
-        case 'eroyuri':
-        case 'cum_jpg':
-        case 'blowjob':
-        case 'erofeet':
-        case 'holoero':
-        case 'classic':
-        case 'erokemo':
-        case 'fox_girl':
-        case 'futanari':
-        case 'lewdkemo':
-        case 'wallpaper':
-        case 'pussy_jpg':
-        case 'kemonomimi':
-        case 'nsfw_avatar':
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/random2/${args[1]}?apikey=9b817532fadff8fc7cb86862` } })
+        case 'xbj':
+        case 'xero':
+        case 'xcum':
+        case 'xfeet':
+        case 'xyuri':
+        case 'xtrap':
+        case 'xlewd':
+        case 'xfeed':
+        case 'xeron':
+        case 'xsolo':
+        case 'xgasm':
+        case 'xpoke':
+        case 'xanal':
+        case 'xholo':
+        case 'xtits':
+        case 'xkuni':
+        case 'xkiss':
+        case 'xerok':
+        case 'xsmug':
+        case 'xbaka':
+        case 'xsolog':
+        case 'xfeetg':
+        case 'xlewdk':
+        case 'xwaifu':
+        case 'xpussy':
+        case 'xfemdom':
+        case 'xcuddle':
+        case 'xhentai':
+        case 'xeroyuri':
+        case 'xcum_jpg':
+        case 'xblowjob':
+        case 'xerofeet':
+        case 'xholoero':
+        case 'xclassic':
+        case 'xerokemo':
+        case 'xfox_girl':
+        case 'xfutanari':
+        case 'xlewdkemo':
+        case 'xwallpaper':
+        case 'xpussy_jpg':
+        case 'xkemonomimi':
+        case 'xnsfw_avatar':
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/random2/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862` } })
             break
 
         // Textprome //
-        case 'blackpink':
-        case 'neon':
-        case 'greenneon':
-        case 'advanceglow':
-        case 'futureneon':
-        case 'sandwriting':
-        case 'sandsummer':
-        case 'sandengraved':
-        case 'metaldark':
-        case 'neonlight':
-        case 'holographic':
-        case 'text1917':
-        case 'minion':
-        case 'deluxesilver':
-        case 'newyearcard':
-        case 'bloodfrosted':
-        case 'halloween':
-        case 'jokerlogo':
-        case 'fireworksparkle':
-        case 'natureleaves':
-        case 'bokeh':
-        case 'toxic':
-        case 'strawberry':
-        case 'box3d':
-        case 'roadwarning':
-        case 'breakwall':
-        case 'icecold':
-        case 'luxury':
-        case 'cloud':
-        case 'summersand':
-        case 'horrorblood':
-        case 'thunder':
+        case 'xblackpink':
+        case 'xneon':
+        case 'xgreenneon':
+        case 'xadvanceglow':
+        case 'xfutureneon':
+        case 'xsandwriting':
+        case 'xsandsummer':
+        case 'xsandengraved':
+        case 'xmetaldark':
+        case 'xneonlight':
+        case 'xholographic':
+        case 'xtext1917':
+        case 'xminion':
+        case 'xdeluxesilver':
+        case 'xnewyearcard':
+        case 'xbloodfrosted':
+        case 'xhalloween':
+        case 'xjokerlogo':
+        case 'xfireworksparkle':
+        case 'xnatureleaves':
+        case 'xbokeh':
+        case 'xtoxic':
+        case 'xstrawberry':
+        case 'xbox3d':
+        case 'xroadwarning':
+        case 'xbreakwall':
+        case 'xicecold':
+        case 'xluxury':
+        case 'xcloud':
+        case 'xsummersand':
+        case 'xhorrorblood':
+        case 'xthunder':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/textprome/${args[1]}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/textprome/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
             break
 
-        case 'pornhub':
-        case 'glitch':
-        case 'avenger':
-        case 'space':
-        case 'ninjalogo':
-        case 'marvelstudio':
-        case 'lionlogo':
-        case 'wolflogo':
-        case 'steel3d':
-        case 'wallgravity':
+        case 'xpornhub':
+        case 'xglitch':
+        case 'xavenger':
+        case 'xspace':
+        case 'xninjalogo':
+        case 'xmarvelstudio':
+        case 'xlionlogo':
+        case 'xwolflogo':
+        case 'xsteel3d':
+        case 'xwallgravity':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/textprome2/${args[1]}?apikey=9b817532fadff8fc7cb86862&text1=${args[0]}&text2=${args[1]}` } })
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/textprome2/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862&text1=${args[0]}&text2=${args[1]}` } })
             break
 
         // Photo Oxy //
-        case 'shadow':
-        case 'cup':
-        case 'cup1':
-        case 'romance':
-        case 'smoke':
-        case 'burnpaper':
-        case 'lovemessage':
-        case 'undergrass':
-        case 'love':
-        case 'coffe':
-        case 'woodheart':
-        case 'woodenboard':
-        case 'summer3d':
-        case 'wolfmetal':
-        case 'nature3d':
-        case 'underwater':
-        case 'golderrose':
-        case 'summernature':
-        case 'letterleaves':
-        case 'glowingneon':
-        case 'fallleaves':
-        case 'flamming':
-        case 'harrypotter':
-        case 'carvedwood':
+        case 'xshadow':
+        case 'xcup':
+        case 'xcup1':
+        case 'xromance':
+        case 'xsmoke':
+        case 'xburnpaper':
+        case 'xlovemessage':
+        case 'xundergrass':
+        case 'xlove':
+        case 'xcoffe':
+        case 'xwoodheart':
+        case 'xwoodenboard':
+        case 'xsummer3d':
+        case 'xwolfmetal':
+        case 'xnature3d':
+        case 'xunderwater':
+        case 'xgolderrose':
+        case 'xsummernature':
+        case 'xletterleaves':
+        case 'xglowingneon':
+        case 'xfallleaves':
+        case 'xflamming':
+        case 'xharrypotter':
+        case 'xcarvedwood':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/photooxy1/${args[1]}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/photooxy1/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
             break
 
-        case 'tiktok':
-        case 'arcade8bit':
-        case 'battlefield4':
-        case 'pubg':
+        case 'xtiktok':
+        case 'xarcade8bit':
+        case 'xbattlefield4':
+        case 'xpubg':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/photooxy2/${args[1]}?apikey=9b817532fadff8fc7cb86862&text1=${args[0]}&text2=${args[1]}` } })
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/photooxy2/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862&text1=${args[0]}&text2=${args[1]}` } })
             break
 
         // Ephoto 360 //
-        case 'wetglass':
-        case 'multicolor3d':
-        case 'watercolor':
-        case 'luxurygold':
-        case 'galaxywallpaper':
-        case 'lighttext':
-        case 'beautifulflower':
-        case 'puppycute':
-        case 'royaltext':
-        case 'heartshaped':
-        case 'birthdaycake':
-        case 'galaxystyle':
-        case 'hologram3d':
-        case 'greenneon':
-        case 'glossychrome':
-        case 'greenbush':
-        case 'metallogo':
-        case 'noeltext':
-        case 'glittergold':
-        case 'textcake':
-        case 'starsnight':
-        case 'wooden3d':
-        case 'textbyname':
-        case 'writegalacy':
-        case 'galaxybat':
-        case 'snow3d':
-        case 'birthdayday':
-        case 'goldplaybutton':
-        case 'silverplaybutton':
-        case 'freefire':
+        case 'xwetglass':
+        case 'xmulticolor3d':
+        case 'xwatercolor':
+        case 'xluxurygold':
+        case 'xgalaxywallpaper':
+        case 'xlighttext':
+        case 'xbeautifulflower':
+        case 'xpuppycute':
+        case 'xroyaltext':
+        case 'xheartshaped':
+        case 'xbirthdaycake':
+        case 'xgalaxystyle':
+        case 'xhologram3d':
+        case 'xgreenneon':
+        case 'xglossychrome':
+        case 'xgreenbush':
+        case 'xmetallogo':
+        case 'xnoeltext':
+        case 'xglittergold':
+        case 'xtextcake':
+        case 'xstarsnight':
+        case 'xwooden3d':
+        case 'xtextbyname':
+        case 'xwritegalacy':
+        case 'xgalaxybat':
+        case 'xsnow3d':
+        case 'xbirthdayday':
+        case 'xgoldplaybutton':
+        case 'xsilverplaybutton':
+        case 'xfreefire':
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
-            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ephoto1/${args[1]}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
+            conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ephoto1/${command.slice(1)}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
             break
-
+            
 }
-} catch (e) {
-throw er
-}}
 
-}
-handler.help = ['m2 <command> <teks2>']
-handler.tags = ['tools'] 
-handler.command = ['m2', 'menu2']
 export default handler
