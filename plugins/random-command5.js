@@ -14,7 +14,7 @@ let caption = `🤠 *Name:* ${x.name}
 
 *Description:* ${x.description}
 *Homepage:* ${x.homepage}`
-await conn.sendButton(m.chat, caption, author, null, [
+await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix}${command} ${text}`]
             ], m)
 }
@@ -30,7 +30,7 @@ let q = m.quoted ? m.quoted : m
 let f = await fetch(`https://api.lolhuman.xyz/api/read-qr?apikey=9b817532fadff8fc7cb86862&img=${url}`)
 let x = await f.json()
 let caption = `🤠 *Hasil:* ${x.result}`
-await conn.sendButton(m.chat, caption, author, null, [
+await conn.sendButton(m.chat, caption, wm, null, [
                 ['To Qr', `${usedPrefix}qr ${x.result}`]
             ], m)
 }
@@ -42,7 +42,7 @@ let caption = `*Quotes:* ${x.quote}
 
 *Anime:* ${x.anime}
 *Character:* ${x.character}`
-await conn.sendButton(m.chat, caption, author, null, [
+await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
 }
@@ -66,7 +66,7 @@ let caption = `🤠 *Anilist:* ${x.anilist}
 *Ke:* ${x.to}
 *Kecocokan:* ${x.similarity}
 `
-await conn.sendButton(m.chat, caption, author, x.image, [
+await conn.sendButton(m.chat, caption, wm, x.image, [
                 ['Get Video', `${usedPrefix}get ${x.video}`]
             ], m)
 }
@@ -77,7 +77,7 @@ Contoh: ${usedPrefix + command} https://google.com`
 let f = await fetch(`https://is.gd/create.php?format=json&url=${text}`)
 let x = await f.json()
 let caption = `*Shorturl:* ${x.shorturl}`
-await conn.sendButton(m.chat, caption, author, null, [
+await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
 }
@@ -100,7 +100,7 @@ let caption = `*Src:* ${x.src}
 
 *Percent:* ${x.percent}
 *Expires:* ${x.expires}`
-await conn.sendButton(m.chat, caption, author, x.dest, [
+await conn.sendButton(m.chat, caption, wm, x.dest, [
                 ['Get Img', `${usedPrefix}get ${x.dest}`]
             ], m)
 }
@@ -116,7 +116,7 @@ let q = m.quoted ? m.quoted : m
 let f = await fetch(`https://process.filestackapi.com/A7lMmfpoSTu3i5i7yBXeQz/ascii=colored:true/${url}`)
 let xc = await f.text()
 let caption = `${xc}`
-await conn.sendButton(m.chat, caption, author, null, [
+await conn.sendButton(m.chat, caption, wm, null, [
                 ['Get Img', `${usedPrefix}get ${url}`]
             ], m)
 }
@@ -167,7 +167,7 @@ let caption = `*Title:* ${r.title}
 *Channel:* ${r.channel}
 *Upload:* ${r.uploadDate}
 *Desc:* ${r.desc}`
-await conn.sendButton(m.chat, caption, author, r.thumb, [
+await conn.sendButton(m.chat, caption, wm, r.thumb, [
                 ['Get', `${usedPrefix}get ${r.result}`]
             ], m)
 }
@@ -186,7 +186,7 @@ let caption = `*Title:* ${r.title}
 *Channel:* ${r.channel}
 *Upload:* ${r.uploadDate}
 *Desc:* ${r.desc}`
-await conn.sendButton(m.chat, caption, author, r.thumb, [
+await conn.sendButton(m.chat, caption, wm, r.thumb, [
                 ['Get', `${usedPrefix}get ${r.result}`]
             ], m)
 }
@@ -196,16 +196,12 @@ if (command == 'lirikjoox') {
 let f = await fetch(`https://yog-apikey.herokuapp.com/api/music/joox?apikey=YogGanz&query=${text}`)
 let xc = await f.json()
 let r = xc.result
-let caption = `*Title:* ${r.title}
-*Size:* ${r.size}
-*Quality:* ${r.quality}
-*View:* ${r.views}
-*Like:* ${r.likes}
-*Dislike:* ${r.dislike}
-*Channel:* ${r.channel}
-*Upload:* ${r.uploadDate}
-*Desc:* ${r.desc}`
-await conn.sendButton(m.chat, caption, author, r.img, [
+let caption = `*Title:* ${r.lagu}
+*Size:* ${r.album}
+*Quality:* ${r.penyanyi}
+*View:* ${r.publish}
+*Like:* ${xc.lirik.result}`
+await conn.sendButton(m.chat, caption, wm, r.img, [
                 ['Get', `${usedPrefix}get ${r.lirik.result}`]
             ], m)
 }
@@ -216,8 +212,25 @@ let f = await fetch(`https://yog-apikey.herokuapp.com/api/music/chordlagu?lagu=$
 let xc = await f.json()
 let r = xc.result
 let caption = `*Result:* ${r.result}`
-await conn.sendButton(m.chat, caption, author, null, [
-                ['Get', `${usedPrefix}get ${r.result}`]
+await conn.sendButton(m.chat, caption, wm, r.img, [
+                ['Menu', `${usedPrefix}menu`]
+            ], m)
+}
+
+if (command == 'hadits') {
+  if (!text) throw `Text Mana? ${command} bukhari|59`
+let f = await fetch(`https://yog-apikey.herokuapp.com/api/muslim/hadits?kitab=${text1}&nomor=${text2}&apikey=YogGanz`)
+let xc = await f.json()
+let r = xc.data
+let caption = `*Name:* ${r.name}
+*ID:* ${r.id}
+*Tersedia:* ${r.available}
+*No:* ${r.contents.number}
+*Arab:* ${r.contents.arab}
+*Indo:* ${r.contents.id}
+`
+await conn.sendButton(m.chat, caption, wm, null, [
+                ['Menu', `${usedPrefix}menu`]
             ], m)
 }
 
