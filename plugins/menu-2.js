@@ -1,36 +1,15 @@
 
 import axios from 'axios';
 import fetch from 'node-fetch';
-
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 let er = `
-*[❗] Salah ketik`
+*[❗] Format salah*`
 
-  let text1 = args[1]
-  let text2 = args[2]
-  
 if (!args[0]) throw er
 let template = (args[0] || '').toLowerCase()
 if (/emo/i.test(command)) {
 try {
 switch (template) {
-        case 'owner':
-            const vcard =
-                'BEGIN:VCARD\n' + // metadata of the contact card
-                'VERSION:3.0\n' +
-                `FN:${global.author}ow\n` + // full name
-                `ORG:${global.wm};\n` + // the organization of the contact
-                `TEL;type=MSG;type=CELL;type=VOICE;waid=${owner[owner.length - 1].split('@')[0]}:+${owner[owner.length - 1].split('@')[0]}\n` + // WhatsApp ID + phone number
-                'END:VCARD'
-
-            conn.sendMessage(m.chat, {
-                contacts: {
-                    displayName: wm,
-                    contacts: [{ vcard }],
-                },
-            })
-            break
-
         // Islami //
         case 'listsurah':
             axios
@@ -1418,12 +1397,11 @@ switch (template) {
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ephoto1/${text1}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
             break
-            
 }
 } catch (e) {
 throw er
 }}}
-handler.help = ['m2 <cmd> <query>']
+handler.help = ['m2 <tipe> <teks>']
 handler.tags = ['tools'] 
 handler.command = ['m2']
 export default handler
