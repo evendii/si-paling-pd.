@@ -1,7 +1,6 @@
 import axios from 'axios'
 import FormData from 'form-data'
 import fetch from 'node-fetch'
-import { stream } from 'stream'
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 let urut = text.split`|`
@@ -13,8 +12,6 @@ let template = (args[0] || '').toLowerCase()
 if (!args[0]) {
 let caption = `*Contoh Penggunaan*
 
-${usedPrefix + command} 1977
-${usedPrefix + command} aden
 ${usedPrefix + command} advanceglow
 ${usedPrefix + command} ahegao
 ${usedPrefix + command} alquran
@@ -45,9 +42,7 @@ ${usedPrefix + command} blowjob
 ${usedPrefix + command} bokeh
 ${usedPrefix + command} box3d
 ${usedPrefix + command} brainly
-${usedPrefix + command} brannan
 ${usedPrefix + command} breakwall
-${usedPrefix + command} brooklyn
 ${usedPrefix + command} bts
 ${usedPrefix + command} bucin
 ${usedPrefix + command} burnpaper
@@ -57,7 +52,6 @@ ${usedPrefix + command} cerpen
 ${usedPrefix + command} character
 ${usedPrefix + command} chiisaihentai
 ${usedPrefix + command} chord
-${usedPrefix + command} clarendon
 ${usedPrefix + command} classic
 ${usedPrefix + command} cloud
 ${usedPrefix + command} cnnindonesia
@@ -74,7 +68,6 @@ ${usedPrefix + command} cup
 ${usedPrefix + command} cup1
 ${usedPrefix + command} deluxesilver
 ${usedPrefix + command} drakorongoing
-${usedPrefix + command} earlybird
 ${usedPrefix + command} ecchi
 ${usedPrefix + command} elf
 ${usedPrefix + command} ero
@@ -104,7 +97,6 @@ ${usedPrefix + command} gasm
 ${usedPrefix + command} genshin
 ${usedPrefix + command} gimage
 ${usedPrefix + command} gimage2
-${usedPrefix + command} gingham
 ${usedPrefix + command} glitch
 ${usedPrefix + command} glittergold
 ${usedPrefix + command} glossychrome
@@ -129,14 +121,12 @@ ${usedPrefix + command} hologram3d
 ${usedPrefix + command} holographic
 ${usedPrefix + command} hololewd
 ${usedPrefix + command} horrorblood
-${usedPrefix + command} hudson
 ${usedPrefix + command} husbu
 ${usedPrefix + command} icecold
 ${usedPrefix + command} igdl
 ${usedPrefix + command} igdl2
 ${usedPrefix + command} indbeasiswa
 ${usedPrefix + command} infogempa
-${usedPrefix + command} inkwell
 ${usedPrefix + command} jadian
 ${usedPrefix + command} jadwalbola
 ${usedPrefix + command} jadwalsholat
@@ -148,7 +138,6 @@ ${usedPrefix + command} jokerlogo
 ${usedPrefix + command} jooxplay
 ${usedPrefix + command} katabijak
 ${usedPrefix + command} kbbi
-${usedPrefix + command} kelvin
 ${usedPrefix + command} kemonomimi
 ${usedPrefix + command} kisahnabi
 ${usedPrefix + command} kiss
@@ -157,7 +146,6 @@ ${usedPrefix + command} konachan
 ${usedPrefix + command} kuni
 ${usedPrefix + command} kusonime
 ${usedPrefix + command} kusonimesearch
-${usedPrefix + command} lark
 ${usedPrefix + command} letterleaves
 ${usedPrefix + command} lewd
 ${usedPrefix + command} lewdanimegirls
@@ -168,7 +156,6 @@ ${usedPrefix + command} lionlogo
 ${usedPrefix + command} lirik
 ${usedPrefix + command} listsurah
 ${usedPrefix + command} lk21
-${usedPrefix + command} lofi
 ${usedPrefix + command} loli
 ${usedPrefix + command} love
 ${usedPrefix + command} lovemessage
@@ -176,16 +163,12 @@ ${usedPrefix + command} luxury
 ${usedPrefix + command} luxurygold
 ${usedPrefix + command} manga
 ${usedPrefix + command} marvelstudio
-${usedPrefix + command} maven
-${usedPrefix + command} mayfair
 ${usedPrefix + command} megumin
 ${usedPrefix + command} metaldark
 ${usedPrefix + command} metallogo
 ${usedPrefix + command} minion
 ${usedPrefix + command} mlstalk
-${usedPrefix + command} moon
 ${usedPrefix + command} multicolor3d
-${usedPrefix + command} nashville
 ${usedPrefix + command} nature3d
 ${usedPrefix + command} natureleaves
 ${usedPrefix + command} neko
@@ -195,14 +178,10 @@ ${usedPrefix + command} newsinfo
 ${usedPrefix + command} newyearcard
 ${usedPrefix + command} ninjalogo
 ${usedPrefix + command} noeltext
-${usedPrefix + command} nsfwcheck
 ${usedPrefix + command} nsfw_avatar
-${usedPrefix + command} ocr
 ${usedPrefix + command} otakudesu
 ${usedPrefix + command} otakudesusearch
 ${usedPrefix + command} pantun
-${usedPrefix + command} pencil
-${usedPrefix + command} perpetua
 ${usedPrefix + command} pinterest
 ${usedPrefix + command} pinterest2
 ${usedPrefix + command} pinterestdl
@@ -215,18 +194,13 @@ ${usedPrefix + command} pubg
 ${usedPrefix + command} puppycute
 ${usedPrefix + command} pussy
 ${usedPrefix + command} pussy_jpg
-${usedPrefix + command} qrreader
-${usedPrefix + command} quotemaker3
 ${usedPrefix + command} quotes
 ${usedPrefix + command} quotesanime
 ${usedPrefix + command} quotesdilan
 ${usedPrefix + command} quotesimage
 ${usedPrefix + command} randomnama
-${usedPrefix + command} reyes
-${usedPrefix + command} rise
 ${usedPrefix + command} roadwarning
 ${usedPrefix + command} romance
-${usedPrefix + command} roundsticker
 ${usedPrefix + command} royaltext
 ${usedPrefix + command} sagiri
 ${usedPrefix + command} sandengraved
@@ -239,7 +213,6 @@ ${usedPrefix + command} shortlink
 ${usedPrefix + command} shota
 ${usedPrefix + command} sideoppai
 ${usedPrefix + command} silverplaybutton
-${usedPrefix + command} slumber
 ${usedPrefix + command} smoke
 ${usedPrefix + command} smug
 ${usedPrefix + command} snow3d
@@ -256,8 +229,6 @@ ${usedPrefix + command} stalktiktok
 ${usedPrefix + command} stalktwitter
 ${usedPrefix + command} starsnight
 ${usedPrefix + command} steel3d
-${usedPrefix + command} stickerwm
-${usedPrefix + command} stinson
 ${usedPrefix + command} strawberry
 ${usedPrefix + command} summer3d
 ${usedPrefix + command} summernature
@@ -272,7 +243,6 @@ ${usedPrefix + command} tiktok
 ${usedPrefix + command} tiktokmusic
 ${usedPrefix + command} tiktoknowm
 ${usedPrefix + command} tits
-${usedPrefix + command} toaster
 ${usedPrefix + command} toxic
 ${usedPrefix + command} translate
 ${usedPrefix + command} trap
@@ -280,9 +250,7 @@ ${usedPrefix + command} twtdl
 ${usedPrefix + command} undergrass
 ${usedPrefix + command} underwater
 ${usedPrefix + command} urbandictionary
-${usedPrefix + command} valencia
 ${usedPrefix + command} waifu
-${usedPrefix + command} walden
 ${usedPrefix + command} wallgravity
 ${usedPrefix + command} wallnime
 ${usedPrefix + command} wallpaper
@@ -295,14 +263,12 @@ ${usedPrefix + command} wattpadsearch
 ${usedPrefix + command} wetglass
 ${usedPrefix + command} weton
 ${usedPrefix + command} wikipedia
-${usedPrefix + command} willow
 ${usedPrefix + command} wolflogo
 ${usedPrefix + command} wolfmetal
 ${usedPrefix + command} wooden3d
 ${usedPrefix + command} woodenboard
 ${usedPrefix + command} woodheart
 ${usedPrefix + command} writegalacy
-${usedPrefix + command} xpro2
 ${usedPrefix + command} yaoi
 ${usedPrefix + command} ytmp3
 ${usedPrefix + command} ytmp4
@@ -910,13 +876,6 @@ switch (template) {
             await conn.sendMessage(m.chat, { image: { url: data.result.cover1 }, caption })
             await conn.sendMessage(m.chat, { audio: { url: data.result.cv[0].audio[0] }, mimetype: 'audio/mp4' })
             break
-        case 'qrreader':
-            
-            var form = new FormData()
-            form.append('img', stream, { filename: 'tahu.jpg' })
-            var { data } = await axios.post(`https://api.lolhuman.xyz/api/read-qr?apikey=9b817532fadff8fc7cb86862`, form)
-            m.reply('Result: ' + data.result)
-            break
         case 'wikipedia':
             if (!one) return m.reply(`Example: ${usedPrefix + command} ${template} |Tahu`)
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/wiki?apikey=9b817532fadff8fc7cb86862&query=${one}`)
@@ -1122,24 +1081,6 @@ switch (template) {
             conn.sendButton(m.chat, teks, wm, null, [
                 ['Menu', `${usedPrefix + command}`]
             ], m)
-            break
-        case 'nsfwcheck':
-            
-            var form = new FormData()
-            form.append('img', stream, { filename: 'tahu.jpg' })
-            var { data } = await axios.post(`https://api.lolhuman.xyz/api/nsfwcheck?apikey=9b817532fadff8fc7cb86862`, form)
-            var is_nsfw = 'No'
-            if (Number(data.result.replace('%', '')) >= 50) {
-                is_nsfw = 'Yes'
-            }
-            m.reply(`Is NSFW? ${is_nsfw}\nNSFW Score : ${data.result}`)
-            break
-        case 'ocr':
-            
-            var form = new FormData()
-            form.append('img', stream, { filename: 'tahu.jpg' })
-            var { data } = await axios.post(`https://api.lolhuman.xyz/api/ocr?apikey=9b817532fadff8fc7cb86862`, form)
-            m.reply(`Result : ${data.result}`)
             break
 
         // Movie & Story
@@ -1380,67 +1321,6 @@ switch (template) {
             })
             break
 
-        case '1977':
-        case 'aden':
-        case 'brannan':
-        case 'brooklyn':
-        case 'clarendon':
-        case 'gingham':
-        case 'hudson':
-        case 'inkwell':
-        case 'earlybird':
-        case 'kelvin':
-        case 'lark':
-        case 'lofi':
-        case 'maven':
-        case 'mayfair':
-        case 'moon':
-        case 'nashville':
-        case 'perpetua':
-        case 'reyes':
-        case 'rise':
-        case 'slumber':
-        case 'stinson':
-        case 'toaster':
-        case 'valencia':
-        case 'walden':
-        case 'willow':
-        case 'xpro2':
-        case 'pencil':
-        case 'quotemaker3':
-        case 'roundsticker':
-        case 'stickerwm':
-            var url = `https://api.lolhuman.xyz/api/filter/${args[0]}?apikey=9b817532fadff8fc7cb86862`
-            var form = new FormData()
-            form.append('img', stream, 'tahu.jpg')
-
-            if (command === 'pencil') {
-                url = `https://api.lolhuman.xyz/api/editor/pencil?apikey=9b817532fadff8fc7cb86862`
-            }
-            if (command === 'quotemaker3') {
-                url = `https://api.lolhuman.xyz/api/quotemaker3?apikey=9b817532fadff8fc7cb86862`
-                form.append('text', text)
-            }
-            if (command === 'roundsticker') {
-                url = `https://api.lolhuman.xyz/api/convert/towebpwround?apikey=9b817532fadff8fc7cb86862`
-            }
-            if (command === 'stickerwm') {
-                url = `https://api.lolhuman.xyz/api/convert/towebpauthor?apikey=9b817532fadff8fc7cb86862`
-                form.append('package', 'LoL')
-                form.append('author', 'Human')
-            }
-
-            axios
-                .post(url, form, { responseType: 'arraybuffer' })
-                .then(({ data }) => {
-                    if (command === 'roundsticker' || command === 'stickerwm') {
-                        return conn.sendMessage(m.chat, { sticker: data })
-                    }
-                    conn.sendMessage(m.chat, { image: data })
-                })
-                .catch(console.error)
-            break
-        
         // Stalk
         case 'stalkig':
             if (!one) return m.reply(`Example: ${usedPrefix + command} ${template} |jessnolimit`)
