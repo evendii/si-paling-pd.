@@ -1,10 +1,10 @@
 
 import axios from 'axios';
 import fetch from 'node-fetch';
-let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
+let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 let er = `
 *[❗] Format salah*`
-
+let text1 = args[1]
 if (!args[0]) throw er
 let template = (args[0] || '').toLowerCase()
 if (/emo/i.test(command)) {
