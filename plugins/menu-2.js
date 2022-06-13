@@ -1,11 +1,12 @@
-import axios from 'axios';
+import axios from 'axios'
+import FormData from 'form-data'
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
 
 let template = (args[0] || '').toLowerCase()
 if (!args[0]) throw `Teksnya?`
-if (/emo/i.test(command)) {
+if (command) {
 switch (template) {
 
         // Islami //
@@ -349,22 +350,7 @@ switch (template) {
                 conn.sendMessage(m.chat, { image: { url: data.result.coverImage.large }, caption })
             })
             break
-        case 'wait':
-            if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
-            var form = new FormData()
-            form.append('img', stream, 'tahu.jpg')
-            axios.post(`https://api.lolhuman.xyz/api/wait?apikey=9b817532fadff8fc7cb86862`, form).then(({ data }) => {
-                var caption = `Anilist id : ${data.result.anilist_id}\n`
-                caption += `MAL id : ${data.result.mal_id}\n`
-                caption += `Title Romaji : ${data.result.title_romaji}\n`
-                caption += `Title Native : ${data.result.title_native}\n`
-                caption += `Title English : ${data.result.title_english}\n`
-                caption += `at : ${data.result.at}\n`
-                caption += `Episode : ${data.result.episode}\n`
-                caption += `Similarity : ${data.result.similarity}`
-                conn.sendMessage(m.chat, { video: { url: data.result.video }, mimetype: 'video/mp4', caption })
-            })
-            break
+        
         case 'kusonime':
             if (!args[1]) return m.reply(`Example: ${usedPrefix + command} https://kusonime.com/nanatsu-no-taizai-bd-batch-subtitle-indonesia/`)
             axios.get(`https://api.lolhuman.xyz/api/kusonime?apikey=9b817532fadff8fc7cb86862&url=${args[1]}`).then(({ data }) => {
@@ -586,7 +572,7 @@ switch (template) {
             await conn.sendMessage(m.chat, { audio: { url: data.result.cv[0].audio[0] }, mimetype: 'audio/mp4' })
             break
         case 'qrreader':
-            if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
+            
             var form = new FormData()
             form.append('img', stream, { filename: 'tahu.jpg' })
             var { data } = await axios.post(`https://api.lolhuman.xyz/api/read-qr?apikey=9b817532fadff8fc7cb86862`, form)
@@ -771,7 +757,7 @@ switch (template) {
             m.reply(text)
             break
         case 'nsfwcheck':
-            if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
+            
             var form = new FormData()
             form.append('img', stream, { filename: 'tahu.jpg' })
             var { data } = await axios.post(`https://api.lolhuman.xyz/api/nsfwcheck?apikey=9b817532fadff8fc7cb86862`, form)
@@ -782,7 +768,7 @@ switch (template) {
             m.reply(`Is NSFW? ${is_nsfw}\nNSFW Score : ${data.result}`)
             break
         case 'ocr':
-            if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
+            
             var form = new FormData()
             form.append('img', stream, { filename: 'tahu.jpg' })
             var { data } = await axios.post(`https://api.lolhuman.xyz/api/ocr?apikey=9b817532fadff8fc7cb86862`, form)
@@ -1037,7 +1023,6 @@ switch (template) {
         case 'quotemaker3':
         case 'roundsticker':
         case 'stickerwm':
-            if (!isImage && !isQuotedImage) return m.reply(`Kirim gambar dengan caption ${usedPrefix + command} atau tag gambar yang sudah dikirim`)
             var url = `https://api.lolhuman.xyz/api/filter/${args[1]}?apikey=9b817532fadff8fc7cb86862`
             var form = new FormData()
             form.append('img', stream, 'tahu.jpg')
@@ -1068,56 +1053,7 @@ switch (template) {
                 })
                 .catch(console.error)
             break
-        case 'sticker':
-        case 's':
-            if (!(isImage && isQuotedImage && isVideo && isQuotedVideo)) return m.reply(`Kirim media dengan caption ${usedPrefix + command} atau tag media yang sudah dikirim`)
-            var stream = await downloadContentFromMessage(msg.message[mediaType], mediaType.replace('Message', ''))
-            let stickerStream = new PassThrough()
-            if (isImage || isQuotedImage) {
-                ffmpeg(stream)
-                    .on('start', function (cmd) {
-                        console.log(`Started : ${cmd}`)
-                    })
-                    .on('error', function (err) {
-                        console.log(`Error : ${err}`)
-                    })
-                    .on('end', function () {
-                        console.log('Finish')
-                    })
-                    .addOutputOptions([
-                        `-vcodec`,
-                        `libwebp`,
-                        `-vf`,
-                        `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`,
-                    ])
-                    .toFormat('webp')
-                    .writeToStream(stickerStream)
-                conn.sendMessage(m.chat, { sticker: { stream: stickerStream } })
-            } else if (isVideo || isQuotedVideo) {
-                ffmpeg(stream)
-                    .on('start', function (cmd) {
-                        console.log(`Started : ${cmd}`)
-                    })
-                    .on('error', function (err) {
-                        console.log(`Error : ${err}`)
-                    })
-                    .on('end', async () => {
-                        conn.sendMessage(m.chat, { sticker: { url: `./temp/stickers/${sender}.webp` } }).then(() => {
-                            fs.unlinkSync(`./temp/stickers/${sender}.webp`)
-                            console.log('Finish')
-                        })
-                    })
-                    .addOutputOptions([
-                        `-vcodec`,
-                        `libwebp`,
-                        `-vf`,
-                        `scale='min(320,iw)':min'(320,ih)':force_original_aspect_ratio=decrease,fps=15, pad=320:320:-1:-1:color=white@0.0, split [a][b]; [a] palettegen=reserve_transparent=on:transparency_color=ffffff [p]; [b][p] paletteuse`,
-                    ])
-                    .toFormat('webp')
-                    .save(`./temp/stickers/${sender}.webp`)
-            }
-            break
-
+        
         // Stalk
         case 'stalkig':
             if (!args[1]) return m.reply(`Example: ${usedPrefix + command} jessnolimit`)
