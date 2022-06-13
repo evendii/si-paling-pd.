@@ -3,7 +3,7 @@ import axios from 'axios';
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
-
+switch (command) {
         case 'xowner':
             const vcard =
                 'BEGIN:VCARD\n' + // metadata of the contact card
@@ -1410,5 +1410,5 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
             break
             
 }
-
+}
 export default handler
