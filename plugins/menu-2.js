@@ -7,8 +7,7 @@ let er = `
 let text1 = args[1]
 if (!args[0]) throw er
 let template = (args[0] || '').toLowerCase()
-if (/emo/i.test(command)) {
-try {
+if (command) {
 switch (template) {
         // Islami //
         case 'listsurah':
@@ -1397,10 +1396,7 @@ switch (template) {
             if (!text) return m.reply(`Example: ${usedPrefix + command} LoL Human`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ephoto1/${text1}?apikey=9b817532fadff8fc7cb86862&text=${text}` } })
             break
-}
-} catch (e) {
-throw er
-}}}
+}}
 handler.help = ['m2 <tipe> <teks>']
 handler.tags = ['tools'] 
 handler.command = ['m2']
