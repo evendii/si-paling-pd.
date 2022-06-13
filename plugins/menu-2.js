@@ -2,14 +2,12 @@ import axios from 'axios'
 import FormData from 'form-data'
 import fetch from 'node-fetch'
 
-let handler = async (m, { conn, args, usedPrefix, command, isPrems }) => {
-let urut = args.slice(1).join('|')
+let handler = async (m, { conn, args, text, usedPrefix, command, isPrems }) => {
+let urut = text.split`|`
   let one = urut[0]
   let two = urut[1]
   let three = urut[2]
-
-let text = args.slice(1).join(' ')
-
+  
 let template = (args[0] || '').toLowerCase()
 if (!args[0]) throw `Teksnya?`
 if (command) {
@@ -45,7 +43,7 @@ switch (template) {
                 .catch(console.error)
             break
         case 'alquranaudio':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} 18 or ${usedPrefix + command} 18/10`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} 18 or ${usedPrefix + command} 18/10`)
             conn.sendMessage(m.chat, { audio: { url: `https://api.lolhuman.xyz/api/quran/audio/${text}?apikey=9b817532fadff8fc7cb86862` }, mimetype: 'audio/mp4' })
             break
         case 'asmaulhusna':
@@ -62,7 +60,7 @@ switch (template) {
                 .catch(console.error)
             break
         case 'kisahnabi':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} Muhammad`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} Muhammad`)
             axios
                 .get(`https://api.lolhuman.xyz/api/kisahnabi/${text}?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
@@ -76,7 +74,7 @@ switch (template) {
                 .catch(console.error)
             break
         case 'jadwalsholat':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} Yogyakarta`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} Yogyakarta`)
             axios
                 .get(`https://api.lolhuman.xyz/api/sholat/${text}?apikey=9b817532fadff8fc7cb86862`)
                 .then(({ data }) => {
@@ -1101,7 +1099,7 @@ switch (template) {
             })
             break
         case 'stalktiktok':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} bulansutena`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} bulansutena`)
             axios.get(`https://api.lolhuman.xyz/api/stalktiktok/${text}?apikey=9b817532fadff8fc7cb86862`).then(({ data }) => {
                 var caption = `Username : ${data.result.username}\n`
                 caption += `Nickname : ${data.result.nickname}\n`
@@ -1116,15 +1114,15 @@ switch (template) {
 
         // Other
         case 'ssweb':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/ssweb?apikey=9b817532fadff8fc7cb86862&url=${text}` } })
             break
         case 'ssweb2':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
             conn.sendMessage(m.chat, { image: { url: `https://api.lolhuman.xyz/api/sswebfull?apikey=9b817532fadff8fc7cb86862&url=${text}` } })
             break
         case 'shortlink':
-            if (!text]) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
+            if (!text) return m.reply(`Example: ${usedPrefix + command} https://api.lolhuman.xyz`)
             axios.get(`https://api.lolhuman.xyz/api/ouoshortlink?apikey=9b817532fadff8fc7cb86862&url=${text}`).then(({ data }) => {
                 m.reply(data.result)
             })
