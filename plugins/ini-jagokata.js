@@ -7,23 +7,6 @@ import cheerio from 'cheerio'
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
-if (command == 'platgames') {
-let json = await fetch(`https://www.freetogame.com/api/games?platform=${text}`)
-        let x = await json.json()
-        let caption = `
-🤠 *Name* : *${x.title}*
-Link : ${x.game_url}
-Genre : ${x.genre}
-Platform : ${x.platform}
-Rilis : ${x.release_date}
-Developer : ${x.developer}
-Desc : ${x.short_description}
-`.trim()
-await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
-                ['Next', `${usedPrefix + command}`]
-            ], m)
-            }
-            
 if (command == 'kataquotes') {
 let pe = await fetch(`https://programming-quotes-api.herokuapp.com/Quotes/random`)
 let xc = await pe.json()
@@ -35,70 +18,6 @@ ${x.en}
 ${x.author}`, wm, null, [
                 ['Next', `${usedPrefix + command}`],
                 ['Translate', `${usedPrefix}tr id ${x.en}`]
-            ], m)
-            }
-            
-if (command == 'listgames') {
-let json = await fetch(`https://www.freetogame.com/api/games`)
-        let x = await json.json()
-        let caption = `
-🤠 *Name* : *${x.title}*
-Link : ${x.game_url}
-Genre : ${x.genre}
-Platform : ${x.platform}
-Rilis : ${x.release_date}
-Developer : ${x.developer}
-Desc : ${x.short_description}
-`.trim()
-await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
-                ['Next', `${usedPrefix + command}`]
-            ], m)
-            }
-            
-if (command == 'carigames') {
-let json = await fetch(`https://www.freetogame.com/api/games?category=${text}`)
-        let x = await json.json()
-        let caption = `
-🤠 *Name* : *${x.title}*
-Link : ${x.game_url}
-Genre : ${x.genre}
-Platform : ${x.platform}
-Rilis : ${x.release_date}
-Developer : ${x.developer}
-Desc : ${x.short_description}
-`.trim()
-await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
-                ['Next', `${usedPrefix + command}`]
-            ], m)
-            }
-            
-if (command == 'anyjoke') {
-let json = await fetch(`https://v2.jokeapi.dev/joke/Any`)
-        let x = await json.json()
-        let caption = `
-        🤠 *Category* : *${x.category}*
-Quoted : ${x.setup}
-Type : ${x.type}
-Delivery : ${x.delivery}
-Platform : ${x.safe}
-Rilis : ${x.id}
-Lang : ${x.lalontong}
-`.trim()
-await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix + command}anyjoke ${x.setup}`]
-            ], m)
-            }
-            
-if (command == 'giveaways') {
-let pe = await fetch(`https://www.gamerpower.com/api/giveaways`)
-let jsons = await pe.json()
-let caption = `*Quote:* ${x.title}
-*Worth:* ${x.worth}
-*Desc:* ${x.description}
-*Step:* ${x.instructions}`.trim()
-  await conn.sendButton(m.chat, caption, wm, x.image, [
-                ['Next', `${usedPrefix + command}`],
-                ['Translate', `${usedPrefix}tr id ${x.description}`]
             ], m)
             }
             
@@ -179,7 +98,7 @@ if (!text) throw `uhm.. kota apa?\n\n${usedPrefix + command} jakarta pusat`
             
             
 }
-handler.command = handler.help = ['platgames', 'kataquotes', 'listgames', 'carigames', 'anyjoke', 'giveaways', 'kata', 'kbbi', 'salat2']
+handler.command = handler.help = ['kata', 'kbbi', 'salat2']
 handler.tags = ['quotes']
 
 export default handler
