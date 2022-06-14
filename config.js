@@ -67,7 +67,13 @@ let api = ['Gh5QOSGn', 'NaVPLSqV', 'yLwXcHYJ', 'oFmq6PEB', 'vZuOHLdg', 'qwh5dMe6
 let keyalpha = api[Math.floor(Math.random() * api.length)]
 global.apikeys = keyalpha
 
-//Thumb
+/*============== NOMOR ==============*/
+global.nomorbot = '6285171216276'
+global.nomorown = '6282195322106'
+global.namebot = 'Hinata Md'
+global.nameown = 'Owner Hinata Md'
+
+/*============== WATERMARK ==============*/
 global.wm = '                「 Hinata-Md あ⁩ 」' //Main Watermark
 global.wm2 = '꒷︶꒷꒥꒷ ‧₊˚ ꒰ฅ˘օառɛʀ - chαn˘ฅ ꒱ ‧₊˚꒷︶꒷꒥꒷'
 global.wm3 = '⫹⫺ Hinata-Md'
@@ -75,6 +81,12 @@ global.botdate = `⫹⫺ Date :  ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}
 global.bottime = `𝗧 𝗜 𝗠 𝗘 : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}`
 global.titlebot = `⫹⫺ Time Sever : ${moment.tz('Asia/Jakarta').format('HH:mm:ss')}\n⫹⫺ Date Server :  ${moment.tz('Asia/Jakarta').format('DD/MM/YY')}`
 
+/*============== LOGO ==============*/
+global.thumb = 'https://i.ibb.co/ccY2Q0k/20220429-191026.jpg' //Main Thumbnail
+global.imagebot = 'https://telegra.ph/file/793b6accf3758f092742a.jpg'
+global.giflogo = 'https://telegra.ph/file/a46ab7fa39338b1f54d5a.mp4'
+global.thumbs = ['https://i.ibb.co/ccY2Q0k/20220429-191026.jpg', 'https://telegra.ph/file/f87047ec6e5f0d4a9ea91.jpg', 'https://telegra.ph/file/88edbb01051b397574def.jpg','https://telegra.ph/file/7957630a57078c5ec0400.jpg']
+global.fla = 'https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=sketch-name&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextType=1&fillTextPattern=Warning!&text='
 
 global.thumbnailUrl = [
   'https://telegra.ph/file/81260a8b9e8cff26d2b48.jpg', 'https://telegra.ph/file/ac4928f0824a2a0492737.jpg',
@@ -84,8 +96,17 @@ global.thumbnailUrl = [
   'https://telegra.ph/file/de92ed4a729887ffc974c.jpg', 'https://telegra.ph/file/00ce42a193b1dbbf907d4.jpg'
 ]
 
-global.sgc = 'https://chat.whatsapp.com/HAuQGhEBwqFK8CzrrYOwLq'
+/*============== SOCIAL ==============*/
 global.sig = 'https://instagram.com/wudysoft.2'
+global.sgh = 'https://github.com/AyGemuy'
+global.sgc = 'https://chat.whatsapp.com/HAuQGhEBwqFK8CzrrYOwLq'
+global.sdc = '-'
+global.snh = '-'
+
+/*============== HENTAI ==============*/ 
+//OPTIONS
+global.optsnsfw = true // Untuk mematikan Dan Menyalakan Nsfw
+global.premnsfw = true // Nsfw Mode Premium?
 
 //Ini cuma simpenan owner kanna kok :v
 global.hoppai = ['https://telegra.ph/file/f34d76df4a2065af1a5ba.jpg','https://telegra.ph/file/05c1b22ee83bcd7723b4d.jpg','https://telegra.ph/file/1d886f66a44871205335f.jpg','https://telegra.ph/file/54d19a9094dc509370bf9.jpg','https://telegra.ph/file/e649475bcde78a9977ee5.jpg','https://telegra.ph/file/32ba20b6139b129c559c8.jpg','https://telegra.ph/file/948434cda49e4af5d9f11.jpg','https://telegra.ph/file/6f353c68533283fe79871.jpg','https://telegra.ph/file/de268ca9b01101acf2b8a.jpg','https://telegra.ph/file/fc6c5b2ae9a20c4256e7f.jpg', 'https://telegra.ph/file/efb70bb0988640f841742.jpg', 'https://telegra.ph/file/77d03fff530a2bcff3bf7.jpg','https://telegra.ph/file/6e4623464a659dd8d902b.jpg','https://telegra.ph/file/685aa39f0cb0f2c4fd85b.jpg','https://telegra.ph/file/10454b9ad693e1eefea58.jpg','https://telegra.ph/file/7de8ce5c290c3d8be0856.jpg','https://telegra.ph/file/8d7c4eadb7a4722747074.jpg','https://telegra.ph/file/ccc5f8eaac0f30919ef6c.jpg','https://telegra.ph/file/95f4b43439d7888f15ea5.jpg','https://telegra.ph/file/9c2a750db555bd2fad1f3.jpg', 'https://telegra.ph/file/efc5f7e637744fd6bfec2.jpg','https://telegra.ph/file/3a5231aade245665633bd.jpg','https://telegra.ph/file/2ecfc76feb26ec1eab99b.jpg','https://telegra.ph/file/dabb70983b4e833d98344.jpg','https://telegra.ph/file/75193a893e38fc580afe6.jpg','https://telegra.ph/file/217aa0f4ec76273808aa4.jpg','https://telegra.ph/file/8a35d3446b97ae22c7b23.jpg','https://telegra.ph/file/092df720701575a7ceaaa.jpg','https://telegra.ph/file/a65184a676cd648de34c3.jpg',
@@ -98,16 +119,49 @@ global.hneko = ['https://telegra.ph/file/805a37b1e9a963e7d7ecf.jpg', 'https://te
 global.hbunny = ['https://telegra.ph/file/2b71a8d46d29351479fbc.jpg', 'https://telegra.ph/file/ae610571b62b5ab876e9c.jpg', 'https://telegra.ph/file/cc8255d5b989eef587af2.jpg','https://telegra.ph/file/30d2e7375996abd9cfee3.jpg', 'https://telegra.ph/file/78980c90c44a95a1d30fa.jpg', 'https://telegra.ph/file/2ac5d8ccf23e73eaa5bfa.jpg']
 global.hbeach = ['https://telegra.ph/file/14ae0ba2da77d74e6b80c.jpg', 'https://telegra.ph/file/b6905b77e6c7732592a13.jpg','https://telegra.ph/file/9da45a352eb4c40e5d641.jpg', 'https://telegra.ph/file/59e78846ee365975ee6e3.jpg','https://telegra.ph/file/1bf7dee46b83eb4c41d7d.jpg','https://telegra.ph/file/0525a7929f819cb8278f3.jpg']
 
+/*=========== TYPE DOCUMENT ===========*/
+global.dpptx = 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+global.ddocx = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+global.dxlsx = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+global.dpdf = 'application/pdf'
+global.drtf = 'text/rtf'
+
+global.thumbdoc = 'https://telegra.ph/file/6e45318d7c76f57e4a8bd.jpg'
+
 /*=========== FAKE SIZE ===========*/
 global.fsizedoc = '99999999999999' // default 10TB
 global.fpagedoc = '999'
 
-// Sticker WM
+/*=========== HIASAN ===========*/
+// DEFAULT MENU
+global.dmenut = '❏═┅═━–〈' //top
+global.dmenub = '┊•' //body
+global.dmenub2 = '┊' //body for info cmd on Default menu
+global.dmenuf = '┗––––––––––✦' //footer
+
+// COMMAND MENU
+global.dashmenu = '┅━━━━━═┅═❏ *DASHBOARD* ❏═┅═━━━━━┅'
+global.cmenut = '❏––––––『' //top
+global.cmenuh = '』––––––' //header
+global.cmenub = '┊✦ ' //body
+global.cmenuf = '┗━═┅═━––––––๑\n' //footer
+global.cmenua = '\n⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ ⌕\n     ' //after
+global.pmenus = '✦' //pembatas menu selector
+
+global.htki = '––––––『' //hiasan title kiri
+global.htka = '』––––––' //hiasan title kanan
+global.lopr = 'Ⓟ'
+global.lolm = 'Ⓛ'
+global.htjava = '⫹⫺' //hiasan Doang :v
+
+/*============== STICKER WM ==============*/
+global.stickpack = '.'
+global.stickauth = `☂︎ Hinata Md\n⫹⫺ Whatsapp BOT\nwa.me/${global.nomorbot}`
 global.packname = 'Created By'
 global.author = "Hinata-Md X Wudysoft"
 global.multiplier = 69 // The higher, The harder levelup
 
-//
+/*============== ERR ==============*/
 global.eror = 'Erorr...'
 global.wait = 'Wait...'
 global.render = 'Render...'
@@ -115,13 +169,21 @@ global.webs = 'https://s.id/Cerdasin62/'//Your Website
 global.logo = "https://i.pinimg.com/564x/1d/10/8e/1d108e56fb96be61d9b48f7e17dd95b7.jpg"//Your logo
 global.gcwangsaf = "https://chat.whatsapp.com/HAuQGhEBwqFK8CzrrYOwLq"//Link Group whatsapp
 
-//Donasi
+/*============== PAYMENT ==============*/
 global.saweria = "https://saweria.co/wudysoft"// website saweria.co
 global.dana = ["0887435373103"]
 global.pulsa = ["082195322106"]//pulsa here
 global.trakteer = "https://trakteer.id/wudysoft"//Link url https://
 global.paypal = "wudysoft@gmail.com"//paypal email
 global.gopay = "082195322106"//Numver for Payment digital Gopay Gojek
+
+/*============== PAYMENT ==============*/
+global.pdana = '0887435373103'
+global.povo = '082195322106'
+global.pgopay = '082195322106'
+global.ppulsa = '082195322106'
+global.ppulsa2 = '082195322106'
+global.psaweria = 'https://saweria.com/Wudysoft'
 
 //Rpg
 global.rpg = {
