@@ -9,10 +9,8 @@ let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
 if (command == 'platgames') {
 let json = await fetch(`https://www.freetogame.com/api/games?platform=${text}`)
-        let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
-        for (let x of jsons) {
-        caption += `
+        let x = await json.json()
+        let caption = `
 🤠 *Name* : *${x.title}*
 Link : ${x.game_url}
 Genre : ${x.genre}
@@ -20,7 +18,7 @@ Platform : ${x.platform}
 Rilis : ${x.release_date}
 Developer : ${x.developer}
 Desc : ${x.short_description}
-`}
+`.trim()
 await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
@@ -42,10 +40,8 @@ ${x.author}`, wm, null, [
             
 if (command == 'listgames') {
 let json = await fetch(`https://www.freetogame.com/api/games`)
-        let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
-        for (let x of jsons) {
-        caption += `
+        let x = await json.json()
+        let caption = `
 🤠 *Name* : *${x.title}*
 Link : ${x.game_url}
 Genre : ${x.genre}
@@ -53,7 +49,7 @@ Platform : ${x.platform}
 Rilis : ${x.release_date}
 Developer : ${x.developer}
 Desc : ${x.short_description}
-`}
+`.trim()
 await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
@@ -61,10 +57,8 @@ await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
             
 if (command == 'carigames') {
 let json = await fetch(`https://www.freetogame.com/api/games?category=${text}`)
-        let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
-        for (let x of jsons) {
-        caption += `
+        let x = await json.json()
+        let caption = `
 🤠 *Name* : *${x.title}*
 Link : ${x.game_url}
 Genre : ${x.genre}
@@ -72,7 +66,7 @@ Platform : ${x.platform}
 Rilis : ${x.release_date}
 Developer : ${x.developer}
 Desc : ${x.short_description}
-`}
+`.trim()
 await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
@@ -80,10 +74,8 @@ await conn.sendButton(m.chat, caption, wm, x.thumbnail, [
             
 if (command == 'anyjoke') {
 let json = await fetch(`https://v2.jokeapi.dev/joke/Any`)
-        let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
-        for (let x of jsons) {
-        caption += `
+        let x = await json.json()
+        let caption = `
         🤠 *Category* : *${x.category}*
 Quoted : ${x.setup}
 Type : ${x.type}
@@ -91,7 +83,7 @@ Delivery : ${x.delivery}
 Platform : ${x.safe}
 Rilis : ${x.id}
 Lang : ${x.lalontong}
-`}
+`.trim()
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}anyjoke ${x.setup}`]
             ], m)
@@ -100,12 +92,10 @@ await conn.sendButton(m.chat, caption, wm, null, [
 if (command == 'giveaways') {
 let pe = await fetch(`https://www.gamerpower.com/api/giveaways`)
 let jsons = await pe.json()
-let caption = `*⎔┉━「 ${command} 」━┉⎔*`
-        for (let x of jsons) {
-        caption += `*Quote:* ${x.title}
+let caption = `*Quote:* ${x.title}
 *Worth:* ${x.worth}
 *Desc:* ${x.description}
-*Step:* ${x.instructions}`}
+*Step:* ${x.instructions}`.trim()
   await conn.sendButton(m.chat, caption, wm, x.image, [
                 ['Next', `${usedPrefix + command}`],
                 ['Translate', `${usedPrefix}tr id ${x.description}`]
