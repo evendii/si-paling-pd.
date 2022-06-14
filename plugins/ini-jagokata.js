@@ -192,6 +192,8 @@ if (!text) throw `uhm.. kota apa?\n\n${usedPrefix + command} jakarta pusat`
 handler.command = handler.help = ['platgames', 'kataquotes', 'listgames', 'carigames', 'anyjoke', 'giveaways', 'kata', 'kbbi', 'salat2']
 handler.tags = ['quotes']
 
+export default handler
+
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
 

@@ -98,9 +98,22 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
     ], m)
     }
 
+if (command == 'pinterest8') {
+let caption = `*Hasil pencarian* ${text}\n\n*Note:* tzy`
+let url = `https://tyz-api.herokuapp.com/search/pinterest?query=${text}`
+let js = await fetch(url)
+let jp = await js.json()
+let x = jp.result
+await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, null, [
+      ['Pinterest7', usedPrefix + 'pinterest7 ' + text],
+      ['Pinterest', usedPrefix + 'pinterest ' + text],
+      ['Pinterest1', usedPrefix + 'Pinterest1 ' + text]
+    ], m)
+    }
+
 
 }
-handler.command = handler.help = ['pinterest', 'pinterest1', 'pinterest2', 'pinterest3', 'pinterest4', 'pinterest5', 'pinterest6']
+handler.command = handler.help = ['pinterest', 'pinterest1', 'pinterest2', 'pinterest3', 'pinterest4', 'pinterest5', 'pinterest6', 'pinterest7', 'pinterest8']
 handler.tags = ['random']
 
 export default handler
