@@ -7,11 +7,11 @@ let handler = async (m, { conn, participants }) => {
     m.reply('Succes')
 
 }
-handler.help = ['demote @tag']
+handler.help = ['odemote @tag']
 handler.tags = ['group']
-handler.command = /^(demote)$/i
+handler.command = /^(odemote)$/i
 
-handler.admin = true
+handler.owner = true
 handler.group = true
 handler.botAdmin = true
 

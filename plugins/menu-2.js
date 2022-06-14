@@ -1603,5 +1603,5 @@ switch (template) {
 }
 handler.help = ['lolmenu <command> <teks>']
 handler.tags = ['tools'] 
-handler.command = /^lol|lolmenu|m2$/i
+handler.command = /^lol|lolmenu$/i
 export default handler
