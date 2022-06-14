@@ -15,8 +15,8 @@ p = Partikel: kelas kata yang meliputi kata depan, kata sambung, kata seru, kata
 n = Nomina: kata benda
 `.trim())
 }
-handler.help = ['kbbi <teks>']
+handler.help = ['kbbi2 <teks>']
 handler.tags = ['internet']
-handler.command = /^kbbi$/i
+handler.command = /^kbbi2$/i
 
 export default handler
