@@ -88,7 +88,7 @@ Rilis : ${x.id}
 Lang : ${x.lalontong}
 `}
 await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix + command}anyjoke ${x.setup`]
+                ['Next', `${usedPrefix + command}anyjoke ${x.setup}`]
             ], m)
             }
             
@@ -110,5 +110,5 @@ let caption = `*⎔┉━「 ${command} 」━┉⎔*`
             
             
 }
-handler.command = handler.help = ['katabijak', 'kataquotes', 'listgames', 'aesthetic', 'whois']
+handler.command = handler.help = ['platgames', 'kataquotes', 'listgames', 'carigames', 'anyjoke', 'giveaways']
 handler.tags = ['quotes']
