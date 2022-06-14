@@ -5,28 +5,22 @@ let handler = async (m, { text }) => {
   let teks = [...video, ...channel].map(v => {
     switch (v.type) {
       case 'video': return `
-💌 *${v.title}* 
-🔗 _${v.url}_
-⏰ Duration: ${v.durationH}
-📤 Uploaded ${v.publishedTime}
+📌 *${v.title}* (${v.url})
+⌚ Duration: ${v.durationH}
+⏲️ Uploaded ${v.publishedTime}
 👁️ ${v.view} views
       `.trim()
       case 'channel': return `
-╭──────━• *CHANNEL*
-│🎀 *${v.channelName}* 
-│🔗 _${v.url}_
-│📛 _${v.subscriberH} Subscriber_
-│🎥 ${v.videoCount} video
-┗──────━•
+📌 *${v.channelName}* (${v.url})
+🧑‍🤝‍🧑 _${v.subscriberH} (${v.subscriber}) Subscriber_
+🎥 ${v.videoCount} video
 `.trim()
     }
-  }).filter(v => v).join('\n\n─────────────━─────────────\n\n')
-  m.reply(`*${htki} SEARCH ${htka}*\n\n` + teks)
+  }).filter(v => v).join('\n\n========================\n\n')
+  m.reply(teks)
 }
 handler.help = ['', 'earch'].map(v => 'yts' + v + ' <pencarian>')
 handler.tags = ['tools']
 handler.command = /^yts(earch)?$/i
-
-handler.register = true
 
 export default handler
