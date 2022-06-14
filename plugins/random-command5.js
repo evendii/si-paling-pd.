@@ -236,7 +236,7 @@ await conn.sendButton(m.chat, caption, wm, null, [
 
 
 }
-handler.command = handler.help = ['cdnjs', 'readqr', 'animechan', 'whatanime', 'isgd', 'resmush', 'toascii', 'calc', 'dlytmp3', 'dlytmp4', 'lirikjoox', 'chordlagu']
+handler.command = handler.help = ['cdnjs', 'readqr', 'animechan', 'whatanime', 'isgd', 'resmush', 'toascii', 'calc', 'dlytmp3', 'dlytmp4', 'lirikjoox', 'chordlagu', 'hadits']
 handler.tags = ['tools']
 
 export default handler
