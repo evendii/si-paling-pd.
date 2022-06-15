@@ -48,7 +48,7 @@ global.APIs = { // API Prefix
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
  'https://api.lolhuman.xyz' : '9b817532fadff8fc7cb86862',
- 'https://api.xteam.xyz' : 'HIRO',
+ 'https://api.xteam.xyz' : 'NezukoTachibana281207',
  'https://api.zeks.xyz' : 'apivinz',
  'https://hardianto-chan.herokuapp.com' : 'hardianto',
  'https://hardianto.xyz' : 'hardianto',
