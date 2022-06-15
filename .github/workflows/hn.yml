@@ -1,0 +1,25 @@
+name: HN
+
+on:
+  push:
+    branches: '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install package
+      run: |
+        sudo apt-get -y install ffmpeg imagemagick
+        
+    - name: Download File Bot
+      run: |
+        git clone https://github.com/AyGemuy/HN
+        
+    - name: Run File Bot
+      run: |
+        cd HN && npm install && npm start
