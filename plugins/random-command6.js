@@ -115,6 +115,21 @@ let caption = `Nih ${command}`
 await conn.sendMessage(m.chat, { audio: { url: x.result }, mimetype: 'video/mp4', fileName: 'ptl.mp4' })
 }
 
+if (command == 'wallhaven') {
+if (!text) throw `Contoh penggunaan ${usedPrefix}${command} naru`
+let f = await fetch(`https://wallhaven.cc/api/v1/search?q=${text}`)
+let p = await f.json()
+let m = p.result
+let x = m.getRandon()
+let caption = `ID: ${x.id}
+Views: ${x.views}
+Category: ${x.category}
+Upload: ${x.created_at}`
+await conn.sendButton(m.chat, caption, wm, x.path, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+}
+
 if (command == 'motivasi') {
 let f = await fetch(`https://botstyle-api.herokuapp.com/api/motivasi?apikey=OrM2HzZl`)
 let x = await f.json()
@@ -213,7 +228,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'penyegar', 'motivasi', 'audiodb', 'imgs']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'penyegar', 'motivasi', 'audiodb', 'imgs', 'wallhaven']
 handler.tags = ['tools']
 
 export default handler

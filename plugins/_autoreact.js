@@ -10,7 +10,9 @@ if (chat.autoReact) {
             text: `${pickRandom(['😨','😅','😂','😳','😎', '🥵', '😱', '🐦', '🙄', '🐤','🗿','🐦','🤨','🥴','😐','👆','😔', '👀','👎'])}`,
             key: m.key,
           }})
-  }
+  } else if (!chat.autoReact) {
+    await conn.sendButton(m.chat, `*Off*`, author, ['off autoreact', '/disable autoreact'], m)
+    }
   }
 handler.customPrefix = /(bilek|laik|banh|nihh|tytyd|anjir|dek)/i
 handler.command = new RegExp
