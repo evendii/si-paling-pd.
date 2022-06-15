@@ -99,25 +99,24 @@ let json = await fetch(`https://api.lolhuman.xyz/api/jadwalbola?apikey=9b817532f
 if (command == 'jadwaltv') {
 let json = await fetch(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=9b817532fadff8fc7cb86862`)
         let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
-        for (let has of jsons.result) {
-        caption += `
-  *antv:* ${has.antv}
-  *gtv:* ${has.gtv}
-  *indosiar:* ${has.indosiar}
-  *inewstv:* ${has.inewstv}
-  *kompastv:* ${has.kompastv}
-  *metrotv:* ${has.metrotv}
-  *mnctv:* ${has.mnctv}
-  *nettv:* ${has.nettv}
-  *rcti:* ${has.rcti}
-  *rtv:* ${has.rtv}
-  *sctv:* ${has.sctv}
-  *trans7:* ${has.trans7}
-  *tvone:* ${has.tvone}
-  *tvri:* ${has.tvri}
-  `}
-        return m.reply(caption)
+        await conn.sendButton(m.chat, `
+  *antv:* ${has.result.antv}
+  *gtv:* ${has.result.gtv}
+  *indosiar:* ${has.result.indosiar}
+  *inewstv:* ${has.result.inewstv}
+  *kompastv:* ${has.result.kompastv}
+  *metrotv:* ${has.result.metrotv}
+  *mnctv:* ${has.result.mnctv}
+  *nettv:* ${has.result.nettv}
+  *rcti:* ${has.result.rcti}
+  *rtv:* ${has.result.rtv}
+  *sctv:* ${has.result.sctv}
+  *trans7:* ${has.result.trans7}
+  *tvone:* ${has.result.tvone}
+  *tvri:* ${has.result.tvri}
+  `, author, has.phone_image, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
 }
 
 if (command == 'jalantikus') {
@@ -135,7 +134,7 @@ let jsons = await json.json()
 }
 
 if (command == 'jaraktempuh') {
-if (!text) throw `Contoh penggunaan ${usedPrefix}${command} aceh banten`
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} aceh banten`
 
 let json = await fetch(`https://api.lolhuman.xyz/api/jaraktempuh?apikey=9b817532fadff8fc7cb86862&kota1=${args[0]}&kota2=${args[1]}`)
 let jsons = await json.json()

@@ -194,13 +194,13 @@ await conn.sendButton(m.chat, caption, wm, r.thumb, [
 if (command == 'lirikjoox') {
   if (!text) throw 'Text Mana?'
 let f = await fetch(`https://yog-apikey.herokuapp.com/api/music/joox?apikey=YogGanz&query=${text}`)
-let xc = await f.json()
-let r = xc.result
-let caption = `*Title:* ${r.lagu}
-*Size:* ${r.album}
-*Quality:* ${r.penyanyi}
-*View:* ${r.publish}
-*Like:* ${xc.lirik.result}`
+let r = await f.json()
+
+let caption = `*Title:* ${r.result.lagu}
+*Size:* ${r.result.album}
+*Quality:* ${r.result.penyanyi}
+*View:* ${r.result.publish}
+*Like:* ${r.lirik.result}`
 await conn.sendButton(m.chat, caption, wm, r.img, [
                 ['Get', `${usedPrefix}get ${r.lirik.result}`]
             ], m)
@@ -219,6 +219,10 @@ await conn.sendButton(m.chat, caption, wm, r.img, [
 
 if (command == 'hadits') {
   if (!text) throw `Text Mana? ${command} bukhari|59`
+  let urut = text.split`|`
+  let text1 = urut[0]
+  let text2 = urut[1]
+
 let f = await fetch(`https://yog-apikey.herokuapp.com/api/muslim/hadits?kitab=${text1}&nomor=${text2}&apikey=YogGanz`)
 let xc = await f.json()
 let r = xc.data
