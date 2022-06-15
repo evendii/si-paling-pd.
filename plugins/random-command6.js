@@ -1,4 +1,4 @@
-+import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 import { sticker } from '../lib/sticker.js'
