@@ -119,8 +119,7 @@ if (command == 'wallhaven') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} naru`
 let f = await fetch(`https://wallhaven.cc/api/v1/search?q=${text}`)
 let p = await f.json()
-let m = p.data
-let x = m.getRandon()
+let x = p.data
 let caption = `ID: ${x.id}
 Views: ${x.views}
 Category: ${x.category}
@@ -139,18 +138,75 @@ await conn.sendButton(m.chat, caption, wm, null, [
             ], m)
 }
 
-if (command == 'audiodb') {
-if (!text) throw `Contoh penggunaan ${usedPrefix}${command} coldplay`
+if (command == 'iplookup') {
+if (!text) throw `Contoh penggunaan ${usedPrefix}${command} 8.8.8.8`
 
-let f = await fetch(`https://www.theaudiodb.com/api/v1/json/2/search.php?s=${text}`)
+let f = await fetch(`https://hadi-api.herokuapp.com/api/iplookup?ip=${text}`)
 let c = await f.json()
-let x = c.artists
-let caption = `🤠 ${x.strArtist}
-🤠 ${x.intBornYear}
-🤠 ${x.strMood}
-🤠 ${x.strLabel}
-🤠 ${x.strBiographyEN}
+let x = c.result
+let caption = `country: ${x.country}
+countryCode: ${x.countryCode}
+region: ${x.region}
+regionName: ${x.regionName}
+city: ${x.city}
+zip: ${x.zip}
+lat: ${x.lat}
+lon: ${x.lon}
+timezone: ${x.timezone}
+isp: ${x.isp}
+org: ${x.org}
+as: ${x.as}
 `
+await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+}
+
+if (command == 'ssweb2') {
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://s.id desktop on
+*Teks 1:*
+desktop
+tablet
+phone
+
+*Teks 2:*
+on
+off
+`
+let caption = `Result: ${args[0]}`
+let img = `https://hadi-api.herokuapp.com/api/ssweb?url=${args[0]}&device=${args[1]}&full=${args[2]}`
+await conn.sendButton(m.chat, caption, wm, img, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+}
+
+if (command == 'tinyurl') {
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
+let f = await fetch(`https://hadi-api.herokuapp.com/api/tinyurl?url=${args[0]}`)
+let x = await f.json()
+let caption = `${x.result}`
+await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+}
+
+if (command == 'bitly') {
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
+let f = await fetch(`https://hadi-api.herokuapp.com/api/bitly?url=${args[0]}`)
+let x = await f.json()
+let caption = `${x.result}`
+await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m)
+}
+
+if (command == 'violetics') {
+let f = await fetch(`https://violetics.pw/api?type=json`)
+let m = await f.json()
+let x = m.stacks
+let caption = `${x.name}
+${x.hostname_path}
+`.trim()
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
@@ -228,7 +284,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'audiodb', 'imgs', 'wallhaven']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'imgs', 'wallhaven', 'tinyurl', 'bitly', 'violetics']
 handler.tags = ['tools']
 
 export default handler
