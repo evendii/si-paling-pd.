@@ -4,7 +4,7 @@ import { sticker } from '../lib/sticker.js'
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} pentol|2`
-
+if (command == 'gettenor') {
 let urut = text.split`|`
   let text1 = urut[0]
   let text2 = urut[1]
@@ -19,8 +19,18 @@ let urut = text.split`|`
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
     throw stiker.toString()
     }
-}
+  }
 
-handler.command = /^(gettenor)$/i
+if (command == 'getteles') {
+    let gas = await fetch(`https://api-xfar05.herokuapp.com/api/telesticker?url=${text}`)
+    let json = await gas.json()
+    let ter = json.result
+        let stiker = await sticker(null, global.API(ter.getRandom()), global.packname, global.author)
+    if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
+    throw stiker.toString()
+  }
+  
+}
+handler.command = ['gettenor', 'getteles']
 
 export default handler
