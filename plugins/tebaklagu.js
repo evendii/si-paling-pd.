@@ -10,10 +10,11 @@ let spotify_id = play_list.getRandom()
         conn.sendButton(m.chat, 'Masih ada soal belum terjawab di chat ini', author, null, buttons, conn.tebaklagu[id][0])
         throw false
     }
-    let res = await fetch(`https://api.xteam.xyz/game/tebaklagu?id=${spotify_id}&apikey=HIRO`)
+    let res = await fetch(`https://api.xteam.xyz/game/tebaklagu?id=${spotify_id}&apikey=NezukoTachibana281207`)
     if (res.status !== 200) throw await res.text()
     let result = await res.json()
     let json = result.result
+    if (json.artist !== '404') {
     // if (!json.status) throw json
     let caption = `
 *TEBAK JUDUL LAGU*
@@ -34,6 +35,9 @@ Bonus: ${poin} XP
         }, timeout)
     ]
     await conn.sendFile(m.chat, json.preview, 'coba-lagi.mp3', '', m)
+    } else if (json.artist == '404') {
+    m.chat('Lagu tidak ditemukan')
+    }
 }
 handler.help = ['tebaklagu']
 handler.tags = ['game']
