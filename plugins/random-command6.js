@@ -119,7 +119,7 @@ if (command == 'wallhaven') {
 if (!text) throw `Contoh penggunaan ${usedPrefix}${command} naru`
 let f = await fetch(`https://wallhaven.cc/api/v1/search?q=${text}`)
 let p = await f.json()
-let m = p.result
+let m = p.data
 let x = m.getRandon()
 let caption = `ID: ${x.id}
 Views: ${x.views}

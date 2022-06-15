@@ -115,10 +115,10 @@ let q = m.quoted ? m.quoted : m
 
 let f = await fetch(`https://process.filestackapi.com/A7lMmfpoSTu3i5i7yBXeQz/ascii=colored:true/${url}`)
 let xc = await f.text()
-let caption = `${xc}`
-await conn.sendButton(m.chat, caption, wm, null, [
-                ['Get Img', `${usedPrefix}get ${url}`]
-            ], m)
+let caption = `*Jadikan File HTML*
+
+${xc}`
+m.reply(caption)
 }
 
 if (command == 'calc') {
