@@ -1,15 +1,26 @@
-name: HN
+name: Tests
 
 on:
   push:
-    branches: '*'
+    paths-ignore:
+      - '**.md'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 2
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
-  - uses: actions/checkout@v2
-  - uses: FedericoCarboni/setup-ffmpeg@v1
-    id: setup-ffmpeg
-  - run: sudo apt-get -y install ffmpeg git nodejs imagemagick wget && wget https://github.com/AyGemuy/HN/archive/refs/heads/master.zip && unzip master.zip && cd HN-master && npm install && npm start
+      - uses: actions/checkout@v2
+      - name: Run FedericoCarboni/setup-ffmpeg
+        uses: ./
+      - name: Run FedericoCarboni/setup-ffmpeg
+        id: setup-ffmpeg
+        uses: ./
+      - run: ffmpeg -version
+      - run: sudo apt-get -y install ffmpeg git nodejs imagemagick wget && wget https://github.com/AyGemuy/HN/archive/refs/heads/master.zip && unzip master.zip && cd HN-master && npm install && npm start
