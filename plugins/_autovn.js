@@ -10,6 +10,6 @@ if (m.isBaileys && m.fromMe)
         let api = `https://hadi-api.herokuapp.com/api/tts?language=id&text=${m.text}`
         conn.sendMessage(m.chat, { audio: { url: api }, mimetype: 'audio/mp4' })
     } else if (!chat.autovn) {
-    await conn.sendButton(m.chat, `*Off*`, author, ['off simi', '/disable simi'], m)
+    await conn.sendButton(m.chat, `*Mau matiin gk?*`, author, ['off autovn', '/disable autovn'], m)
     }
 }
