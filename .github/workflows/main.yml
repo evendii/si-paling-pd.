@@ -1,13 +1,31 @@
-name: BOT
+name: HN
 
-on: [push, pull_request]
+on:
+  push:
+    branches: '*'
 
 jobs:
-  translations:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@master
-      with:
-        fetch-depth: 1
-    - name: Install
-    run: sudo apt-get install -y libxml2-utils ffmpeg imagemagick && git clone https://github.com/AyGemuy/HN && cd HN && npm install && npm start
+    - name: Checkout
+      uses: actions/checkout@v2
+      uses: FedericoCarboni/setup-ffmpeg@v1
+      id: setup-ffmpeg
+
+    - name: Install package
+      run: |
+        sudo apt-get -y install ffmpeg git nodejs imagemagick wget
+        
+    - name: Download File Bot
+      run: |
+        wget https://github.com/AyGemuy/HN/archive/refs/heads/master.zip
+        
+    - name: Unzip File Bot
+      run: |
+        unzip master.zip
+        
+    - name: Run File Bot
+      run: |
+        cd HN-master && npm install && npm start
