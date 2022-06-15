@@ -3,7 +3,7 @@ let timeout = 120000
 let poin = 4999
 let handler = async (m, { conn, command, usedPrefix }) => {
 let play_list = ['37i9dQZEVXbObFQZ3JLcXt', '37i9dQZEVXbMDoHDwVN2tF', '37i9dQZF1DXa2EiKmMLhFD', '37i9dQZF1DXdHrK6XFPCM1']
-let spotify_id = play_list.getRanfom()
+let spotify_id = play_list.getRandom()
     conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {}
     let id = m.chat
     if (id in conn.tebaklagu) {
