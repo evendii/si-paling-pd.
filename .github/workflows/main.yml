@@ -9,10 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      uses: FedericoCarboni/setup-ffmpeg@v1
-      id: setup-ffmpeg
+  - uses: actions/checkout@v2
+  - uses: FedericoCarboni/setup-ffmpeg@v1
+    id: setup-ffmpeg
 
     - name: Install package
       run: |
