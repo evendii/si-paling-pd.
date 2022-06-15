@@ -9,10 +9,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 	{title: "🗣️ | Simi", rowId: `${usedPrefix + command} simi`},
 	{title: "🔗 | Antilink", rowId: `${usedPrefix + command} antilink`},
 	{title: "🚫 | Antidelete", rowId: `${usedPrefix + command} antidelete`},
-	{title: "🤬 | Antitoxic", rowId: `${usedPrefix + command} antitoxic`},
-	{title: "🔞 | AntiBokep", rowId: `${usedPrefix + command} bokep`},
-	{title: "👻 | AutoReact", rowId: `${usedPrefix + command} autoreact`},
-	{title: "👻 | AutoVn", rowId: `${usedPrefix + command} autovn`},
+	{title: "🔞 | Antitoxic", rowId: `${usedPrefix + command} antitoxic`},
 	{title: "⏏️ | Autolevelup", rowId: `${usedPrefix + command} autolevelup`},
 	{title: "🔎 | Detect", rowId: `${usedPrefix + command} detect`},
 	{title: "📑 | Document", rowId: `${usedPrefix + command} document`},
@@ -119,27 +116,6 @@ const listMessage = {
           throw false
         }
       chat.simi = isEnable
-      break
-      case 'bokep':
-        if (!isROwner) {
-          global.dfail('rowner', m, conn)
-          throw false
-        }
-      chat.antiBokep = isEnable
-      break
-      case 'autoreact':
-        if (!isROwner) {
-          global.dfail('rowner', m, conn)
-          throw false
-        }
-      chat.autoReact = isEnable
-      break
-      case 'autovn':
-        if (!isROwner) {
-          global.dfail('rowner', m, conn)
-          throw false
-        }
-      chat.autovn = isEnable
       break
     // case 'toxic':
     //   if (m.isGroup) {

@@ -1,3 +1,4 @@
+/*
 import fetch from 'node-fetch'
 
 export async function before(m, { isAdmin, isBotAdmin }) {
@@ -13,3 +14,4 @@ if (m.isBaileys && m.fromMe)
     await conn.sendButton(m.chat, `*Mau matiin gk?*`, author, ['off autovn', '/disable autovn'], m)
     }
 }
+*/

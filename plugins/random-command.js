@@ -49,9 +49,7 @@ mentions: m.mentionedJid
 }
 
 if (command == 'bokep') {
-if (chat.antiBokep) {
 conn.sendFile(m.chat, 'https://yog-apikey.herokuapp.com/api/bokep?apikey=YogGanz', 'asupan.mp4', wm, m)
-}
 }
 
 if (command == 'kusonime') {
