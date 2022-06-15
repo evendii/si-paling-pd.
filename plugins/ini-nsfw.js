@@ -1,5 +1,6 @@
 import axios from "axios"
 let handler = async (m, {command, conn}) => {
+if (chat.antiBokep) {
 if (command == 'nsfwloli') {
 let haha = await conn.getFile(`https://server-api-rey.herokuapp.com/api/wallpaper/nsfwloli?apikey=apirey`)
 conn.sendButton(m.chat, `Nihh ${command}`.trim(), author, haha.data, [['🔄 Next 🔄', `/${command}`]], m)}
@@ -110,6 +111,9 @@ let res = await axios("https://meme-api.herokuapp.com/gimme/yurigif")
 let json = res.data
 let url = json.url
 conn.sendButton(m.chat, `Nihh ${command}`.trim(), author, url, [['🔄 Next 🔄', `/${command}`]], m)}
+} else if (!chat.antiBokep) {
+    await conn.sendButton(m.chat, `*Bokep detect*`, author, ['off bokep', '/disable bokep'], m)
+    }
 }
 
 handler.command =  handler.help = ['nsfwloli', 'nsfwfoot', 'nsfwass', 'nsfwbdsm', 'nsfwcum', 'nsfwero', 'nsfwfemdom', 'nsfwfoot', 'nsfwglss', 'nsfworgy', 'yuri', 'yuri2', 'yaoi', 'yaoi2', 'panties', 'tetas', 'booty', 'ecchi', 'furro', 'hentai', 'trapito', 'imagenlesbians', 'pene', 'porno', 'porno2', 'randomxxx', 'pechos']

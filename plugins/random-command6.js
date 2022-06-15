@@ -108,7 +108,7 @@ await conn.sendButton(m.chat, caption, wm, null, [
             ], m)
 }
 
-if (command == 'ptl') {
+if (command == 'penyegar') {
 let f = await fetch(`https://botstyle-api.herokuapp.com/api/ptl?apikey=OrM2HzZl`)
 let x = await f.json()
 let caption = `Nih ${command}`
@@ -129,7 +129,7 @@ if (!text) throw `Contoh penggunaan ${usedPrefix}${command} coldplay`
 
 let f = await fetch(`https://www.theaudiodb.com/api/v1/json/2/search.php?s=${text}`)
 let c = await f.json()
-let x = c.result[0]
+let x = c.result
 let caption = `🤠 ${x.strArtist}
 🤠 ${x.intBornYear}
 🤠 ${x.strMood}
@@ -213,7 +213,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'audiodb', 'imgs']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'penyegar', 'motivasi', 'audiodb', 'imgs']
 handler.tags = ['tools']
 
 export default handler
