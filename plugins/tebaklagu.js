@@ -36,7 +36,7 @@ Bonus: ${poin} XP
     ]
     await conn.sendFile(m.chat, json.preview, 'coba-lagi.mp3', '', m)
     } else if (json.artist == '404') {
-    m.reply(`Try Again! *${usedPrefix + command}*`)
+    m.reply(`*Ulangi! Command ${usedPrefix + command} Karena ${json.judul}*`)
     }
 }
 handler.help = ['tebaklagu']

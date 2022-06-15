@@ -1,13 +1,9 @@
 import fetch from 'node-fetch'
-import uploadFile from '../lib/uploadFile.js'
-import uploadImage from '../lib/uploadImage.js'
-import { sticker } from '../lib/sticker.js'
-import fs from "fs"
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
 if (command == 'twittdl') {
-if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} https://twitter.com/PassengersMovie/status/821025484150423557`
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix + command} https://twitter.com/PassengersMovie/status/821025484150423557`
 
 let f = await fetch(`https://api-xfar05.herokuapp.com/api/twitter?url=${args[0]}`)
 let x = await f.json()
@@ -20,7 +16,7 @@ await conn.sendButton(m.chat, caption, wm, x.result.thumb, [
 }
 
 if (command == 'otaku') {
-if (!text) throw `Contoh penggunaan ${usedPrefix}${command} Naruto`
+if (!text) throw `Contoh penggunaan ${usedPrefix + command} Naruto`
 
 let f = await fetch(`https://yuzzu-api.herokuapp.com/api/otaku?judul=${text}`)
 let p = await f.json()
@@ -39,7 +35,7 @@ let caption = `*judul:* ${x.judul}
 *link:* ${x.link}
 *sinopsis:* ${x.sinopsis}`
 await conn.sendButton(m.chat, caption, wm, x.thumb, [
-                ['Next', `${usedPrefix}${command} ${text}`]
+                ['Next', `${usedPrefix + command} ${text}`]
             ], m)
 }
 
@@ -56,7 +52,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.result, null, null, null, null, [
 }
 
 if (command == 'artikbbi') {
-if (!text) throw `Contoh penggunaan ${usedPrefix}${command} Aku`
+if (!text) throw `Contoh penggunaan ${usedPrefix + command} Aku`
 
 let f = await fetch(`https://yuzzu-api.herokuapp.com/api/kbbi?kata=${text}`)
 let x = await f.json()
@@ -334,9 +330,7 @@ let x = await pe.json()
 if (command == 'mainslot') {
 let f = await fetch(`https://mysakura.herokuapp.com/api/slot?apikey=sakura404`)
 let x = await f.json()
-let who
-    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-    else who = m.sender
+let who = m.sender
 global.db.data.users[who].exp += `${x.score}000`
 let caption = `${x.slot}
 
@@ -352,13 +346,3 @@ handler.command = handler.help = ['twittdl', 'otaku', 'darkjokes', 'artikbbi', '
 handler.tags = ['fun']
 
 export default handler
-
-const fetchJson = (url, options) => new Promise(async (resolve, reject) => {
-fetch(url, options)
-.then(response => response.json())
-.then(json => {
-resolve(json)
-})
-.catch((err) => {
-reject(err)
-})})
