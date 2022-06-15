@@ -98,7 +98,7 @@ let json = await fetch(`https://api.lolhuman.xyz/api/jadwalbola?apikey=9b817532f
 
 if (command == 'jadwaltv') {
 let json = await fetch(`https://api.lolhuman.xyz/api/jadwaltv/now?apikey=9b817532fadff8fc7cb86862`)
-        let jsons = await json.json()
+        let has = await json.json()
         await conn.sendButton(m.chat, `
   *antv:* ${has.result.antv}
   *gtv:* ${has.result.gtv}

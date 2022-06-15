@@ -128,7 +128,7 @@ let text2 = args.slice(1).join(' ')
 let res = await fetch(`https://yog-apikey.herokuapp.com/api/muslim/hadits?kitab=${text1}&nomor=${text2}&apikey=YogGanz`)
   let sul = await res.json()
   let has = sul.data
-  let ha = sul.data.contents
+  let ha = has.contents
   await conn.sendButton(m.chat, `*Hadist:* ${has.name}
   *Tersedia:* ${has.available} nomor
   

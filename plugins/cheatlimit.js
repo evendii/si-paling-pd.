@@ -14,9 +14,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let ke3 = global.db.data.users[who].money += angka3
     
     conn.sendButton(m.chat, `*${hore}* ${emot}
-    + *${ke1}* EXP Total
-    + *${ke2}* Limit Total
-    + *${ke3}* Money Total
+    + *${angka1}* EXP Banh
+    + *${angka2}* Limit Banh
+    + *${angka3}* Money Banh
     
     Ketik *.limit* untuk cek limit`, author, null, [
         ['Nambah', `${usedPrefix + command}`]
