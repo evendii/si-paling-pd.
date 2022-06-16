@@ -218,7 +218,30 @@ Opsi Tersedia:
 • animebellybutton
 • sideoppai
 • ahegao
-
+• hentaianal
+• anal
+• pussy
+• animepussy
+• yaoi
+• yuri
+• hentaiblowjob
+• blowjob
+• futanari
+• kitsunehentai
+• midriffhentai
+• erohentai
+• cumhentai
+• paizuri
+• wholesomeanimemes
+• dankmemes
+• terriblefacebookmemes
+• memes
+• AdviceAnimals
+• MemeEconomy
+• nukedmemes
+• okbuddyretard
+• historymemes
+• teenagers
 `
     if (!args[0]) throw er
     switch (args[0].toLowerCase()) {

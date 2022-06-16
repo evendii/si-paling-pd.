@@ -47,7 +47,7 @@ let js = await fetch(url)
 let jp = await js.json()
 let o = jp.result
 let x = o.getRandom()
-await conn.sendHydrated(m.chat, `${x.title} ${x.size}`, wm, x.url, null, null, null, null, [
+await conn.sendHydrated(m.chat, caption, wm, x.url, null, null, null, null, [
       ['Gimage4', usedPrefix + 'gimage1 ' + text],
       ['Gimage5', usedPrefix + 'gimage5 ' + text],
       ['Gimage6', usedPrefix + 'gimage6 ' + text]
