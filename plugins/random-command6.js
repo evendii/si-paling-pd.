@@ -203,7 +203,8 @@ await conn.sendButton(m.chat, caption, wm, null, [
 if (command == 'violetics') {
 let f = await fetch(`https://violetics.pw/api?type=json`)
 let m = await f.json()
-let x = m.stacks
+let o = m.stacks
+let x = o.getRandom()
 let caption = `${x.name}
 ${x.hostname_path}
 `.trim()

@@ -308,12 +308,6 @@ let x = await pe.json()
                 ['Next', `${usedPrefix + command}`]
             ], m)
             break
-                let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
-let x = await pe.json()
-  await conn.sendButton(m.chat, `*Nih*`, wm, x.result, [
-                ['Next', `${usedPrefix + command}`]
-            ], m)
-            break
         default:
             throw er
     }
@@ -330,12 +324,11 @@ let x = await pe.json()
 if (command == 'mainslot') {
 let f = await fetch(`https://mysakura.herokuapp.com/api/slot?apikey=sakura404`)
 let x = await f.json()
-let who = m.sender
-global.db.data.users[who].exp += `${x.score}000`
+global.db.data.users[m.sender].limit += `${x.score}`
 let caption = `${x.slot}
 
 *Hasil:* ${x.hasil}
-*+ EXP:* ${x.score}000`
+*+ Limit:* ${x.score}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
