@@ -203,9 +203,8 @@ await conn.sendButton(m.chat, caption, wm, null, [
 if (command == 'violetics') {
 let f = await fetch(`https://violetics.pw/api?type=json`)
 let m = await f.json()
-let o = m.stacks
-let x = o.getRandom()
-let caption = `${x.name}
+let x = m.stacks
+let caption = `${Array.from(x.name)}
 ${x.hostname_path}
 `.trim()
 await conn.sendButton(m.chat, caption, wm, null, [
@@ -285,7 +284,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'imgs', 'wallhaven', 'tinyurl', 'bitly', 'violetics']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly', 'violetics']
 handler.tags = ['tools']
 
 export default handler

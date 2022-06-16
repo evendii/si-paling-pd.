@@ -1,4 +1,8 @@
 import fetch from 'node-fetch'
+import uploadFile from '../lib/uploadFile.js'
+import uploadImage from '../lib/uploadImage.js'
+import { sticker } from '../lib/sticker.js'
+import fs from "fs"
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
@@ -336,6 +340,6 @@ await conn.sendButton(m.chat, caption, wm, null, [
 
 }
 handler.command = handler.help = ['twittdl', 'otaku', 'darkjokes', 'artikbbi', 'cewekracing', 'imgs2', 'imgs3', 'imgs4', 'imgs5', 'mysakura', 'mainslot']
-handler.tags = ['fun']
+handler.tags = ['random']
 
 export default handler

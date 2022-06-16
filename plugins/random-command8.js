@@ -5,13 +5,13 @@ import { sticker } from '../lib/sticker.js'
 import fs from "fs"
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
-let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.wm3, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')  }}}
+
+let frep = `{ contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')  }}}`
 let urut = text.split`|`
   let one = urut[1]
   let two = urut[2]
   let three = urut[3]
   
-if (command == 'hadi') {
 let er = `contoh:\n\n${usedPrefix + command} ecchi
 
 Opsi Tersedia:
@@ -29,7 +29,6 @@ Opsi Tersedia:
 • animebellybutton
 • sideoppai
 • ahegao
-
 `
     if (!args[0]) throw er
     switch (args[0].toLowerCase()) {
@@ -147,24 +146,10 @@ await conn.sendButton(m.chat, caption, wm, x.avatar, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
             break
-            case 'githubstalk':
-            let json = await fetch(`https://dhn-api.herokuapp.com/api/apk/apkdone?apps=${text}&apikey=4ca83deeb14d61d16cf0`)
-        let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
-        for (let x of jsons.result) {
-        caption += `
-🤠 *Name* : *${x.apps_name}*
-Link : ${x.apps_linkdl}
-Version : ${x.apps_version}
-Rate : ${x.apps_rate}
-Tag : ${x.apps_tag}
-`}
-        await conn.reply(m.chat, caption, m, frep)
-        break
+            
         default:
             throw er
     }
-}
 
 }
 handler.command = handler.help = ['hadi']
