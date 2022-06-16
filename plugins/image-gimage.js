@@ -45,8 +45,9 @@ let caption = `*Hasil pencarian* ${text}\n${x.title}\n${x.size}\n*Note:* Beni`
 let url = `https://api-xcoders.xyz/api/search/image?query=${text}&apikey=xcoders`
 let js = await fetch(url)
 let jp = await js.json()
-let x = jp.result
-await conn.sendHydrated(m.chat, caption, wm, x.url, null, null, null, null, [
+let o = jp.result
+let x = o.getRandom()
+await conn.sendHydrated(m.chat, `${x.title} ${x.size}`, wm, x.url, null, null, null, null, [
       ['Gimage4', usedPrefix + 'gimage1 ' + text],
       ['Gimage5', usedPrefix + 'gimage5 ' + text],
       ['Gimage6', usedPrefix + 'gimage6 ' + text]

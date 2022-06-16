@@ -200,18 +200,6 @@ await conn.sendButton(m.chat, caption, wm, null, [
             ], m)
 }
 
-if (command == 'violetics') {
-let f = await fetch(`https://violetics.pw/api?type=json`)
-let m = await f.json()
-let x = m.stacks
-let caption = `${x.name[0]}
-${x.hostname_path}
-`.trim()
-await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix + command}`]
-            ], m)
-}
-
 if (command == 'imgs') {
 let er = `contoh:\n\n${usedPrefix + command} ecchi
 
@@ -284,7 +272,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly', 'violetics']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly']
 handler.tags = ['tools']
 
 export default handler
