@@ -781,6 +781,7 @@ export async function participantsUpdate({ id, participants, action }) {
             break
         case 'promote':
             text = (chat.sPromote || this.spromote || conn.spromote || '@user *is now Admin*')
+            break
         case 'demote':
             if (!text)
                 text = (chat.sDemote || this.sdemote || conn.sdemote || '@user *is no longer Admin*')
