@@ -328,11 +328,10 @@ let x = await pe.json()
 if (command == 'mainslot') {
 let f = await fetch(`https://mysakura.herokuapp.com/api/slot?apikey=sakura404`)
 let x = await f.json()
-global.db.data.users[m.sender].limit += `${x.score}`
 let caption = `${x.slot}
 
 *Hasil:* ${x.hasil}
-*+ Limit:* ${x.score}`
+*+ poin:* ${x.score}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m)
@@ -340,6 +339,6 @@ await conn.sendButton(m.chat, caption, wm, null, [
 
 }
 handler.command = handler.help = ['twittdl', 'otaku', 'darkjokes', 'artikbbi', 'cewekracing', 'imgs2', 'imgs3', 'imgs4', 'imgs5', 'mysakura', 'mainslot']
-handler.tags = ['random']
+handler.tags = ['tools']
 
 export default handler

@@ -37,7 +37,7 @@ const roles = {
     'Mythic III': 160,
     'Mythic II': 165,
     'Mythic I': 170,
-    'Mythic Glory': 175
+    'Mythic Glory': 175,
     'EMERALD V': 180,
     'EMERALD IV': 185,
     'EMERALD III': 190,

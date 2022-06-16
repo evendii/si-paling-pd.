@@ -1,4 +1,4 @@
-import { circle } = require("canvacord")
+import { circle } from "canvacord
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 

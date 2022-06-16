@@ -204,7 +204,7 @@ if (command == 'violetics') {
 let f = await fetch(`https://violetics.pw/api?type=json`)
 let m = await f.json()
 let x = m.stacks
-let caption = `${Array.from(x.name)}
+let caption = `${x.name[0]}
 ${x.hostname_path}
 `.trim()
 await conn.sendButton(m.chat, caption, wm, null, [
