@@ -1,4 +1,8 @@
 import fetch from 'node-fetch'
+import uploadFile from '../lib/uploadFile.js'
+import uploadImage from '../lib/uploadImage.js'
+import { sticker } from '../lib/sticker.js'
+import fs from "fs"
 import { googleImage } from '@bochilteam/scraper'
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
@@ -12,7 +16,7 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
       ['Gimage1', usedPrefix + 'gimage1 ' + text],
       ['Gimage2', usedPrefix + 'gimage2 ' + text],
       ['Gimage3', usedPrefix + 'gimage3 ' + text]
-    ], m)
+    ], m, frep)
     }
 
 if (command == 'gimage1') {
@@ -25,7 +29,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
       ['Gimage2', usedPrefix + 'gimage2 ' + text],
       ['Gimage3', usedPrefix + 'gimage3 ' + text],
       ['Gimage4', usedPrefix + 'gimage4 ' + text]
-    ], m)
+    ], m, frep)
     }
     
 if (command == 'gimage2') {
@@ -38,7 +42,7 @@ await conn.sendHydrated(m.chat, caption, wm, x, null, null, null, null, [
       ['Gimage3', usedPrefix + 'gimage1 ' + text],
       ['Gimage4', usedPrefix + 'gimage4 ' + text],
       ['Gimage5', usedPrefix + 'gimage5 ' + text]
-    ], m)
+    ], m, frep)
     }
 
 if (command == 'gimage3') {
@@ -62,7 +66,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.url, null, null, null, null, [
       ['Gimage5', usedPrefix + 'gimage1 ' + text],
       ['Gimage6', usedPrefix + 'gimage6 ' + text],
       ['Gimage', usedPrefix + 'gimage ' + text]
-    ], m)
+    ], m, frep)
     }
 
 if (command == 'gimage5') {
@@ -75,7 +79,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
       ['Gimage6', usedPrefix + 'gimage6 ' + text],
       ['Gimage', usedPrefix + 'gimage ' + text],
       ['Gimage1', usedPrefix + 'gimage1 ' + text]
-    ], m)
+    ], m, frep)
     }
 
 if (command == 'gimage6') {
