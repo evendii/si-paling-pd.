@@ -3,7 +3,8 @@ import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-	
+	let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+
     let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
   if (!mime) throw 'Fotonya Mana?'
@@ -55,20 +56,13 @@ warm-sunset`)
     let url = await uploadImage(img)
     
     let images = `https://violetics.pw/api/photofilter/${encodeURIComponent(text)}?apikey=beta&image=${encodeURIComponent(url)}`
-        let buttons = [
-                    {buttonId: `.menu`, buttonText: {displayText: '🔙 Menu'}, type: 1},
-                    {buttonId: `${usedPrefix + command}`, buttonText: {displayText: '❇️ Effect'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: images },
-                    caption: `*⎔┉━「 Photomaker 」━┉⎔*
-🤠 *Query* : ${url}`,
-                    footer: conn.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                conn.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
+    let caption = `*⎔┉━「 ${command} 」━┉⎔*
+🤠 *Query* : ${url}`
+  await conn.sendButton(m.chat, caption, wm, images, [
+                ['Next', `${usedPrefix + command}`],
+                ['Menu', `${usedPrefix}menu`]
+            ], m, fdoc)
+            }
 //lo mau apa??
 handler.help = ['phfilter (caption|reply media)']
 handler.tags = ['maker']

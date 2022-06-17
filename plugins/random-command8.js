@@ -186,7 +186,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            /*
+            
             case 'hijaber':
         case 'harley':
         case 'cecans':
@@ -228,7 +228,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            
+            /*
         case 'bucin':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()

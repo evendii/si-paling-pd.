@@ -3,7 +3,8 @@ import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 
 let handler = async (m, { conn, text, args, usedPrefix, command }) => {
-	
+	let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''
     if (!text) return m.reply(`Balas gambar dengan perintah
@@ -20,21 +21,13 @@ rotate`)
   let text1 = args.slice(1).join(' ')
   
     let images = `https://violetics.pw/api/jimp/${thm}?apikey=beta&img=${url}&level=${text1}`
-    
-        let buttons = [
-                    {buttonId: `.menu`, buttonText: {displayText: '🔙 Menu'}, type: 1},
-                    {buttonId: `${usedPrefix + command}`, buttonText: {displayText: '❇️ Effect'}, type: 1}
-                ]
-                let buttonMessage = {
-                    image: { url: images },
-                    caption: `*⎔┉━「 Jimp2 」━┉⎔*
-🤠 *Query* : ${url}`,
-                    footer: conn.user.name,
-                    buttons: buttons,
-                    headerType: 4
-                }
-                conn.sendMessage(m.chat, buttonMessage, { quoted: m })
-}
+    let caption = `*⎔┉━「 ${command} 」━┉⎔*
+🤠 *Query* : ${thm}`
+  await conn.sendButton(m.chat, caption, wm, images, [
+                ['Next', `${usedPrefix + command}`],
+                ['Menu', `${usedPrefix}menu`]
+            ], m, fdoc)
+            }
 //lo mau apa??
 handler.help = ['jimp2 efek level']
 handler.tags = ['maker']

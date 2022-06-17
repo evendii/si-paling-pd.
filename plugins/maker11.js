@@ -1,4 +1,6 @@
 let handler = async(m, { conn, usedPrefix, command, text }) => {
+let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+
 if (!text) throw `Gunakan contoh ${usedPrefix + command} hello`
 
 	const sections = [
@@ -54,7 +56,7 @@ const listMessage = {
   buttonText: `☂️ Tema Disini ☂️`,
   sections
 }
-conn.sendMessage(m.chat, listMessage, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm,jpegThumbnail: Buffer.alloc(0)}}}})
+conn.sendMessage(m.chat, listMessage, fdoc)
 }
 handler.help = ['maker11 hello']
 handler.tags = ['maker']
