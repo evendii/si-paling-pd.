@@ -12,6 +12,7 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
 	{title: "❗ | Antivirtex", rowId: `${usedPrefix + command} antivirtex`},
 	{title: "🔞 | Antitoxic", rowId: `${usedPrefix + command} antitoxic`},
 	{title: "⏏️ | Autolevelup", rowId: `${usedPrefix + command} autolevelup`},
+	{title: "🗣️ | AutoVn", rowId: `${usedPrefix + command} autovn`},
 	{title: "🔎 | Detect", rowId: `${usedPrefix + command} detect`},
 	{title: "📑 | Document", rowId: `${usedPrefix + command} document`},
 	{title: "👤 | WhiteListMyContact", rowId: `${usedPrefix + command} whitelistmycontact`},
@@ -126,6 +127,13 @@ const listMessage = {
           throw false
         }
       chat.simi = isEnable
+      break
+      case 'autovn':
+        if (!isROwner) {
+          global.dfail('rowner', m, conn)
+          throw false
+        }
+      chat.autoVn = isEnable
       break
      case 'toxic':
        if (m.isGroup) {

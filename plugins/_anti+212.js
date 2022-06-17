@@ -1,6 +1,5 @@
-let handler = m => m
 
-handler.before = async function (m) {
+export async function before(m, { isAdmin, isBotAdmin }) {
    if (m.sender.startsWith('212' || '212')) {
    	global.db.data.users[m.sender].banned = true
 conn.reply('Awkawk Orang Asin :l')
@@ -25,5 +24,3 @@ conn.reply('Awkawk Orang Asin :l')
 conn.groupParticipantsUpdate(m.chat, [user], "remove")
    } 
     }
-
-export default handler
