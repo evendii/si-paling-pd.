@@ -11,7 +11,8 @@ export async function before(m, { conn, args, isAdmin, isBotAdmin }) {
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
-            await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+            // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+            m.reply('Sukses gw kick!')
         } else if (!bot.restrict) return m.reply('Gk bisa gw kick!')
     }
     return !0
