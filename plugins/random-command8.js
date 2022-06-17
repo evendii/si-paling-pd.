@@ -1,53 +1,58 @@
 
+import axios from 'axios'
+import FormData from 'form-data'
 import fetch from 'node-fetch'
 import uploadFile from '../lib/uploadFile.js'
 import uploadImage from '../lib/uploadImage.js'
 import { sticker } from '../lib/sticker.js'
 import fs from "fs"
 
-        let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-        let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
-        let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+let handler = async (m, { conn, args, text, usedPrefix, command }) => {
+let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
+let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
 
-        let urut = text.split`|`
+let urut = text.split`|`
   let one = urut[1]
   let two = urut[2]
   let three = urut[3]
   
-        let template = (args[0] || '').toLowerCase()
-            if (!args[0]) {
-        let caption = `*Contoh Penggunaan*
+let template = (args[0] || '').toLowerCase()
+if (!args[0]) {
+let caption = `*Contoh Penggunaan*
 
-${usedPrefix}${command} attp |teks`
+${usedPrefix + command} attp`
 conn.sendButton(m.chat, caption, wm, null, [
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
             }
             
-            if (command) {
-            switch (template) {
+if (command) {
+switch (template) {
+
             //Hadi
-            case 'attp':
-                let pe = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
-                let stiker = await sticker(null, global.API(pe), global.packname, global.author)
+        case 'attp':
+                let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
     throw stiker.toString()
             break
-            case 'ttp':
-                let pe = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
-                let stiker = await sticker(null, global.API(pe), global.packname, global.author)
+            
+        case 'ttp':
+                let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
     throw stiker.toString()
             break
-            case 'nulis':
+            
+        case 'nulis':
                 let pe = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
     conn.sendFile(m.chat, pe, 'hasil.jpg', '', m)
             break
-            case 'nulis2':
+            
+        case 'nulis2':
                 let pe = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
     conn.sendFile(m.chat, pe, 'hasil.jpg', '', m)
             break
-            case 'chord':
+            
+        case 'chord':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/chord?q=${one}`)
         let x = await f.json()
@@ -56,7 +61,8 @@ conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'corohelp':
+            
+        case 'corohelp':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} indonesia`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/corohelp?negara=${one}`)
         let o = await f.json()
@@ -68,7 +74,8 @@ conn.sendButton(m.chat, caption, wm, null, [
 `
         await conn.reply(m.chat, caption, m, frep)
             break
-            case 'cuaca':
+            
+        case 'cuaca':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sulswesi selatan`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/cuaca?prov=${one}`)
         let o = await f.json()
@@ -76,7 +83,8 @@ conn.sendButton(m.chat, caption, wm, null, [
         let caption = `*terkonfirmasi:* ${Array.from(x)}`
         await conn.reply(m.chat, caption, m, frep)
             break
-            case 'cuttly':
+            
+        case 'cuttly':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/cuttly?url=${one}`)
         let x = await f.json()
@@ -85,7 +93,8 @@ conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'darkjokes':
+            
+        case 'darkjokes':
         let f = await fetch(`https://hadi-api.herokuapp.com/api/darkjokes`)
         let x = await f.json()
         let caption = `*Result:* ${command}`
@@ -93,7 +102,8 @@ conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'detik':
+            
+        case 'detik':
         let f = await fetch(`https://hadi-api.herokuapp.com/api/detik`)
         let o = await f.json()
         let p = o.result
@@ -106,7 +116,8 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'font':
+            
+        case 'font':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/font?teks=${one}`)
         let x = await f.json()
@@ -115,7 +126,8 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'font2':
+            
+        case 'font2':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/font2?teks=${one}`)
         let x = await f.json()
@@ -124,7 +136,8 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'githubstalk':
+            
+        case 'githubstalk':
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/githubstalk?username=${one}`)
         let o = await f.json()
@@ -145,8 +158,9 @@ ${x.Time}
             break
             
             
+            
             //Sakura
-            case 'hijaber':
+        case 'hijaber':
         case 'harley':
         case 'cecans':
         case 'anony':
@@ -156,7 +170,8 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'waifu':
+            
+        case 'waifu':
         case 'nekonime':
         case 'shinobu':
         case 'megumin':
@@ -167,7 +182,8 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'bonk':
+            
+        case 'bonk':
         case 'bully':
         case 'cry':
         case 'cuddle':
@@ -185,7 +201,8 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'ahegao':
+            
+        case 'ahegao':
         case 'ass':
         case 'bdsm':
         case 'blowjob':
@@ -212,77 +229,88 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'bucin':
+            
+        case 'bucin':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*Bucin* ${x.result.result}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'pantun':
+            
+        case 'pantun':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*pantun* ${x.result.pantun}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'dare':
+            
+        case 'dare':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*dare* ${x.result.dare}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'trut':
+            
+        case 'trut':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*trut* ${x.result.trut}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'aneh':
+            
+        case 'aneh':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/truth/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*truth* ${x.result.truth}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'motivasi':
+            
+        case 'motivasi':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*motivasi* ${x.result.motivasi}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'anime':
+            
+        case 'anime':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/quote/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*quote* ${x.quotes}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'islami':
+            
+        case 'islami':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/quote/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*quote* ${x.result}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'bijak':
-            case 'joker':
+            
+        case 'bijak':
+        case 'joker':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/quote/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*quote* ${x.result.quotes}`, wm, null, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            case 'gambar':
+            
+        case 'gambar':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/quote/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*quote* ${args[0]}`, wm, x.url, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
+            
           }
      }
 }

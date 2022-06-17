@@ -8,8 +8,8 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     
     if (chat.antiToxic && !isAdmin) {
         if (isBotAdmin) {
-            if (m.text === 'Anjing') return !0
-            if (m.text('Kontol')) return !0
+        let isSurrender = /^(Anjing)$/i.test(m.text)
+            if (isSurrender) return !0
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
