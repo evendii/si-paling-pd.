@@ -5,6 +5,7 @@ import { sticker } from '../lib/sticker.js'
 import fs from "fs"
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
+let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 
 if (command == 'twittdl') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix + command} https://twitter.com/PassengersMovie/status/821025484150423557`
@@ -16,7 +17,7 @@ await conn.sendButton(m.chat, caption, wm, x.result.thumb, [
                 ['Get SD', `${usedPrefix}get ${x.result.SD}`],
                 ['Get HD', `${usedPrefix}get ${x.result.HD}`],
                 ['Mp3', `${usedPrefix}get ${x.result.audio}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'otaku') {
@@ -40,7 +41,7 @@ let caption = `*judul:* ${x.judul}
 *sinopsis:* ${x.sinopsis}`
 await conn.sendButton(m.chat, caption, wm, x.thumb, [
                 ['Next', `${usedPrefix + command} ${text}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'darkjokes') {
@@ -52,7 +53,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.result, null, null, null, null, [
       ['Meme', usedPrefix + 'randommeme'],
       ['Meme ID', usedPrefix + 'memeindo'],
       ['Darkjoke', usedPrefix + 'darkjoke']
-    ], m)
+    ], m, frep)
 }
 
 if (command == 'artikbbi') {
@@ -64,7 +65,7 @@ let caption = `Lema: ${x.result.lema}
 Arti: ${Array.from(x.result.arti)}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'cewekracing') {
@@ -72,7 +73,7 @@ let pe = await fetch(`https://mysakura.herokuapp.com/api/cewek/racing?apikey=sak
 let x = await pe.json()
   await conn.sendButton(m.chat, `*Nih*`, wm, x.url, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'mainslot') {
@@ -84,7 +85,7 @@ let caption = `${x.slot}
 *+ poin:* ${x.score}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 }

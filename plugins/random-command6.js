@@ -5,6 +5,7 @@ import { sticker } from '../lib/sticker.js'
 import fs from "fs"
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
+let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 
 if (command == 'exchange') {
 if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} IDR USD 50000`
@@ -20,7 +21,7 @@ let caption = `*Last Up:* ${x.time_last_update_utc}
 *Result:* ${x.conversion_result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix}${command} ${text}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'ipcountry') {
@@ -32,7 +33,7 @@ let caption = `🤠 ${x.country}
 *Ip:* ${x.ip}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix}${command} ${text}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'mediafiredl') {
@@ -47,7 +48,7 @@ let caption = `🤠 ${x.title}
 `
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Get', `${usedPrefix}get ${x.link}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'emojimix3') {
@@ -65,7 +66,7 @@ let x = await f.json()
 let caption = `🤠 ${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'dare2') {
@@ -74,7 +75,7 @@ let x = await f.json()
 let caption = `🤠 ${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'quotes') {
@@ -85,7 +86,7 @@ let caption = `${x.quotes}
 🤠 ${x.author}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'fakta') {
@@ -96,7 +97,7 @@ let caption = `${x.quotes}
 🤠 ${x.author}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'bijak') {
@@ -105,7 +106,7 @@ let x = await f.json()
 let caption = `${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'ptl') {
@@ -126,7 +127,7 @@ Category: ${x.category}
 Upload: ${x.created_at}`
 await conn.sendButton(m.chat, caption, wm, x.path, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'motivasi') {
@@ -135,7 +136,7 @@ let x = await f.json()
 let caption = `${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'iplookup') {
@@ -159,7 +160,7 @@ as: ${x.as}
 `
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'ssweb2') {
@@ -177,7 +178,7 @@ let caption = `Result: ${args[0]}`
 let img = `https://hadi-api.herokuapp.com/api/ssweb?url=${args[0]}&device=${args[1]}&full=${args[2]}`
 await conn.sendButton(m.chat, caption, wm, img, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'tinyurl') {
@@ -187,7 +188,7 @@ let x = await f.json()
 let caption = `${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'bitly') {
@@ -197,7 +198,7 @@ let x = await f.json()
 let caption = `${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
 }
 
 if (command == 'imgs') {
@@ -287,7 +288,7 @@ Opsi Tersedia:
 let x = await pe.json()
   await conn.sendButton(m.chat, `*Nih*`, wm, x.url, [
                 ['Next', `${usedPrefix + command}`]
-            ], m)
+            ], m, frep)
             break
         default:
             throw er
