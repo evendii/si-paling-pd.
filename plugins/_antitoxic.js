@@ -1,4 +1,4 @@
-export async function before(m, { conn, args, isAdmin, isBotAdmin }) {
+export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe)
         return !0
     if (!m.isGroup) return !1
@@ -18,7 +18,7 @@ export async function before(m, { conn, args, isAdmin, isBotAdmin }) {
     Limit anda direset
     
     Ketik *.limit* untuk cek limit`, wm, null, [
-        ['Nambah', `${usedPrefix}ngechit`]
+        ['Ngechit', `${usedPrefix}ngechit`]
     ], m)
         } else if (!bot.restrict) return m.reply('Gk bisa gw kick!')
     }
