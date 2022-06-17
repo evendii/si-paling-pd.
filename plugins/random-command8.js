@@ -28,7 +28,7 @@ conn.sendButton(m.chat, caption, wm, null, [
             
 if (command) {
 switch (template) {
-
+/*
             //Hadi
         case 'attp':
                 let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
@@ -158,7 +158,7 @@ ${x.Time}
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            
+            */
             //Sakura
             
             case 'ahegao':
@@ -199,7 +199,7 @@ ${x.Time}
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            
+            /*
         case 'waifu':
         case 'nekonime':
         case 'shinobu':
@@ -311,7 +311,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            
+            */
           }
      }
 }
