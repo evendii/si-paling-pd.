@@ -93,9 +93,7 @@ await conn.sendButton(m.chat, caption, wm, null, [
 if (command == 'fakta') {
 let f = await fetch(`https://botstyle-api.herokuapp.com/api/fakta?apikey=OrM2HzZl`)
 let x = await f.json()
-let caption = `${x.quotes}
-
-🤠 ${x.author}`
+let caption = `*Fakta:* ${x.result}`
 await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
