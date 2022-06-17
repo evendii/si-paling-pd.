@@ -13,7 +13,7 @@ let handler = async (m, { conn, groupMetadata, usedPrefix }) => {
         year: 'numeric'
     })
     let absen = conn.absen[id][1]
-    let list = absen.map((v, i) => `• ${i + 1}.  @${v.split`@`[0]}`).join('\n')
+    let list = absen.map((v, i) => `• ${i + 1}.  @${v.split('@')[0]}`).join('\n')
     
 let caption = `*Tanggal:* ${date}
 ${conn.absen[id][2]}
@@ -21,7 +21,7 @@ ${conn.absen[id][2]}
 *「 Sudah absen 」*
 *Total:* ${absen.length}
 ${list}
-`
+`.trim()
 await conn.sendButton(m.chat, caption, wm, ['absen', `${usedPrefix}absen`],
         ['cekabsen', `${usedPrefix}cekabsen`], m, {
                 mentions: conn.parseMention(caption)

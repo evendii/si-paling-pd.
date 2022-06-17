@@ -1,5 +1,5 @@
 // 'Bapakao', 'Tulul', 'Kontol', 'Asu', 'Anj', 'Ajg', 'Memek', 'Gblk', 'Tolol'
-export async function before(m, { conn, text, isAdmin, isBotAdmin }) {
+export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe)
         return !0
     if (!m.isGroup) return !1
@@ -8,7 +8,8 @@ export async function before(m, { conn, text, isAdmin, isBotAdmin }) {
     
     if (chat.antiToxic && !isAdmin) {
         if (isBotAdmin) {
-            if (text == 'Anjing') return !0
+            if (m.text === 'Anjing') return !0
+            if (m.text('Kontol')) return !0
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
