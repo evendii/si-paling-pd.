@@ -3,6 +3,7 @@ import { googleImage } from '@bochilteam/scraper'
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 if (!text) return m.reply(`Example : ${usedPrefix + command} query`)
+let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 
 if (command == 'gimage') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
@@ -41,17 +42,14 @@ await conn.sendHydrated(m.chat, caption, wm, x, null, null, null, null, [
     }
 
 if (command == 'gimage3') {
-let caption = `*Hasil pencarian* ${text}\n${x.title}\n${x.size}\n*Note:* Beni`
 let url = `https://api-xcoders.xyz/api/search/image?query=${text}&apikey=xcoders`
 let js = await fetch(url)
-let jp = await js.json()
-let o = jp.result
-let x = o.getRandom()
-await conn.sendHydrated(m.chat, caption, wm, x.url, null, null, null, null, [
-      ['Gimage4', usedPrefix + 'gimage1 ' + text],
-      ['Gimage5', usedPrefix + 'gimage5 ' + text],
-      ['Gimage6', usedPrefix + 'gimage6 ' + text]
-    ], m)
+let jsons = await js.json()
+let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
+        for (let x of jsons.result) {
+        caption += `*Hasil pencarian* ${text}\n${x.title}\n${x.size}\n${x.url}
+`}
+        await conn.reply(m.chat, caption, m, frep)
     }
 
 if (command == 'gimage4') {
