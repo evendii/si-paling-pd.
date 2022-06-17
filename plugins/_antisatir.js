@@ -4,19 +4,16 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    let isToxic = /^(Bapakao|Tulul|Kontol|Asu|Anj|Ajg|Memek|Gblk|Tolol|Bajingan|Ngentot)$/i.test(m.text)
-    if (chat.antiToxic && isToxic) {
-        await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
+    let isSatir = /^(Banh|Gwejh|Mgak|Okgey|Bimsa|Ava|Siava|Kavan|Pedo|Tumlul|Amsu)$/i.test(m.text)
+    if (chat.antiSatir && isSatir) {
+        await conn.sendButton(m.chat, `*Kata Satir Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, author, ['off antisatir', '/disable antisatir'], m)
         if (isBotAdmin && bot.restrict) {
             // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
-    global.db.data.users[m.sender].limit = 0
-    global.db.data.users[m.sender].exp = 0
-    global.db.data.users[m.sender].money = 0
+    global.db.data.users[m.sender].limit += 10
     
-    await conn.sendButton(m.chat, `*Anda kena sanksi*
+    await conn.sendButton(m.chat, `*Limit anda bertambah 10*
     
-    Karena Mengtoxic
-    Limit anda direset
+    Karena Menemukan Kata Satir
     
     Ketik *.limit* untuk cek limit`, wm, null, [
         ['Ngechit', `${usedPrefix}ngechit`]

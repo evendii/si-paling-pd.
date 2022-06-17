@@ -9,18 +9,19 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 	    {title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
 	    {title: "🌎 | Public", rowId: `${usedPrefix + command} public`},
 	{title: "🗣️ | Simi", rowId: `${usedPrefix + command} simi`},
-	{title: "🔗 | Antilink", rowId: `${usedPrefix + command} antilink`},
-	{title: "🚫 | Antidelete", rowId: `${usedPrefix + command} antidelete`},
-	{title: "❗ | Antivirtex", rowId: `${usedPrefix + command} antivirtex`},
-	{title: "🔞 | Antitoxic", rowId: `${usedPrefix + command} antitoxic`},
-	{title: "⏏️ | Autolevelup", rowId: `${usedPrefix + command} autolevelup`},
-	{title: "🗣️ | AutoVn", rowId: `${usedPrefix + command} autovn`},
+	{title: "🔗 | AntiLink", rowId: `${usedPrefix + command} antilink`},
+	{title: "🚫 | AntiDelete", rowId: `${usedPrefix + command} antidelete`},
+	{title: "👽 | AntiVirtex", rowId: `${usedPrefix + command} antivirtex`},
+	{title: "🤬 | AntiToxic", rowId: `${usedPrefix + command} antitoxic`},
+	{title: "🗿 | AntiSatir", rowId: `${usedPrefix + command} antisatir`},
+	{title: "⏏️ | AutoLevelup", rowId: `${usedPrefix + command} autolevelup`},
+	{title: "🎙️️ | AutoVn", rowId: `${usedPrefix + command} autovn`},
 	{title: "🔎 | Detect", rowId: `${usedPrefix + command} detect`},
 	{title: "📑 | Document", rowId: `${usedPrefix + command} document`},
 	{title: "👤 | WhiteListMyContact", rowId: `${usedPrefix + command} whitelistmycontact`},
 	{title: "❗ | Restrict", rowId: `${usedPrefix + command} restrick`},
 	{title: "😐 | Nyimak", rowId: `${usedPrefix + command} nyimak`},
-	{title: "☑️ | Autoread", rowId: `${usedPrefix + command} autoread`},
+	{title: "☑️ | AutoRead", rowId: `${usedPrefix + command} autoread`},
 	{title: "💬 | PcOnly", rowId: `${usedPrefix + command} pconly`},
 	{title: "🏢 | GcOnly", rowId: `${usedPrefix + command} gconly`},
 	{title: "📷 | SwOnly", rowId: `${usedPrefix + command} swonly`},
@@ -123,6 +124,15 @@ const listMessage = {
       }
       chat.antiVirtex = isEnable
       break
+      case 'antisatir':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiSatir = isEnable
+      break
       case 'simi':
         if (!isROwner) {
           global.dfail('rowner', m, conn)
@@ -223,7 +233,7 @@ const listMessage = {
       global.opts['swonly'] = isEnable
       break
     default:
-      if (!/[01]/.test(command)) return await conn.sendMessage(m.chat, listMessage, )
+      if (!/[01]/.test(command)) return await conn.sendMessage(m.chat, listMessage, fdoc)
       throw false
   }
   conn.sendButton(m.chat, `*${htki} OPTIONS ${htka}*
