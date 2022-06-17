@@ -28,7 +28,7 @@ conn.sendButton(m.chat, caption, wm, null, [
             
 if (command) {
 switch (template) {
-
+/*
             //Hadi
         case 'attp':
                 let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
@@ -43,13 +43,11 @@ switch (template) {
             break
             
         case 'nulis':
-                let pe = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
-    conn.sendFile(m.chat, pe, 'hasil.jpg', '', m)
+    conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'hasil.jpg', '', m)
             break
             
         case 'nulis2':
-                let pe = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
-    conn.sendFile(m.chat, pe, 'hasil.jpg', '', m)
+    conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'hasil.jpg', '', m)
             break
             
         case 'chord':
@@ -310,7 +308,35 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
+            */
             
+            case 'ahegao':
+        case 'ass':
+        case 'bdsm':
+        case 'blowjob':
+        case 'cuckold':
+        case 'cum':
+        case 'ero':
+        case 'femdom':
+        case 'foot':
+        case 'gangbang':
+        case 'glasses':
+        case 'hentai':
+        case 'hentaigif':
+        case 'jahy':
+        case 'masturbation':
+        case 'neko':
+        case 'orgy':
+        case 'panties':
+        case 'pussy':
+        case 'thighs':
+        case 'yuri':
+                let pe = await fetch(`https://mysakura.herokuapp.com/api/nsfw/${args[0]}?apikey=sakura404`)
+        let x = await pe.json()
+        await conn.sendButton(m.chat, `*Nih*`, wm, x.result, [
+                ['Next', `${usedPrefix}${command}`]
+            ], m, fdoc)
+            break
           }
      }
 }

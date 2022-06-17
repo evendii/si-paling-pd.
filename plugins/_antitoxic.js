@@ -5,11 +5,10 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    
-    if (chat.antiToxic && !isAdmin) {
+    let isToxic = (m.text)
+    if (chat.antiToxic && isToxic && !isAdmin) {
         if (isBotAdmin) {
-        let isSurrender = /^(Anjing)$/i.test(m.text)
-            if (isSurrender) return !0
+            if (isToxic.includes('Anjing','Asu')) return !0
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
