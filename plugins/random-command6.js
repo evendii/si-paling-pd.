@@ -61,6 +61,91 @@ conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
 }
 }
 
+if (command == 'emojimix4') {
+if (!args[0]) throw `Ex: ${usedPrefix+command} emot + emot`
+let anu = await fetchJson(`https://levanter.up.railway.app/emix?q=${encodeURIComponent(args[0])}`)
+let stiker = await sticker(false, anu.result, global.packname, global.author)
+conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
+}
+
+if (command == 'calc2') {
+let f = await fetch(`https://levanter.up.railway.app/calc?q=${args[0]}${args[1]}${args[2]}`)
+let x = await f.json()
+let caption = `*Hasil:* ${x.result}`
+await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m, fdoc)
+}
+
+if (command == 'mvsearch') {
+let f = await fetch(`https://www.omdbapi.com/?apikey=742b2d09&t=${text}&plot=full`)
+let x = await f.json()
+let caption = `*Title:* ${x.Title}
+*Year:* ${x.Year}
+*Rated:* ${x.Rated}
+*Released:* ${x.Released}
+*Runtime:* ${x.Runtime}
+*Genre:* ${x.Genre}
+*Director:* ${x.Director}
+*Writer:* ${x.Writer}
+*Actors:* ${x.Actors}
+*Plot:* ${x.Plot}
+*Language:* ${x.Language}
+*Country:* ${x.Country}
+*Awards:* ${x.Awards}
+`
+await conn.sendButton(m.chat, caption, wm, x.Poster, [
+                ['Next', `${usedPrefix}mvsearch2 ${x.Title}`]
+            ], m, fdoc)
+}
+
+if (command == 'mvsearch2') {
+let f = await fetch(`https://www.omdbapi.com/?apikey=742b2d09&t=${text}&plot=full`)
+let p = await f.json()
+let x = p.results[0]
+let caption = `*Title:* ${x.original_title}
+*overview:* ${x.overview}
+*popularity:* ${x.popularity}
+*vote:* ${x.vote_average}
+*rilis:* ${x.release_date}
+`
+await conn.sendButton(m.chat, caption, wm, 'https://image.tmdb.org/t/p/w500/' + x.poster_path, [
+                ['Next', `${usedPrefix + command}`]
+            ], m, fdoc)
+}
+
+if (command == 'lmaker') {
+if (!args[0]) return m.reply(`Example : ${usedPrefix + command} buoys|helo|banh
+  Logo Maker List
+Usage: .lmaker Master|35|Haloo
+01 - 11 : calligraphy
+12 - 13 : beast
+14 - 19 : pubg
+20 - 25 : rrr
+26 - 27 : free fire
+28 - 29 : india
+30 - 32 : avengers
+33 - 34 : pushpa
+35 - 37 : master
+38 - 44 : ipl
+45      : dhoni
+46      : vijay
+47 - 52 : kgf`)
+  
+  let urut = text.split`|`
+  let thm = urut[0]
+  let text1 = urut[1]
+  let text2 = urut[2]
+  
+        let images = `https://raganork-network.vercel.app/api/logo/${thm}?style=${text1}&text=${text2}`
+  let caption = `*⎔┉━「 ${command} 」━┉⎔*
+🤠 *Query* : ${thm}`
+  await conn.sendButton(m.chat, caption, wm, images, [
+                ['Next', `${usedPrefix + command}`],
+                ['Menu', `${usedPrefix}menu`]
+            ], m, fdoc)
+}
+          
 if (command == 'truth2') {
 let f = await fetch(`https://botstyle-api.herokuapp.com/api/truth?apikey=OrM2HzZl`)
 let x = await f.json()
@@ -295,7 +380,7 @@ let x = await pe.json()
 }
 
 }
-handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly']
+handler.command = handler.help = ['exchange', 'ipcountry', 'mediafiredl', 'emojimix3', 'emojimix4', 'calc2', 'mvsearch', 'mvsearch2', 'lmaker', 'truth2', 'dare2', 'quotes', 'fakta', 'bijak', 'ptl', 'motivasi', 'iplookup', 'ssweb2', 'imgs', 'wallhaven', 'tinyurl', 'bitly']
 handler.tags = ['tools']
 
 export default handler

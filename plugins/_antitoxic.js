@@ -7,8 +7,6 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     let bot = global.db.data.settings[this.user.jid] || {}
     if (chat.antiToxic && !isAdmin) {
         if (isBotAdmin) {
-            if (m.text === 'Asu') return !0
-            if (m.text == 'Bacot') return !0
             if (m.text.startsWith('Kuntul')) return !0
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
