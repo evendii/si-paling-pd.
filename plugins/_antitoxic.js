@@ -7,15 +7,15 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     let bot = global.db.data.settings[this.user.jid] || {}
     if (chat.antiToxic && !isAdmin) {
         if (isBotAdmin) {
-            if (m.text.includes('Kontol') return !0
-            if (m.text.includes('Asu') return !0
-            if (m.text.includes('Anj') return !0
-            if (m.text.includes('Ajg') return !0
-            if (m.text.includes('Memek') return !0
-            if (m.text.includes('Gblk') return !0
-            if (m.text.includes('Tolol') return !0
+            if (m.text('Kontol'))
+            if (m.text('Asu'))
+            if (m.text('Anj'))
+            if (m.text('Ajg'))
+            if (m.text('Memek'))
+            if (m.text('Gblk'))
+            if (m.text('Tolol'))
         }
-        await conn.sendButton(m.chat, `*Kats Aneh detect!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
+        await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
             await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         } else if (!bot.restrict) return m.reply('Owner disable auto kick!')
