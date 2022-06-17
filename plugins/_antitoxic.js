@@ -1,5 +1,5 @@
 // 'Bapakao', 'Tulul', 'Kontol', 'Asu', 'Anj', 'Ajg', 'Memek', 'Gblk', 'Tolol'
-export async function before(m, { conn, isAdmin, isBotAdmin }) {
+export async function before(m, { conn, args, isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe)
         return !0
     if (!m.isGroup) return !1
@@ -7,7 +7,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     let bot = global.db.data.settings[this.user.jid] || {}
     if (chat.antiToxic && !isAdmin) {
         if (isBotAdmin) {
-            if (m.text.startsWith('Kuntul')) return !0
+            if (args('Kuntul')) return !0
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
