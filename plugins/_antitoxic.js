@@ -5,15 +5,17 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    if (chat.antiToxic && !isAdmin) {
+    const isAntiToxic = m.text
+
+    if (chat.antiToxic && isAntiToxic && !isAdmin) {
         if (isBotAdmin) {
-            if (m.text('Kontol'))
-            if (m.text('Asu'))
-            if (m.text('Anj'))
-            if (m.text('Ajg'))
-            if (m.text('Memek'))
-            if (m.text('Gblk'))
-            if (m.text('Tolol'))
+            if (m.sender.startsWith('Kontol')) return !0
+            if (m.text.includes('Asu')) return !0
+            if (m.text('Anj')) return !0
+            if (m.text('Ajg')) return !0
+            if (m.text('Memek')) return !0
+            if (m.text('Gblk')) return !0
+            if (m.text('Tolol')) return !0
         }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
