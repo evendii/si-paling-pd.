@@ -158,7 +158,39 @@ ${x.Time}
             
             
             //Sakura
-        case 'hijaber':
+        
+        
+            */
+            
+            case 'ahegao':
+        case 'ass':
+        case 'bdsm':
+        case 'blowjob':
+        case 'cuckold':
+        case 'cum':
+        case 'ero':
+        case 'femdom':
+        case 'foot':
+        case 'gangbang':
+        case 'glasses':
+        case 'hentai':
+        case 'hentaigif':
+        case 'jahy':
+        case 'masturbation':
+        case 'neko':
+        case 'orgy':
+        case 'panties':
+        case 'pussy':
+        case 'thighs':
+        case 'yuri':
+                let pe = await fetch(`https://mysakura.herokuapp.com/api/nsfw/${args[0]}?apikey=sakura404`)
+        let x = await pe.json()
+        await conn.sendButton(m.chat, `*Nih*`, wm, x.result, [
+                ['Next', `${usedPrefix}${command}`]
+            ], m, fdoc)
+            break
+            
+            case 'hijaber':
         case 'harley':
         case 'cecans':
         case 'anony':
@@ -196,34 +228,6 @@ ${x.Time}
                 let pe = await fetch(`https://mysakura.herokuapp.com/api/sfw/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*Nih*`, wm, x.url, [
-                ['Next', `${usedPrefix}${command}`]
-            ], m, fdoc)
-            break
-            
-        case 'ahegao':
-        case 'ass':
-        case 'bdsm':
-        case 'blowjob':
-        case 'cuckold':
-        case 'cum':
-        case 'ero':
-        case 'femdom':
-        case 'foot':
-        case 'gangbang':
-        case 'glasses':
-        case 'hentai':
-        case 'hentaigif':
-        case 'jahy':
-        case 'masturbation':
-        case 'neko':
-        case 'orgy':
-        case 'panties':
-        case 'pussy':
-        case 'thighs':
-        case 'yuri':
-                let pe = await fetch(`https://mysakura.herokuapp.com/api/nsfw/${args[0]}?apikey=sakura404`)
-        let x = await pe.json()
-        await conn.sendButton(m.chat, `*Nih*`, wm, x.result, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
@@ -301,39 +305,10 @@ ${x.Time}
             ], m, fdoc)
             break
             
-        case 'gambar':
+            case 'gambar':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/quote/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
         await conn.sendButton(m.chat, `*quote* ${args[0]}`, wm, x.url, [
-                ['Next', `${usedPrefix}${command}`]
-            ], m, fdoc)
-            break
-            */
-            
-            case 'ahegao':
-        case 'ass':
-        case 'bdsm':
-        case 'blowjob':
-        case 'cuckold':
-        case 'cum':
-        case 'ero':
-        case 'femdom':
-        case 'foot':
-        case 'gangbang':
-        case 'glasses':
-        case 'hentai':
-        case 'hentaigif':
-        case 'jahy':
-        case 'masturbation':
-        case 'neko':
-        case 'orgy':
-        case 'panties':
-        case 'pussy':
-        case 'thighs':
-        case 'yuri':
-                let pe = await fetch(`https://mysakura.herokuapp.com/api/nsfw/${args[0]}?apikey=sakura404`)
-        let x = await pe.json()
-        await conn.sendButton(m.chat, `*Nih*`, wm, x.result, [
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
