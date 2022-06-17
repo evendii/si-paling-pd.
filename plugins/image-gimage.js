@@ -8,6 +8,7 @@ import { googleImage } from '@bochilteam/scraper'
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 if (!text) return m.reply(`Example : ${usedPrefix + command} query`)
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
+let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
 
 if (command == 'gimage') {
 let caption = `*Hasil pencarian* ${text}\n\n*Note:* Lolhuman`
@@ -16,7 +17,7 @@ await conn.sendHydrated(m.chat, caption, wm, url, null, null, null, null, [
       ['Gimage1', usedPrefix + 'gimage1 ' + text],
       ['Gimage2', usedPrefix + 'gimage2 ' + text],
       ['Gimage3', usedPrefix + 'gimage3 ' + text]
-    ], m, frep)
+    ], m, fdoc)
     }
 
 if (command == 'gimage1') {
@@ -29,7 +30,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
       ['Gimage2', usedPrefix + 'gimage2 ' + text],
       ['Gimage3', usedPrefix + 'gimage3 ' + text],
       ['Gimage4', usedPrefix + 'gimage4 ' + text]
-    ], m, frep)
+    ], m, fdoc)
     }
     
 if (command == 'gimage2') {
@@ -42,7 +43,7 @@ await conn.sendHydrated(m.chat, caption, wm, x, null, null, null, null, [
       ['Gimage3', usedPrefix + 'gimage1 ' + text],
       ['Gimage4', usedPrefix + 'gimage4 ' + text],
       ['Gimage5', usedPrefix + 'gimage5 ' + text]
-    ], m, frep)
+    ], m, fdoc)
     }
 
 if (command == 'gimage3') {
@@ -66,7 +67,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.url, null, null, null, null, [
       ['Gimage5', usedPrefix + 'gimage1 ' + text],
       ['Gimage6', usedPrefix + 'gimage6 ' + text],
       ['Gimage', usedPrefix + 'gimage ' + text]
-    ], m, frep)
+    ], m, fdoc)
     }
 
 if (command == 'gimage5') {
@@ -79,7 +80,7 @@ await conn.sendHydrated(m.chat, caption, wm, x.getRandom(), null, null, null, nu
       ['Gimage6', usedPrefix + 'gimage6 ' + text],
       ['Gimage', usedPrefix + 'gimage ' + text],
       ['Gimage1', usedPrefix + 'gimage1 ' + text]
-    ], m, frep)
+    ], m, fdoc)
     }
 
 if (command == 'gimage6') {
