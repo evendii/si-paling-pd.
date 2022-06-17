@@ -115,22 +115,21 @@ await conn.sendButton(m.chat, caption, wm, 'https://image.tmdb.org/t/p/w500/' + 
 }
 
 if (command == 'lmaker') {
-if (!args[0]) return m.reply(`Example : ${usedPrefix + command} buoys|helo|banh
-  Logo Maker List
-Usage: .lmaker Master|35|Haloo
-01 - 11 : calligraphy
-12 - 13 : beast
-14 - 19 : pubg
-20 - 25 : rrr
-26 - 27 : free fire
-28 - 29 : india
-30 - 32 : avengers
-33 - 34 : pushpa
-35 - 37 : master
-38 - 44 : ipl
-45      : dhoni
-46      : vijay
-47 - 52 : kgf`)
+if (!args[0]) return m.reply(`Logo Maker List
+Usage: .lmaker master|3|Haloo
+1 - 11 : calligraphy
+1 - 2 : beast
+1 - 6 : pubg
+1 - 6 : rrr
+1 - 2 : free fire
+1 - 2 : india
+1 - 3 : avengers
+1 - 2 : pushpa
+1 - 3 : master
+1 - 7 : ipl
+1      : dhoni
+1      : vijay
+1 - 6 : kgf`)
   
   let urut = text.split`|`
   let thm = urut[0]

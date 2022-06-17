@@ -28,7 +28,7 @@ conn.sendButton(m.chat, caption, wm, null, [
             
 if (command) {
 switch (template) {
-/*
+
             //Hadi
         case 'attp':
                 let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
@@ -56,7 +56,7 @@ switch (template) {
         let x = await f.json()
         let caption = `*Result:* ${x.result}`
         await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -70,7 +70,9 @@ switch (template) {
 *sembuh:* ${x.sembuh}
 *update:* ${x.update}
 `
-        await conn.reply(m.chat, caption, m, frep)
+        await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m, fdoc)
             break
             
         case 'cuaca':
@@ -79,7 +81,9 @@ switch (template) {
         let o = await f.json()
         let x = o.result
         let caption = `*terkonfirmasi:* ${Array.from(x)}`
-        await conn.reply(m.chat, caption, m, frep)
+        await conn.sendButton(m.chat, caption, wm, null, [
+                ['Next', `${usedPrefix + command}`]
+            ], m, fdoc)
             break
             
         case 'cuttly':
@@ -88,7 +92,7 @@ switch (template) {
         let x = await f.json()
         let caption = `*Result:* ${x.result}`
         await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -97,7 +101,7 @@ switch (template) {
         let x = await f.json()
         let caption = `*Result:* ${command}`
         await conn.sendButton(m.chat, caption, wm, x.result, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -111,7 +115,7 @@ Result:* ${x.link_url}
 ${x.Time}
 `
         await conn.sendButton(m.chat, caption, wm, x.img_url, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -121,7 +125,7 @@ ${x.Time}
         let x = await f.json()
         let caption = `*Result:* ${x.result}`
         await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -131,7 +135,7 @@ ${x.Time}
         let x = await f.json()
         let caption = `*Result:* ${x.result}`
         await conn.sendButton(m.chat, caption, wm, null, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -151,12 +155,9 @@ ${x.Time}
 *location:* ${x.location}
 `
         await conn.sendButton(m.chat, caption, wm, x.avatar, [
-                ['Next', `${usedPrefix}${command}`]
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            */
-            
-            
             
             //Sakura
             
@@ -183,8 +184,8 @@ ${x.Time}
         case 'yuri':
                 let pe = await fetch(`https://mysakura.herokuapp.com/api/nsfw/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
-        await conn.sendButton(m.chat, `*Nih*`, wm, x.result, [
-                ['Next', `${usedPrefix}${command}`]
+        await conn.sendButton(m.chat, `${command}`, wm, x.result, [
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -194,8 +195,8 @@ ${x.Time}
         case 'anony':
                 let pe = await fetch(`https://mysakura.herokuapp.com/api/wallpaper/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
-        await conn.sendButton(m.chat, `*Nih*`, wm, x.url, [
-                ['Next', `${usedPrefix}${command}`]
+        await conn.sendButton(m.chat, `${command}`, wm, x.url, [
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -206,8 +207,8 @@ ${x.Time}
         case 'chobay':
                 let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
-        await conn.sendButton(m.chat, `*Nih*`, wm, x.url, [
-                ['Next', `${usedPrefix}${command}`]
+        await conn.sendButton(m.chat, `${command}`, wm, x.url, [
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
             
@@ -225,11 +226,11 @@ ${x.Time}
         case 'yeet':
                 let pe = await fetch(`https://mysakura.herokuapp.com/api/sfw/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
-        await conn.sendButton(m.chat, `*Nih*`, wm, x.url, [
-                ['Next', `${usedPrefix}${command}`]
+        await conn.sendButton(m.chat, `${command}`, wm, x.url, [
+                ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            /*
+            
         case 'bucin':
         let pe = await fetch(`https://mysakura.herokuapp.com/api/${args[0]}?apikey=sakura404`)
         let x = await pe.json()
@@ -310,7 +311,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            */
+            
           }
      }
 }
