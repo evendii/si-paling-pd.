@@ -10,18 +10,16 @@ if (command == 'trengif') {
     .then(response => response.json())
     .then(content => {
         let img = content.data[0].images.original.url
-        let title = content.data[0].title
     });
     
-  let caption = `*⎔┉━「 ${command} 」━┉⎔*
-🤠 *Query* : ${title}`
+  let caption = `*⎔┉━「 ${command} 」━┉⎔*`
   await conn.sendButton(m.chat, caption, wm, img, [
                 ['Next', `${usedPrefix + command}`],
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
 }
 
-if (command == 'trengif') {
+if (command == 'searchgif') {
 if (!text) throw `Masukkan teks`
         let url = `http://api.giphy.com/v1/gifs/search?q=${text}&api_key=SdX60eTdyvdo0aAyJMQ5u87Qh7mTz7bG`
     await fetch(url)
@@ -31,8 +29,7 @@ if (!text) throw `Masukkan teks`
         let title = content.data[0].title
     });
     
-  let caption = `*⎔┉━「 ${command} 」━┉⎔*
-🤠 *Query* : ${title}`
+  let caption = `*⎔┉━「 ${command} 」━┉⎔*`
   await conn.sendButton(m.chat, caption, wm, img, [
                 ['Next', `${usedPrefix + command}`],
                 ['Menu', `${usedPrefix}menu`]
