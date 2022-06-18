@@ -66,9 +66,32 @@ _Jika Respon Tidak Muncul Kemungkinan Terjadi Error_
 let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { exp, limit, level, role } = global.db.data.users[m.sender]
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let { exp, limit, level, role, money, lastclaim, lastweekly, registered, regTime, age, banned, pasangan } = global.db.data.users[who]
     let { min, xp, max } = xpRange(level, global.multiplier)
-    let name = await conn.getName(m.sender)
+    let name = await conn.getName(who)
+    let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
+    if (typeof global.db.data.users[who] == "undefined") {
+      global.db.data.users[who] = {
+        exp: 0,
+        limit: 10,
+        lastclaim: 0,
+        registered: false,
+        name: conn.getName(m.sender),
+        age: -1,
+        regTime: -1,
+        afk: -1,
+        afkReason: '',
+        banned: false,
+        level: 0,
+        lastweekly: 0,
+        role: 'Warrior V',
+        autolevelup: false,
+        money: 0,
+        pasangan: "",
+      }
+     }
+     let math = max - xp
     let totalfeatures = Object.values(global.plugins).filter(
     (v) => v.help && v.tags
   ).length;
@@ -163,29 +186,6 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     //
-    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
-    if (typeof global.db.data.users[who] == "undefined") {
-      global.db.data.users[who] = {
-        exp: 0,
-        limit: 10,
-        lastclaim: 0,
-        registered: false,
-        name: conn.getName(m.sender),
-        age: -1,
-        regTime: -1,
-        afk: -1,
-        afkReason: '',
-        banned: false,
-        level: 0,
-        lastweekly: 0,
-        role: 'Warrior V',
-        autolevelup: false,
-        money: 0,
-        pasangan: "",
-      }
-     }
-     let math = max - xp
     try {
  let wel = await new Canvas.Welcome()
   .setUsername(`${name}`)
