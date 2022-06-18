@@ -166,7 +166,7 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
     //
  let wel = await new Canvas.Welcome()
   .setUsername(`${await conn.getName(m.sender)}`)
-  .setDiscriminator(`445577`)
+  .setDiscriminator(`${global.db.data.users[m.sender].limit} Limit`)
   .setMemberCount(`${groupMetadata.participants.length}`)
   .setGuildName(`${groupMetadata.subject}`)
   .setAvatar(`${pp}`)
