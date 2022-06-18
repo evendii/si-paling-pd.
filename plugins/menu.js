@@ -63,7 +63,7 @@ _Jika Respon Tidak Muncul Kemungkinan Terjadi Error_
   after: `⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ 
 `,
 }
-let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
+let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let { exp, limit, level, role } = global.db.data.users[m.sender]
@@ -164,11 +164,8 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     //
-    const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
-        const participants = (m.isGroup ? groupMetadata.participants : []) || []
-        const user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
  let wel = await new Canvas.Welcome()
-  .setUsername(`${await conn.getName(user)}`)
+  .setUsername(`${await conn.getName(m.sender)}`)
   .setDiscriminator(`445577`)
   .setMemberCount(`${groupMetadata.participants.length}`)
   .setGuildName(`${groupMetadata.subject}`)
@@ -187,7 +184,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       ['Owner', '/owner'],
       ['Test', '/ping']
     ], m)
-  
                 //
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)

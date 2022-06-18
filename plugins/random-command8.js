@@ -28,7 +28,6 @@ conn.sendButton(m.chat, caption, wm, null, [
             
 if (command) {
 switch (template) {
-/*
             //Hadi
         case 'attp':
                 let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
@@ -160,7 +159,7 @@ ${x.Time}
             break
             
             //Sakura
-            */
+            
             case 'ahegao':
         case 'ass':
         case 'bdsm':
@@ -193,13 +192,13 @@ ${x.Time}
         case 'harley':
         case 'cecans':
         case 'anony':
-                let pa = await fetch(`https://mysakura.herokuapp.com/api/wallpaper/${args[0]}?apikey=sakura404`)
+                let pe = await fetch(`https://mysakura.herokuapp.com/api/wallpaper/${args[0]}?apikey=sakura404`)
         let xe = await pe.json()
         await conn.sendButton(m.chat, `${command}`, wm, xe.url, [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            /*
+            
         case 'waifu':
         case 'nekonime':
         case 'shinobu':
@@ -311,7 +310,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            */
+            
           }
      }
 }
