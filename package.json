@@ -45,6 +45,7 @@
         "@ibaraki-douji/pixivts": "^2.0.2",
         "@vitalets/google-translate-api": "^8.0.0",
         "acrcloud": "^1.4.0",
+        "amethyste-api": "^1.1.5",
         "awesome-phonenumber": "^2.68.0",
         "axios": "^0.24.0",
         "booru": "^2.5.6",
