@@ -6,13 +6,9 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    
-    const isAntiVirtex = isVirtex.exec(m.text)
+    const isAntiVirtex = isVirtex.exec(m.text.includes)
     
     if (chat.antiVirtex && isAntiVirtex) {
-    if (isBotAdmin) {
-            if (m.text.includes(isVirtex)) return !0
-        }
             if (!m.isBaileys && m.text.length > 384) return !0
             if (m.text && m.text.length >= 25000) return !0
             if (m.messageStubType === 68) return !0
