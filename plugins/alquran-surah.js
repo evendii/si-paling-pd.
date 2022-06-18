@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let json = await fetch(`https://api.lolhuman.xyz/api/quran/args[0]/args[1]?apikey=9b817532fadff8fc7cb86862`)
         let jsons = await json.json()
         let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
-        for (let x of json.result) {
+        for (let x of jsons.result) {
         caption += `
 ${x.asma}
 ${x.surah}

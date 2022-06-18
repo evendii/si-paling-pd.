@@ -5,9 +5,9 @@ export async function before(m, { match, usedPrefix}) {
 		let noPrefix = m.text.replace(usedPrefix, '')
 		let args = noPrefix.trim().split` `.slice(1)
 		let text = args.join` `
-		let alias = Object.values(plugins).filter(v => v.alias && !v.disabled).map(v => v.alias).flat(1)
-		if (alias.includes(noPrefix)) return
-		let mean = didyoumean(noPrefix, alias)
+		let help = Object.values(plugins).filter(v => v.help && !v.disabled).map(v => v.help).flat(1)
+		if (help.includes(noPrefix)) return
+		let mean = didyoumean(noPrefix, help)
 		if (mean) this.sendButton(m.chat, `*Command tersedia:* ${usedPrefix + mean}?\n`, wm, null, [
                 ['Yes', `${usedPrefix + mean} ${text}`],
                 ['No', usedPrefix + '?']

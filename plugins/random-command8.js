@@ -140,12 +140,14 @@ switch (template) {
             if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |sulswesi selatan`
         let fabt = await fetch(`https://hadi-api.herokuapp.com/api/cuaca?prov=${one}`)
         let oabt = await fabt.json()
-        let xabt = oabt.result
-        var teks = `Kota : ${oabt.result.kota}\n`
-                    teks += `Cuaca: ${oabt.result.malam}\n`
-                    conn.sendButton(m.chat, teks, wm, null, [
-                ['Menu', `${usedPrefix + command}`]
-            ], m)
+        
+        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
+        for (let xabt of oabt.result) {
+        caption += `
+${xabt.kota}
+${xabt.malam}
+`}
+        await conn.reply(m.chat, caption, m, frep)
             break
             
         case 'cuttly':
