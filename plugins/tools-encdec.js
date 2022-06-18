@@ -1,4 +1,6 @@
 import fetch from 'node-fetch'
+import fs from 'fs'
+
 let handler = async (m, { conn, text, command, usedPrefix }) => {
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}

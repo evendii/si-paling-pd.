@@ -9,27 +9,26 @@ if (command == 'urlscan') {
 if (!text) throw `Masukkan link`
 let res = await fetch(`https://urlscan.io/api/v1/search/?q=${text}`)
   let sul = await res.json()
-  let xx = sul.results
   await conn.sendButton(m.chat, `*Quotes:*
-  ${xx[0].task.visibility}
-  ${xx[0].task.method}
-  ${xx[0].task.domain}
-  ${xx[0].task.time}
-  ${xx[0].task.uuid}
-  ${xx[0].task.url}
+  ${sul.results[0].task.visibility}
+  ${sul.results[0].task.method}
+  ${sul.results[0].task.domain}
+  ${sul.results[0].task.time}
+  ${sul.results[0].task.uuid}
+  ${sul.results[0].task.url}
   
-  ${xx[0].stats.uniqIPs}
-  ${xx[0].stats.uniqCountries}
-  ${xx[0].stats.dataLength}
-  ${xx[0].stats.encodedDataLength}
+  ${sul.results[0].stats.uniqIPs}
+  ${sul.results[0].stats.uniqCountries}
+  ${sul.results[0].stats.dataLength}
+  ${sul.results[0].stats.encodedDataLength}
   
-  ${xx[0].page.country}
-  ${xx[0].page.ip}
-  ${xx[0].page.title}
-  ${xx[0].page.url}
+  ${sul.results[0].page.country}
+  ${sul.results[0].page.ip}
+  ${sul.results[0].page.title}
+  ${sul.results[0].page.url}
   
-  ${xx[0].result}
-  `, wm, xx[0].screenshot, [
+  ${sul.results[0].result}
+  `, wm, sul.results[0].screenshot, [
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
 }
@@ -44,8 +43,9 @@ if (command == 'fotoduck') {
 }
 
 if (command == 'fotobear') {
-if (!(args[0] || args[1])) throw `Contoh:\n${usedPrefix + command} 600 600`
-  let res = await fetch(`https://placebear.com/${args[0]}/${args[1]}`)
+if (!args[0]) throw `Contoh:\n${usedPrefix + command} 600 600`
+if (!args[1]) throw `Contoh:\n${usedPrefix + command} 600 600`
+  let res = `https://placebear.com/${args[0]}/${args[1]}`
   await conn.sendButton(m.chat, `*Bear:*
   ${args[0]}`, wm, res, [
                 ['Next', `${usedPrefix + command}`]
@@ -53,8 +53,9 @@ if (!(args[0] || args[1])) throw `Contoh:\n${usedPrefix + command} 600 600`
 }
 
 if (command == 'fotodog') {
-if (!(args[0] || args[1])) throw `Contoh:\n${usedPrefix + command} 600 600`
-  let res = await fetch(`https://place.dog/${args[0]}/${args[1]}`)
+if (!args[0]) throw `Contoh:\n${usedPrefix + command} 600 600`
+if (!args[1]) throw `Contoh:\n${usedPrefix + command} 600 600`
+  let res = `https://place.dog/${args[0]}/${args[1]}`
   await conn.sendButton(m.chat, `*Dog:*
   ${args[0]}`, wm, res, [
                 ['Next', `${usedPrefix + command}`]
@@ -65,7 +66,7 @@ if (command == 'fotodog2') {
   let res = await fetch(`https://random.dog/woof.json`)
   let x = await res.json()
   await conn.sendButton(m.chat, `*Dog:*
-  ${args[0]}`, wm, x.url, [
+  ${command}`, wm, x.url, [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
 }
@@ -83,7 +84,7 @@ if (command == 'fotoshibe') {
   let res = await fetch(`https://shibe.online/api/shibes?count=10&urls=true&httpsUrls=true`)
   let x = await res.json()
   await conn.sendButton(m.chat, `*Shibe:*
-  ${args[0]}`, wm, x.getRandom(), [
+  ${command}`, wm, x.getRandom(), [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
 }
