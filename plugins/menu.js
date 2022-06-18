@@ -208,18 +208,21 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
       ['Test', '/ping']
     ], m)
     } catch {
-    let wel = await new Canvas.RankCard()
-    .setAvatar(`${pp}`)
-    .setXP("current", `${exp}`)
-    .setXP("needed", `${math}`)
-    .setLevel(`${level}`)
-    .setRank(`${limit}`)
-    .setReputation(`${level}`)
-    .setRankName("professional")
-    .setUsername(`${name}`)
-    .setBadge(`${money}`, `${role}`)
-    .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
-    .toAttachment();
+    let wel = await new Canvas.Welcome()
+  .setUsername(`${name}`)
+  .setDiscriminator(`${exp} Exp`)
+  .setMemberCount(`${money} Money`)
+  .setGuildName(`${global.author}`)
+  .setAvatar(`${pp}`)
+  .setColor("border", "#000000")
+  .setColor("username-box", "#000000")
+  .setColor("discriminator-box", "#000000")
+  .setColor("message-box", "#000000")
+  .setColor("title", "#ffffff")
+  .setColor("avatar", "#000000")
+  .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
+  .toAttachment();
+  
     conn.sendHydrated2(m.chat, text.trim(), wm, wel.toBuffer(), webs, 'Website', gcwangsaf, 'Group WhatsApp', [
       ['Donate', '/donasi'],
       ['Owner', '/owner'],
