@@ -164,9 +164,6 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     //
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-    let { exp, limit, level, role, money, lastclaim, lastweekly, registered, regTime, age, banned, pasangan } = global.db.data.users[who]
-    let { min, xp, max } = xpRange(level, global.multiplier)
-    let name = await conn.getName(who)
     let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
     if (typeof global.db.data.users[who] == "undefined") {
       global.db.data.users[who] = {
