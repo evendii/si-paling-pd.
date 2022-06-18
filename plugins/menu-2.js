@@ -794,7 +794,7 @@ switch (template) {
             if (!one) return m.reply(`Example: ${usedPrefix + command} ${template} |jakarta|yogyakarta`)
             
             var { data } = await axios.get(`https://api.lolhuman.xyz/api/jaraktempuh?apikey=9b817532fadff8fc7cb86862&kota1=${one}&kota2=${two}`)
-            var teks = `Informasi Jarak dari ${teks1} ke ${teks2} :\n\n`
+            var teks = `Informasi Jarak dari ${one} ke ${two} :\n\n`
             teks += `\`\`\`◪ Asal :\`\`\` ${data.result.from.name}\n`
             teks += `\`\`\`◪ Garis Lintang :\`\`\` ${data.result.from.latitude}\n`
             teks += `\`\`\`◪ Garis Bujur :\`\`\` ${data.result.from.longitude}\n\n`
@@ -881,11 +881,9 @@ switch (template) {
             m.reply(data.result)
             break
         case 'translate':
-            if (!one) return m.reply(`Example: ${usedPrefix + command} ${template} |en Tahu Bacem`)
-            var kode_negara = args[0]
-            args.shift()
-            var teks = args.join(' ')
-            var { data } = await axios.get(`https://api.lolhuman.xyz/api/translate/auto/${kode_negara}?apikey=9b817532fadff8fc7cb86862&text=${teks}`)
+            if (!one) return m.reply(`Example: ${usedPrefix + command} ${template} |en|Tahu Bacem`)
+            
+            var { data } = await axios.get(`https://api.lolhuman.xyz/api/translate/auto/${one}?apikey=9b817532fadff8fc7cb86862&text=${two}`)
             init_txt = `From : ${data.result.from}\n`
             init_txt += `To : ${data.result.to}\n`
             init_txt += `Original : ${data.result.original}\n`

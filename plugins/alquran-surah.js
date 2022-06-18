@@ -5,10 +5,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (isNaN(args[0]) || isNaN(args[1])) throw `contoh:\n${usedPrefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
 
     let res = await fetch(`https://api.lolhuman.xyz/api/quran/args[0]/args[1]?apikey=9b817532fadff8fc7cb86862`)
-    if (!res.ok) throw eror
     let json = await res.json()
-    if (json.status != 'OK.') return m.reply(json.result.message)
-    m.reply(conn.format(json))
     let mes = `
 ${json.result.asma}
 ${json.result.surah}

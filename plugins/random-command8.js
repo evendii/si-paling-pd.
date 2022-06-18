@@ -20,7 +20,7 @@ let template = (args[0] || '').toLowerCase()
 if (!args[0]) {
 let caption = `*Contoh Penggunaan*
 
-${usedPrefix + command} attp`
+${usedPrefix + command} attp |teks`
 conn.sendButton(m.chat, caption, wm, null, [
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
@@ -42,15 +42,15 @@ switch (template) {
             break
             
         case 'nulis':
-    conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'hasil.jpg', '', m)
-            break
-            
         case 'nulis2':
-    conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'hasil.jpg', '', m)
+    let ling = `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`
+    await conn.sendButton(m.chat, 'Nih', wm, ling, [
+                ['Next', `${usedPrefix + command}`]
+            ], m, fdoc)
             break
             
         case 'chord':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |sayang`
         let f = await fetch(`https://hadi-api.herokuapp.com/api/chord?q=${one}`)
         let x = await f.json()
         let captionab = `*Result:* ${x.result}`
@@ -60,7 +60,7 @@ switch (template) {
             break
             
         case 'corohelp':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} indonesia`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |indonesia`
         let fA = await fetch(`https://hadi-api.herokuapp.com/api/corohelp?negara=${one}`)
         let oA = await fA.json()
         let xA = oA.result
@@ -75,7 +75,7 @@ switch (template) {
             break
             
         case 'cuaca':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sulswesi selatan`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |sulswesi selatan`
         let fabt = await fetch(`https://hadi-api.herokuapp.com/api/cuaca?prov=${one}`)
         let oabt = await fabt.json()
         let xabt = oabt.result
@@ -86,7 +86,7 @@ switch (template) {
             break
             
         case 'cuttly':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} https://google.com`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |https://google.com`
         let fabu = await fetch(`https://hadi-api.herokuapp.com/api/cuttly?url=${one}`)
         let xabu = await fabu.json()
         let captionabu = `*Result:* ${xabu.result}`
@@ -119,7 +119,7 @@ ${xabk.Time}
             break
             
         case 'font':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |sayang`
         let fabb = await fetch(`https://hadi-api.herokuapp.com/api/font?teks=${one}`)
         let xabb = await fabb.json()
         let captionabb = `*Result:* ${xabb.result}`
@@ -129,7 +129,7 @@ ${xabk.Time}
             break
             
         case 'font2':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |sayang`
         let fabc = await fetch(`https://hadi-api.herokuapp.com/api/font2?teks=${one}`)
         let xabc = await f.json()
         let captionabc = `*Result:* ${xabc.result}`
@@ -139,7 +139,7 @@ ${xabk.Time}
             break
             
         case 'githubstalk':
-            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} sayang`
+            if (!one) throw `Contoh penggunaan ${usedPrefix}${command} |sayang`
         let fabg = await fetch(`https://hadi-api.herokuapp.com/api/githubstalk?username=${one}`)
         let oabg = await f.json()
         let xabg = oabg.result

@@ -164,6 +164,7 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     //
+    try {
  let wel = await new Canvas.Welcome()
   .setUsername(`${await conn.getName(m.sender)}`)
   .setDiscriminator(`${global.db.data.users[m.sender].limit} Limit`)
@@ -184,6 +185,27 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
       ['Owner', '/owner'],
       ['Test', '/ping']
     ], m)
+    } catch {
+    let wel = await new Canvas.Welcome()
+  .setUsername(`${await conn.getName(m.sender)}`)
+  .setDiscriminator(`${global.db.data.users[m.sender].limit} Limit`)
+  .setMemberCount(`${global.db.data.users[m.sender].exp} Xp`)
+  .setGuildName(`${global.author}`)
+  .setAvatar(`${pp}`)
+  .setColor("border", "#000000")
+  .setColor("username-box", "#000000")
+  .setColor("discriminator-box", "#000000")
+  .setColor("message-box", "#000000")
+  .setColor("title", "#ffffff")
+  .setColor("avatar", "#000000")
+  .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
+  .toAttachment();
+    conn.sendHydrated2(m.chat, text.trim(), wm, wel.toBuffer(), webs, 'Website', gcwangsaf, 'Group WhatsApp', [
+      ['Donate', '/donasi'],
+      ['Owner', '/owner'],
+      ['Test', '/ping']
+    ], m)
+    }
                 //
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)

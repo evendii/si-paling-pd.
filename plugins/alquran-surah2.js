@@ -5,10 +5,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (isNaN(args[0]) || isNaN(args[1])) throw `contoh:\n${usedPrefix + command} 1 2\n\nmaka hasilnya adalah surah Al-Fatihah ayat 2 beserta audionya, dan ayatnya 1 aja`
 
     let res = await fetch(`https://anabotofc.herokuapp.com/api/muslim/quran?surah=args[0]&ayat=args[1]&apikey=AnaBot`)
-    if (!res.ok) throw eror
-    let json = await res.json()
-    if (json.status != 'OK.') return m.reply(json.result.message)
-    m.reply(conn.format(json))
     let mes = `
 ${json.result.data.text.arab}
     
