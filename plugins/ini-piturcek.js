@@ -10,7 +10,50 @@ let template = (args[0] || '').toLowerCase()
 if (!args[0]) {
 let caption = `*Contoh Penggunaan*
 
-${usedPrefix + command} tai @user`
+${usedPrefix + command} tai @user
+
+*List Command*
+• anjing
+• asu
+• babi
+• bajingan
+• banci
+• bangsat
+• bego
+• bejad
+• bencong
+• bolot
+• brengsek
+• budek
+• buta
+• geblek
+• gembel
+• gila
+• goblok
+• iblis
+• idiot
+• jablay
+• jelek
+• kampret
+• kampungan
+• kamseupay
+• keparat
+• kontol
+• kunyuk
+• maho
+• memek
+• monyet
+• ngentot
+• pecun
+• perek
+• sarap
+• setan
+• sinting
+• sompret
+• tai
+• tolol
+• udik
+`
 conn.sendButton(m.chat, caption, wm, null, [
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)

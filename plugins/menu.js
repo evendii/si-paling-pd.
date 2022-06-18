@@ -161,7 +161,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
-    let ppcard = `https://api.xzusfin.repl.co/card?avatar=${pp}&middle=MENU HINATA&name=${await conn.getName(m.sender)}&bottom=${global.author}&text=white&avatarborder=black&avatarbg=black&background=black`
+    let ppcard = `https://api.xzusfin.repl.co/card?avatar=${pp}&middle=Menu+Yang+Tersedia&name=${await conn.getName(m.sender)}&bottom=Created+By+Hinata&text=white&avatarborder=white&avatarbg=white&background=black`
     conn.sendHydrated2(m.chat, text.trim(), author, ppcard, webs, 'Website', gcwangsaf, 'Group WhatsApp', [
       ['Donate', '/donasi'],
       ['Owner', '/owner'],
