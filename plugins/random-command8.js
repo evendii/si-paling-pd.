@@ -20,7 +20,76 @@ let template = (args[0] || '').toLowerCase()
 if (!args[0]) {
 let caption = `*Contoh Penggunaan*
 
-${usedPrefix + command} attp |teks`
+${usedPrefix + command} attp |teks
+
+*List Command*
+• ahegao
+• aneh
+• anime
+• anony
+• ass
+• attp
+• bdsm
+• bijak
+• blowjob
+• bonk
+• bucin
+• bully
+• cecans
+• chobay
+• chord
+• corohelp
+• cry
+• cuaca
+• cuckold
+• cuddle
+• cum
+• cuttly
+• dance
+• dare
+• darkjokes
+• detik
+• ero
+• femdom
+• font
+• font2
+• foot
+• gambar
+• gangbang
+• githubstalk
+• glasses
+• harley
+• hentai
+• hentaigif
+• hijaber
+• hug
+• islami
+• jahy
+• joker
+• lick
+• masturbation
+• megumin
+• motivasi
+• neko
+• nekonime
+• nulis
+• nulis2
+• orgy
+• panties
+• pantun
+• pat
+• pussy
+• shinobu
+• slap
+• smile
+• smug
+• thighs
+• trut
+• ttp
+• waifu
+• yeet
+• yuri
+`
 conn.sendButton(m.chat, caption, wm, null, [
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
@@ -30,15 +99,8 @@ if (command) {
 switch (template) {
             //Hadi
         case 'attp':
-                let stiker = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
-    if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-    throw stiker.toString()
-            break
-            
         case 'ttp':
-                let stikers = await sticker(null, global.API(`https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`), global.packname, global.author)
-    if (stikers) return conn.sendFile(m.chat, stikers, 'sticker.webp', '', m)
-    throw stikers.toString()
+        conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'sticker.webp', '', m)
             break
             
         case 'nulis':

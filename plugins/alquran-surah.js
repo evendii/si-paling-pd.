@@ -12,10 +12,10 @@ ${json.result.surah}
 ${json.result.jumlah_ayat}
 ${json.result.type}
 
-${json.result.ayat.ayat}
-${json.result.ayat.arab}
-${json.result.ayat.indonesia}
-${json.result.ayat.latin}
+${json.result.ayat[0].ayat}
+${json.result.ayat[0].arab}
+${json.result.ayat[0].indonesia}
+${json.result.ayat[0].latin}
 ( Q.S ${json.result.surah} : ${json.result.nomor} )
 `.trim()
     m.reply(mes)
