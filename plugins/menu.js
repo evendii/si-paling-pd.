@@ -1,6 +1,8 @@
 import { promises } from 'fs'
 import { join } from 'path'
 import { xpRange } from '../lib/levelling.js'
+import Canvas from "discord-canvas"
+
 let tags = {
   'main': 'Main',
   'rpg': 'RolePlay Games',
@@ -161,13 +163,38 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
-    let namanya = await conn.getName(conn.user.jid)
-    let ppcard = `https://api.xzusfin.repl.co/card?avatar=${pp}&middle=Menu+Yang+Tersedia&name=${namanya}&bottom=Created+By+Hinata&text=white&avatarborder=white&avatarbg=white&background=black`
-    conn.sendHydrated2(m.chat, text.trim(), author, ppcard, webs, 'Website', gcwangsaf, 'Group WhatsApp', [
+    //
+    let groupMetadata = await conn.groupMetadata(m.chat) || (conn.chats[m.chat] || {}).metadata
+                for (let user of participants) {
+                    let pp = await this.profilePictureUrl(user).catch(_ => './src/avatar_contact.png')
+                  //How fo fix
+                    try {
+                    } catch (e) {
+                    } finally {
+ let wel = await new Canvas.Welcome()
+  .setUsername(`${await conn.getName(user)}`)
+  .setDiscriminator(`445577`)
+  .setMemberCount(`${groupMetadata.participants.length}`)
+  .setGuildName(`${groupMetadata.subject}`)
+  .setAvatar(`${pp}`)
+  .setColor("border", "#000000")
+  .setColor("username-box", "#000000")
+  .setColor("discriminator-box", "#000000")
+  .setColor("message-box", "#000000")
+  .setColor("title", "#ffffff")
+  .setColor("avatar", "#000000")
+  .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
+  .toAttachment();
+
+  conn.sendHydrated2(m.chat, text.trim(), wm, wel.toBuffer(), webs, 'Website', gcwangsaf, 'Group WhatsApp', [
       ['Donate', '/donasi'],
       ['Owner', '/owner'],
       ['Test', '/ping']
     ], m)
+  
+                    }
+                }
+                //
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
