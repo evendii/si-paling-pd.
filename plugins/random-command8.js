@@ -100,7 +100,7 @@ switch (template) {
             //Hadi
         case 'attp':
         case 'ttp':
-        conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'sticker.webp', '', m)
+        await conn.sendFile(m.chat, `https://hadi-api.herokuapp.com/api/canvas/${one}?text=${two}`, 'sticker.webp', '', m)
             break
             
         case 'nulis':
@@ -141,10 +141,11 @@ switch (template) {
         let fabt = await fetch(`https://hadi-api.herokuapp.com/api/cuaca?prov=${one}`)
         let oabt = await fabt.json()
         let xabt = oabt.result
-        let captionabt = `*terkonfirmasi:* ${Array.from(xabt)}`
-        await conn.sendButton(m.chat, captionabt, wm, null, [
-                ['Next', `${usedPrefix + command}`]
-            ], m, fdoc)
+        var teks = `Kota : ${oabt.result.kota}\n`
+                    teks += `Cuaca: ${oabt.result.malam}\n`
+                    conn.sendButton(m.chat, teks, wm, null, [
+                ['Menu', `${usedPrefix + command}`]
+            ], m)
             break
             
         case 'cuttly':

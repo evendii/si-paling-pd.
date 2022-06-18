@@ -7,21 +7,21 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let json = await fetch(`https://api.lolhuman.xyz/api/quran/args[0]/args[1]?apikey=9b817532fadff8fc7cb86862`)
         let jsons = await json.json()
         let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
-        for (let x of json.result.ayat) {
+        for (let x of json.result) {
         caption += `
-${json.result.asma}
-${json.result.surah}
-${json.result.jumlah_ayat}
-${json.result.type}
+${x.asma}
+${x.surah}
+${x.jumlah_ayat}
+${x.type}
 
-${x.ayat}
-${x.arab}
-${x.indonesia}
-${x.latin}
-( Q.S ${json.result.surah} : ${json.result.nomor} )
+${x.ayat.ayat}
+${x.ayat.arab}
+${x.ayat.indonesia}
+${x.ayat.latin}
+( Q.S ${x.surah} : ${x.nomor} )
 `}
         await conn.reply(m.chat, caption, m, frep)
-    conn.sendFile(m.chat, json.result.audio, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
+    conn.sendFile(m.chat, x.audio, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
 }
 handler.help = ['alquran <no surah> <no ayat>']
 handler.tags = ['quran']
