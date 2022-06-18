@@ -161,11 +161,12 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
-    conn.sendHydrated2(m.chat, text.trim(), author, pp, webs, 'Website', gcwangsaf, 'Group WhatsApp', [
+    let ppcard = `https://api.xzusfin.repl.co/card?avatar=${pp}&middle=MENU HINATA&name=${await conn.getName(m.sender)}&bottom=${global.author}&text=white&avatarborder=black&avatarbg=black&background=black`
+    conn.sendHydrated2(m.chat, text.trim(), author, ppcard, webs, 'Website', gcwangsaf, 'Group WhatsApp', [
       ['Donate', '/donasi'],
       ['Owner', '/owner'],
       ['Test', '/ping']
-    ], m, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm,jpegThumbnail: Buffer.alloc(0)}}}})
+    ], m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e

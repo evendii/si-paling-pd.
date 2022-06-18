@@ -5,6 +5,8 @@ import { webp2png } from '../lib/webp2mp4.js'
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
+let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+
 if (command == 'towebp') {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''
@@ -32,8 +34,8 @@ let q = m.quoted ? m.quoted : m
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 
     let img = await q.download?.()
-    let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/webptogif?apikey=9b817532fadff8fc7cb86862&img=${url}`
+   // let url = await uploadImage(img)
+    let res = `https://api.lolhuman.xyz/api/convert/webptogif?apikey=9b817532fadff8fc7cb86862&img=${img}`
 await conn.sendFile(m.chat, res, 'out.gif', m, false, { mimetype: 'image/gif', thumbnail: Buffer.alloc(0) })
 }
 
@@ -43,8 +45,8 @@ let q = m.quoted ? m.quoted : m
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 
     let img = await q.download?.()
-    let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/webptomp4?apikey=9b817532fadff8fc7cb86862&img=${url}`
+   // let url = await uploadImage(img)
+    let res = `https://api.lolhuman.xyz/api/convert/webptomp4?apikey=9b817532fadff8fc7cb86862&img=${img}`
 await conn.sendFile(m.chat, res, 'out.mp4', m, false, { mimetype: 'video/mp4', thumbnail: Buffer.alloc(0) })
 }
 
@@ -54,8 +56,8 @@ let q = m.quoted ? m.quoted : m
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 
     let img = await q.download?.()
-    let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/imgtopdf?apikey=9b817532fadff8fc7cb86862&img=${url}`
+    // let url = await uploadImage(img)
+    let res = `https://api.lolhuman.xyz/api/convert/imgtopdf?apikey=9b817532fadff8fc7cb86862&img=${img}`
 await conn.sendFile(m.chat, res, 'out.pdf', m, false, { mimetype: 'application/pdf', thumbnail: Buffer.alloc(0) })
 }
 
@@ -65,8 +67,8 @@ let q = m.quoted ? m.quoted : m
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 
     let img = await q.download?.()
-    let url = await uploadImage(img)
-    let res = `https://api.lolhuman.xyz/api/convert/topng?apikey=9b817532fadff8fc7cb86862&img=${url}`
+   // let url = await uploadImage(img)
+    let res = `https://api.lolhuman.xyz/api/convert/topng?apikey=9b817532fadff8fc7cb86862&img=${img}`
 await conn.sendFile(m.chat, res, 'out.png', m, false, { mimetype: 'image/png', thumbnail: Buffer.alloc(0) })
 }
 
@@ -76,8 +78,8 @@ let q = m.quoted ? m.quoted : m
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 
     let img = await q.download?.()
-    let url = await uploadFile(img)
-    let res = `https://api.lolhuman.xyz/api/filetobase64?apikey=9b817532fadff8fc7cb86862&file=${url}`
+    // let url = await uploadFile(img)
+    let res = `https://api.lolhuman.xyz/api/filetobase64?apikey=9b817532fadff8fc7cb86862&file=${img}`
 await conn.sendFile(m.chat, res, 'Hasil', '', m)
 }
 
@@ -99,8 +101,8 @@ let q = m.quoted ? m.quoted : m
     if (!mime) throw `balas gambar dengan perintah\n\n${usedPrefix + command}`
 
     let img = await q.download?.()
-    let url = await uploadImage(img)
-    let res = await fetch(`https://api.lolhuman.xyz/api/filetourl?apikey=9b817532fadff8fc7cb86862&file=${url}`)
+   // let url = await uploadImage(img)
+    let res = await fetch(`https://api.lolhuman.xyz/api/filetourl?apikey=9b817532fadff8fc7cb86862&file=${img}`)
     let p = await res.json()
     let rem = p.result
     await m.reply(`*Result:* ${rem}`)
@@ -123,7 +125,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/morse/decrypt?apikey=9b81753
 }
 
 if (command == 'emojimix3') {
-    if (!text) throw `perintah\n\n${usedPrefix + command} emot + emot`
+    if (!text) throw `perintah\n\n${usedPrefix + command} 😱 + 😳`
 let urut = text.split`+`
   let text1 = urut[0]
   let text2 = urut[1]
@@ -180,7 +182,7 @@ const listMessage = {
   buttonText: `☂️ Tema Disini ☂️`,
   sections
 }
-conn.sendMessage(m.chat, listMessage, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm,jpegThumbnail: Buffer.alloc(0)}}}})
+conn.sendMessage(m.chat, listMessage, fdoc)
 }
 
 }

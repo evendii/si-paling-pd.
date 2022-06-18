@@ -12,7 +12,8 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
             if (m.messageStubType === 68) return !0
         await conn.sendButton(m.chat, `*Font Aneh detect!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antivirtex', '/disable antivirtex'], m)
         if (isBotAdmin && bot.restrict) {
-            await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+        m.reply('Ok!')
+            // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         } else if (!bot.restrict) return m.reply('Owner disable auto kick!')
     }
     return !0
