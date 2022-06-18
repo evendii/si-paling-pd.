@@ -162,12 +162,37 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     //
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let { exp, limit, level, role, money, lastclaim, lastweekly, registered, regTime, age, banned, pasangan } = global.db.data.users[who]
+    let { min, xp, max } = xpRange(level, global.multiplier)
+    let name = await conn.getName(who)
+    let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
+    if (typeof global.db.data.users[who] == "undefined") {
+      global.db.data.users[who] = {
+        exp: 0,
+        limit: 10,
+        lastclaim: 0,
+        registered: false,
+        name: conn.getName(m.sender),
+        age: -1,
+        regTime: -1,
+        afk: -1,
+        afkReason: '',
+        banned: false,
+        level: 0,
+        lastweekly: 0,
+        role: 'Warrior V',
+        autolevelup: false,
+        money: 0,
+        pasangan: "",
+      }
+     }
+     let math = max - xp
     try {
  let wel = await new Canvas.Welcome()
-  .setUsername(`${await conn.getName(m.sender)}`)
-  .setDiscriminator(`${global.db.data.users[m.sender].limit} Limit`)
+  .setUsername(`${name}`)
+  .setDiscriminator(`${money} Money`)
   .setMemberCount(`${groupMetadata.participants.length}`)
   .setGuildName(`${groupMetadata.subject}`)
   .setAvatar(`${pp}`)
@@ -186,20 +211,18 @@ let handler = async (m, { conn, groupMetadata, usedPrefix: _p, __dirname }) => {
       ['Test', '/ping']
     ], m)
     } catch {
-    let wel = await new Canvas.Welcome()
-  .setUsername(`${await conn.getName(m.sender)}`)
-  .setDiscriminator(`${global.db.data.users[m.sender].limit} Limit`)
-  .setMemberCount(`${global.db.data.users[m.sender].exp} Xp`)
-  .setGuildName(`${global.author}`)
-  .setAvatar(`${pp}`)
-  .setColor("border", "#000000")
-  .setColor("username-box", "#000000")
-  .setColor("discriminator-box", "#000000")
-  .setColor("message-box", "#000000")
-  .setColor("title", "#ffffff")
-  .setColor("avatar", "#000000")
-  .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
-  .toAttachment();
+    let wel = await new Canvas.RankCard()
+    .setAvatar(`${pp}`)
+    .setXP("current", `${exp}`)
+    .setXP("needed", `${math}`)
+    .setLevel(`${level}`)
+    .setRank(`${limit}`)
+    .setReputation(`${level}`)
+    .setRankName("professional")
+    .setUsername(`${name}`)
+    .setBadge(`${money}`, `${role}`)
+    .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
+    .toAttachment();
     conn.sendHydrated2(m.chat, text.trim(), wm, wel.toBuffer(), webs, 'Website', gcwangsaf, 'Group WhatsApp', [
       ['Donate', '/donasi'],
       ['Owner', '/owner'],
