@@ -1,3 +1,4 @@
+const isVirtex = /๒๒๒|๑๑๑|Đ.Δ.Μ/i // tambahin sendiri
 
 export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe)
@@ -5,8 +6,13 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    let isVirtex = /^(๒๒๒|๑๑๑|Đ.Δ.Μ)$/i.test(m.text)
-    if (chat.antiVirtex && isVirtex) {
+    
+    const isAntiVirtex = isVirtex.exec(m.text)
+    
+    if (chat.antiVirtex && isAntiVirtex) {
+    if (isBotAdmin) {
+            if (m.text.includes(isVirtex)) return !0
+        }
             if (!m.isBaileys && m.text.length > 384) return !0
             if (m.text && m.text.length >= 25000) return !0
             if (m.messageStubType === 68) return !0

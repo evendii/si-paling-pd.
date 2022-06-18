@@ -1,11 +1,17 @@
+const isToxic = /Banh|Gwejh|Mgak|Okgey|Bimsa|Ava|Siava|Kavan|Pedo|Tumlul|Amsu/i // tambahin sendiri
+
 export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe)
         return !0
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    let isToxic = /^(Bapakao|Tulul|Kontol|Asu|Anj|Ajg|Memek|Gblk|Tolol|Bajingan|Ngentot)$/i.test(m.text)
-    if (chat.antiToxic && isToxic) {
+    const isAntiToxic = isToxic.exec(m.text)
+    
+    if (chat.antiToxic && isAntiToxic) {
+    if (isBotAdmin) {
+            if (m.text.includes(isToxic)) return !0
+        }
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
         if (isBotAdmin && bot.restrict) {
             // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
