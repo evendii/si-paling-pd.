@@ -1,8 +1,4 @@
 import fetch from 'node-fetch'
-import uploadFile from '../lib/uploadFile.js'
-import uploadImage from '../lib/uploadImage.js'
-
-import ameClient from 'amethyste-api'
 
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
@@ -91,69 +87,8 @@ if (command == 'fotoshibe') {
             ], m, fdoc)
 }
 
-if (command == 'amet') {
-let q = m.quoted ? m.quoted : m
-  let mime = (q.msg || q).mimetype || ''
-  if (!mime) throw 'Fotonya Mana?'
-    if (!args[0]) return m.reply(`Balas gambar dengan perintah
-    ${usedPrefix + command} effect
-*List effect:*
-pixelize
-posterize
-blur
-Nom
-circle
-rejected
-approved
-glitch
-distort
-sepia
-contrast
-greyscale
-invert
-pixelize
-blur
-posterize
-beautiful
-afusion
-wanted
-3000years
-rip
-utatoo
-wasted
-frame
-moustache
-scary`)
-    
-    let img = await q.download?.()
-    let url = await uploadImage(img)
-    let ameApi = new ameClient("690b646e9a28fb7737e373814e1c0731d3b01c8cf6ce42912013130a7dd8800128d965bb703a00212b3e6e3864682c544cf73024288ae6a9b459ab8e386503bf")
-    await ameApi.generate(`${args[0]}`, {
-	    "url" : `${url}`
-    }).then(image => {
-      await conn.sendButton(m.chat, `*Image:*`, wm, image, [
-                ['Next', `${usedPrefix + command}`]
-            ], m, fdoc)
-    }).catch(err => {
-      throw err;
-    })
 }
-
-if (command == 'amet2') {
-let ameApi = new ameClient("690b646e9a28fb7737e373814e1c0731d3b01c8cf6ce42912013130a7dd8800128d965bb703a00212b3e6e3864682c544cf73024288ae6a9b459ab8e386503bf")
-await ameApi.image("wallpaper", {
-    "nsfw" : "true"
-}).then(image => {
-    await conn.sendButton(m.chat, `*Image:*`, wm, image.url, [
-                ['Next', `${usedPrefix + command}`]
-            ], m, fdoc)
-}).catch(err => {
-    throw err;
-});
-}
-
-}
-handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'amet', 'amet2']
+handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe']
 handler.tags = ['random']
 
 export default handler
