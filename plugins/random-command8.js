@@ -158,7 +158,7 @@ ${x.Time}
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            */
+            
             //Sakura
             
             case 'ahegao':
@@ -188,7 +188,7 @@ ${x.Time}
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            /*
+            */
             case 'hijaber':
         case 'harley':
         case 'cecans':
@@ -311,7 +311,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            */
+            
           }
      }
 }
