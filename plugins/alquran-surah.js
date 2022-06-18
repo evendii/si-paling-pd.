@@ -6,15 +6,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     let json = await fetch(`https://api.quran.sutanlab.id/surah/${args[0]}/${args[1]}`)
         let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
-        for (let x of jsons.data) {
-        caption += `*Name* : *${x.text.arab}*
+        let x = jsons.data
+        let caption = `*Name* : *${x.text.arab}*
 Id : ${x.translation.id}
 ${x.surah.name.long}
 ${x.surah.name.transliteration.id}
 
 ${x.tafsir.id.long}
-`}
+`
     await conn.reply(m.chat, caption, m, frep)
     await conn.sendFile(m.chat, x.audio.primary, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
     

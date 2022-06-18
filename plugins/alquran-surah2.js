@@ -6,9 +6,8 @@ if (!args[0]) throw `Contoh:\n${usedPrefix + command} 1`
 
     let json = await fetch(`https://api.quran.sutanlab.id/surah/${args[0]}/${args[1]}`)
         let jsons = await json.json()
-        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
-        for (let x of jsons.data) {
-        caption += `*Name* : *${x.name.long}*
+        let x = jsons.data
+        let caption = `*Name* : *${x.name.long}*
         
 ${x.name.translation.id}
 ${x.revelation.id}
@@ -16,7 +15,7 @@ ${x.revelation.id}
 ${x.tafsir.id}
 ${x.verses.text[0].arab}
 ${x.verses.text[0].translation.id}
-`}
+`
     await conn.reply(m.chat, caption, m, frep)
     await conn.sendFile(m.chat, x.verses.audio[0].primary, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
     
