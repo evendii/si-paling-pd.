@@ -10,13 +10,12 @@ if (command == 'trengif') {
     .then(response => response.json())
     .then(content => {
         let img = content.data[0].images.original.url
-    });
-    
-  let caption = `*⎔┉━「 ${command} 」━┉⎔*`
+        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
   await conn.sendButton(m.chat, caption, wm, img, [
                 ['Next', `${usedPrefix + command}`],
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
+    });
 }
 
 if (command == 'searchgif') {
@@ -26,14 +25,12 @@ if (!text) throw `Masukkan teks`
     .then(response => response.json())
     .then(content => {
         let img = content.data[0].images.original.url
-        let title = content.data[0].title
-    });
-    
-  let caption = `*⎔┉━「 ${command} 」━┉⎔*`
+        let caption = `*⎔┉━「 ${command} 」━┉⎔*`
   await conn.sendButton(m.chat, caption, wm, img, [
                 ['Next', `${usedPrefix + command}`],
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
+    });
 }
 
 }
