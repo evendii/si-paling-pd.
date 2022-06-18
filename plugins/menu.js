@@ -164,13 +164,9 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     //
-    let groupMetadata = await conn.groupMetadata(m.chat) || (conn.chats[m.chat] || {}).metadata
-                for (let user of participants) {
-                    let pp = await this.profilePictureUrl(user).catch(_ => './src/avatar_contact.png')
-                  //How fo fix
-                    try {
-                    } catch (e) {
-                    } finally {
+    const groupMetadata = (m.isGroup ? ((conn.chats[m.chat] || {}).metadata || await this.groupMetadata(m.chat).catch(_ => null)) : {}) || {}
+        const participants = (m.isGroup ? groupMetadata.participants : []) || []
+        const user = (m.isGroup ? participants.find(u => conn.decodeJid(u.id) === m.sender) : {}) || {} // User Data
  let wel = await new Canvas.Welcome()
   .setUsername(`${await conn.getName(user)}`)
   .setDiscriminator(`445577`)
@@ -192,8 +188,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
       ['Test', '/ping']
     ], m)
   
-                    }
-                }
                 //
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)

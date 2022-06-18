@@ -160,7 +160,7 @@ ${x.Time}
             break
             
             //Sakura
-            
+            */
             case 'ahegao':
         case 'ass':
         case 'bdsm':
@@ -188,18 +188,18 @@ ${x.Time}
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            */
+            
             case 'hijaber':
         case 'harley':
         case 'cecans':
         case 'anony':
-                let pe = await fetch(`https://mysakura.herokuapp.com/api/wallpaper/${args[0]}?apikey=sakura404`)
-        let x = await pe.json()
-        await conn.sendButton(m.chat, `${command}`, wm, x.url, [
+                let pa = await fetch(`https://mysakura.herokuapp.com/api/wallpaper/${args[0]}?apikey=sakura404`)
+        let xe = await pe.json()
+        await conn.sendButton(m.chat, `${command}`, wm, xe.url, [
                 ['Next', `${usedPrefix + command}`]
             ], m, fdoc)
             break
-            
+            /*
         case 'waifu':
         case 'nekonime':
         case 'shinobu':
@@ -311,7 +311,7 @@ ${x.Time}
                 ['Next', `${usedPrefix}${command}`]
             ], m, fdoc)
             break
-            
+            */
           }
      }
 }
