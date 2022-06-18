@@ -6,15 +6,16 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
     let res = await fetch(`https://anabotofc.herokuapp.com/api/muslim/quran?surah=args[0]&ayat=args[1]&apikey=AnaBot`)
     let json = await res.json()
+    let x = json.result.data
     let mes = `
-${json.result.data.text.arab}
+${x.text.arab}
     
-${json.result.data.translation.id}
+${x.translation.id}
 
-( Q.S ${json.result.data.surah.name.transliteration.id} : ${json.result.data.number.inSurah} )
+( Q.S ${x.surah.name.transliteration.id} : ${x.number.inSurah} )
 `.trim()
     m.reply(mes)
-    conn.sendFile(m.chat, json.result.data.audio.primary, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
+    conn.sendFile(m.chat, x.audio.primary, 'audio.mp3', '', m, 0, { mimetype: 'audio/mp4' })
 }
 handler.help = ['alquran2 <no surah> <no ayat>']
 handler.tags = ['quran']
