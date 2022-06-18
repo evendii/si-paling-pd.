@@ -7,7 +7,6 @@ import ameClient from 'amethyste-api'
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
-let ameApi = new ameClient("690b646e9a28fb7737e373814e1c0731d3b01c8cf6ce42912013130a7dd8800128d965bb703a00212b3e6e3864682c544cf73024288ae6a9b459ab8e386503bf")
 
 if (command == 'urlscan') {
 if (!text) throw `Masukkan link`
@@ -34,7 +33,7 @@ let res = await fetch(`https://urlscan.io/api/v1/search/?q=${text}`)
   
   ${xx[0].result}
   `, wm, xx[0].screenshot, [
-                ['Menu', `${usedPrefix}menu`],
+                ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
 }
 
@@ -128,7 +127,7 @@ scary`)
     
     let img = await q.download?.()
     let url = await uploadImage(img)
-    
+    let ameApi = new ameClient("690b646e9a28fb7737e373814e1c0731d3b01c8cf6ce42912013130a7dd8800128d965bb703a00212b3e6e3864682c544cf73024288ae6a9b459ab8e386503bf")
     await ameApi.generate(`${args[0]}`, {
 	    "url" : `${url}`
     }).then(image => {
@@ -141,6 +140,7 @@ scary`)
 }
 
 if (command == 'amet2') {
+let ameApi = new ameClient("690b646e9a28fb7737e373814e1c0731d3b01c8cf6ce42912013130a7dd8800128d965bb703a00212b3e6e3864682c544cf73024288ae6a9b459ab8e386503bf")
 await ameApi.image("wallpaper", {
     "nsfw" : "true"
 }).then(image => {
@@ -154,6 +154,6 @@ await ameApi.image("wallpaper", {
 
 }
 handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'amet', 'amet2']
-handler.tags = ['tools']
+handler.tags = ['random']
 
 export default handler
