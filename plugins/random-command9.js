@@ -11,25 +11,25 @@ if (!text) throw `Masukkan link`
 let res = await fetch(`https://urlscan.io/api/v1/search/?q=${text}`)
   let sul = await res.json()
   await conn.sendButton(m.chat, `*Quotes:*
-  ${sul.results[0].task.visibility}
-  ${sul.results[0].task.method}
-  ${sul.results[0].task.domain}
-  ${sul.results[0].task.time}
-  ${sul.results[0].task.uuid}
-  ${sul.results[0].task.url}
+  ${sul.results.task.visibility}
+  ${sul.results.task.method}
+  ${sul.results.task.domain}
+  ${sul.results.task.time}
+  ${sul.results.task.uuid}
+  ${sul.results.task.url}
   
-  ${sul.results[0].stats.uniqIPs}
-  ${sul.results[0].stats.uniqCountries}
-  ${sul.results[0].stats.dataLength}
-  ${sul.results[0].stats.encodedDataLength}
+  ${sul.results.stats.uniqIPs}
+  ${sul.results.stats.uniqCountries}
+  ${sul.results.stats.dataLength}
+  ${sul.results.stats.encodedDataLength}
   
-  ${sul.results[0].page.country}
-  ${sul.results[0].page.ip}
-  ${sul.results[0].page.title}
-  ${sul.results[0].page.url}
+  ${sul.results.page.country}
+  ${sul.results.page.ip}
+  ${sul.results.page.title}
+  ${sul.results.page.url}
   
-  ${sul.results[0].result}
-  `, wm, sul.results[0].screenshot, [
+  ${sul.results.result}
+  `.trim(), wm, sul.results.screenshot, [
                 ['Menu', `${usedPrefix}menu`]
             ], m, fdoc)
 }
