@@ -111,22 +111,25 @@ await conn.sendButton(m.chat, caption, wm, `${imgr + command}`, [
          }
          
 if (command == 'repeat') {
-if (!args[0]) throw `Masukkan nomor`
-if (!text1) throw `Masukkan teks`
-let text1 = args.slice(1).join(' ')
-let caption = `${text1 + ''}`.repeat(`${args[0]}`)
+if (!one) throw `Masukkan teks dan angka`
+let urut = text.split`|`
+let one = urut[1]
+let two = urut[2]
+let string = '' + one
+let count = two
+let caption = string.repeat(count);
 await conn.reply(m.chat, caption, m, frep)
          }
          
 if (command == 'repeat2') {
-if (!thm) throw `Masukkan nomor`
-if (!text1) throw `Masukkan teks`
-let thm = args[0]
-let text1 = args.slice(1).join(' ')
+if (!one) throw `Masukkan teks dan angka`
+let urut = text.split`|`
+let one = urut[1]
+let two = urut[2]
 let caption = '';
 let i = 0;
-while (i < thm) {
-  caption += '\n' + i + ' ' + text1;
+while (i < `${one}`) {
+  caption += '\n' + i + ' ' + `${two}`;
   i++;
 }
 await conn.reply(m.chat, caption, m, frep)
