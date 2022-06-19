@@ -9,7 +9,12 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 	    {title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
 	    {title: "🌎 | Public", rowId: `${usedPrefix + command} public`},
 	{title: "🗣️ | Simi", rowId: `${usedPrefix + command} simi`},
-	{title: "🔗 | AntiLink", rowId: `${usedPrefix + command} antilink`},
+	{title: "🔗 | AntiLinkWa", rowId: `${usedPrefix + command} antilink`},
+	{title: "🔗 | AntiLinkTik", rowId: `${usedPrefix + command} antilinktik`},
+	{title: "🔗 | AntiLinkYt", rowId: `${usedPrefix + command} antilinkyt`},
+	{title: "🔗 | AntiLinkTel", rowId: `${usedPrefix + command} antilinktel`},
+	{title: "🔗 | AntiLinkFb", rowId: `${usedPrefix + command} antilinkfb`},
+	{title: "🔗 | AntiLinkIg", rowId: `${usedPrefix + command} antilinkig`},
 	{title: "🚫 | AntiDelete", rowId: `${usedPrefix + command} antidelete`},
 	{title: "👽 | AntiVirtex", rowId: `${usedPrefix + command} antivirtex`},
 	{title: "🤬 | AntiToxic", rowId: `${usedPrefix + command} antitoxic`},
@@ -114,6 +119,51 @@ const listMessage = {
         }
       }
       chat.antiLink = isEnable
+      break
+      case 'antilinktik':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiLinkTik = isEnable
+      break
+      case 'antilinkyt':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiLinkYt = isEnable
+      break
+      case 'antilinktel':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiLinkTel = isEnable
+      break
+      case 'antilinkfb':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiLinkFb = isEnable
+      break
+      case 'antilinkig':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiLinkIg = isEnable
       break
       case 'antivirtex':
       if (m.isGroup) {

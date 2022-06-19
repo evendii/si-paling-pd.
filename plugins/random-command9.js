@@ -12,25 +12,21 @@ let json = await fetch(`https://urlscan.io/api/v1/search/?q=${text}`)
         let jsons = await json.json()
         let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
         for (let x of jsons.results) {
-        caption += `*Result:*
-  ${x.task.visibility}
-  ${x.task.method}
-  ${x.task.domain}
-  ${x.task.time}
-  ${x.task.uuid}
-  ${x.task.url}
-  
-  ${x.stats.uniqIPs}
-  ${x.stats.uniqCountries}
-  ${x.stats.dataLength}
-  ${x.stats.encodedDataLength}
-  
-  ${x.page.country}
-  ${x.page.ip}
-  ${x.page.title}
-  ${x.page.url}
-  
-  ${x.result}
+        caption += `*Result:*\n
+*visibility:* ${x.task.visibility}
+*method:* ${x.task.method}
+*domain:* ${x.task.domain}
+*time:* ${x.task.time}
+*uuid:* ${x.task.uuid}
+*url:* ${x.task.url}
+*uniqIPs:* ${x.stats.uniqIPs}
+*uniqCountries:* ${x.stats.uniqCountries}
+*dataLength:* ${x.stats.dataLength}
+*encodedDataLength:* ${x.stats.encodedDataLength}
+*country:* ${x.page.country}
+*ip:* ${x.page.ip}
+*url:* ${x.page.url}
+*result:* ${x.result}
   `}
         await conn.reply(m.chat, caption, m, frep)
 }
@@ -105,16 +101,16 @@ let caption = `▣═━–〈 *RULES BOT* 〉–━═▣
 ┊ KALO MELANGGAR AKAN LANGSUNG DIBAN DAN DI BLOKIR TANPA TOLERANSI SEDIKIT PUN
 ┊
 │⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ 
-▣═━–〈 *RULES BOT* 〉–━═▣`
+▣═━–〈 *HINATA MD* 〉–━═▣`
 await conn.sendButton(m.chat, caption, wm, `${imgr + command}`, [
-                ['Ok!', `${usedPrefix}simi Oke`]
+                ['Ok!', `${usedPrefix}tts id Oke`]
             ], m, fdoc)
          }
          
 if (command == 'repeat') {
 if (!args[0]) throw `Cth. .repeat 7|Hai`
 let urut = text.split`|`
-let string = '' + urut[1]
+let string = '\n' + urut[1]
 let count = urut[0]
 let caption = string.repeat(count);
 await conn.reply(m.chat, caption, m, frep)

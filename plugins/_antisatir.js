@@ -16,7 +16,7 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     
     await conn.sendButton(m.chat, `*Limit anda bertambah 10*
     
-    Karena Menemukan Kata Satir
+    Karena Menggunakan Kata Satir
     
     Ketik *.limit* untuk cek limit`, wm, null, [
         ['Ngechit', `${usedPrefix}ngechit`]

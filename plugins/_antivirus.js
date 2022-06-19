@@ -1,4 +1,4 @@
-const isVirtex = /๒๒๒|๑๑๑|Đ.Δ.Μ/i // tambahin sendiri
+const isVirtex = /PLHIPS|๒๒๒|๑๑๑|Đ.Δ.Μ/i // tambahin sendiri
 
 export async function before(m, { conn, isAdmin, isBotAdmin }) {
     if (m.isBaileys && m.fromMe)
@@ -15,7 +15,7 @@ export async function before(m, { conn, isAdmin, isBotAdmin }) {
         await conn.sendButton(m.chat, `*Font Aneh detect!*${isBotAdmin ? '' : '\n\n_Bot bukan admin_'}`, author, ['off antivirtex', '/disable antivirtex'], m)
         if (isBotAdmin && bot.restrict) {
         m.reply('Ok!')
-            // await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
+        await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
         } else if (!bot.restrict) return m.reply('Owner disable auto kick!')
     }
     return !0
