@@ -4,6 +4,8 @@ let poin = 4999
 let handler = async (m, { conn, command, usedPrefix }) => {
 let play_list = ['37i9dQZEVXbObFQZ3JLcXt', '37i9dQZEVXbMDoHDwVN2tF', '37i9dQZF1DXa2EiKmMLhFD', '37i9dQZF1DXdHrK6XFPCM1', '3AaKHE9ZMMEdyRadsg8rcy', '4mFuArYRh3SO8jfffYLSER']
 let spotify_id = play_list.getRandom()
+let imgr = flaaa.getRandom()
+
     conn.tebaklagu = conn.tebaklagu ? conn.tebaklagu : {}
     let id = m.chat
     if (id in conn.tebaklagu) {
@@ -25,7 +27,7 @@ Ketik *${usedPrefix}hlag* untuk bantuan
 Bonus: ${poin} XP
 *Balas pesan ini untuk menjawab!*`.trim()
     conn.tebaklagu[id] = [
-        await conn.sendButton(m.chat, caption, author, `https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=inferno-logo&doScale=false&scaleWidth=400&scaleHeight=400&fontsize=50&fillTextType=0&backgroundColor=black&text=${command}`, buttons, m),
+        await conn.sendButton(m.chat, caption, author, `${imgr + command}`, buttons, m),
         json, poin,
         setTimeout(() => {
             if (conn.tebaklagu[id]) conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.judul}*`, author, null, [

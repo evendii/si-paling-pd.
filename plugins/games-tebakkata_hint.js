@@ -3,11 +3,11 @@ let handler = async (m, { conn }) => {
     let id = m.chat
     if (!(id in conn.tebakkata)) throw false
     let json = conn.tebakkata[id][1]
-    let ans = json.jawaban
-    let clue = ans.replace(/[AIUEO]/gi, '_')
-    m.reply('```' + clue + '```')
+    conn.sendButton(m.chat, '```' + json.jawaban.replace(/[AIUEOaiueo]/ig, '_') + '```', author, null, [
+        ['Nyerah', 'menyerah']
+    ], m)
 }
-handler.command = /^teka$/i
+handler.command = /^hkat$/i
 
 handler.limit = true
 

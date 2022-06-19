@@ -3,11 +3,11 @@ let handler = async (m, { conn }) => {
     let id = m.chat
     if (!(id in conn.caklontong)) throw false
     let json = conn.caklontong[id][1]
-    let ans = json.jawaban
-    let clue = ans.replace(/[AIUEO]/gi, '_')
-    m.reply('```' + clue + '```')
+    conn.sendButton(m.chat, '```' + json.jawaban.replace(/[AIUEOaiueo]/ig, '_') + '```', author, null, [
+        ['Nyerah', 'menyerah']
+    ], m)
 }
-handler.command = /^calo$/i
+handler.command = /^hcak$/i
 
 handler.limit = true
 

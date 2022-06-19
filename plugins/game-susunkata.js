@@ -2,6 +2,8 @@ import fetch from 'node-fetch'
 let timeout = 120000
 let poin = 4999
 let handler = async (m, { conn, command, usedPrefix }) => {
+let imgr = flaaa.getRandom()
+
     conn.susunkata = conn.susunkata ? conn.susunkata : {}
     let id = m.chat
     if (id in conn.susunkata) {
@@ -19,7 +21,7 @@ Ketik ${usedPrefix}hsus untuk bantuan
 Bonus: ${poin} XP
     `.trim()
     conn.susunkata[id] = [
-        await conn.sendButton(m.chat, caption, author, `https://www6.flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=inferno-logo&doScale=false&scaleWidth=400&scaleHeight=400&fontsize=50&fillTextType=0&backgroundColor=black&text=${command}`, buttons, m),
+        await conn.sendButton(m.chat, caption, author, `${imgr + command}`, buttons, m),
         json, poin,
         setTimeout(() => {
             if (conn.susunkata[id]) conn.sendButton(m.chat, `Waktu habis!\nJawabannya adalah *${json.jawaban}*`, author, null, [

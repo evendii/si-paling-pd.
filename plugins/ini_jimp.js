@@ -8,8 +8,20 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || ''
     if (!text) return m.reply(`Balas gambar dengan perintah
-    ${usedPrefix + command} effect 20
+    ${usedPrefix + command} effect
 *List effect:*
+• blur
+• brightness
+• circle
+• contrast
+• delete
+• fade
+• flip
+• grayscale
+• invert
+• opacity
+• opaque
+• sepia
 `)
     
     let img = await q.download?.()
