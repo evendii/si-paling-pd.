@@ -23,9 +23,8 @@ let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&pa
 
 for (var i=0; i<json.results.length; i++) {
    for (var key in json.results[i]) {
-       for (var j= 0; j<json.results[i][key].length; j++) {
-           let ter = json.results[i][key][j]
-      
+       let tor = json.results[i][key].name
+       let ter json.results[i][key].sound
 
 let nm = 1
 let nm2 = 0
@@ -33,7 +32,7 @@ for (let x of ter) {
 const yy = {
 title: 'Sound ke -'+ nm++,
 rows: [
-{title: `${ter[nm2++]}`,
+{title: `${tor[nm2++]}`,
  rowId: `${usedPrefix}get ${x}`}
  ]
 }
@@ -50,7 +49,6 @@ const LiM = {
 conn.sendMessage(m.chat, LiM, m)
 }}
  }
-   }
 }
 
 }
