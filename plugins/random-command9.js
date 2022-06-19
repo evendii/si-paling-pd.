@@ -87,6 +87,19 @@ if (command == 'fotoshibe') {
             ], m, fdoc)
 }
 
+if (command == 'drinks') {
+  let res = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+  let x = await res.json()
+  await conn.sendButton(m.chat, `*drinks:*\n
+  *idDrink:* ${x.drinks[0].idDrink}
+  *Drink:* ${x.drinks[0].strDrink}
+  *Category:* ${x.drinks[0].strCategory}
+  *Glass:* ${x.drinks[0].strGlass}
+  *Instructions:* ${x.drinks[0].strInstructions}`, wm, x.drinks[0].strDrinkThumb, [
+                ['Next', `${usedPrefix + command}`]
+            ], m, fdoc)
+}
+
 if (command == 'rules') {
 let caption = `▣═━–〈 *RULES BOT* 〉–━═▣
 │
@@ -129,7 +142,7 @@ await conn.reply(m.chat, caption, m, frep)
          }
          
 }
-handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'rules', 'repeat', 'repeat2']
+handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'drinks', 'rules', 'repeat', 'repeat2']
 handler.tags = ['random']
 
 export default handler

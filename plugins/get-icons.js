@@ -3,8 +3,8 @@ import { sticker } from '../lib/sticker.js'
 
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
 
-if (!text) throw `Contoh penggunaan ${usedPrefix}${command} pentol|2`
 if (command == 'gettenor') {
+if (!text) throw `Contoh penggunaan ${usedPrefix}${command} pentol|2`
 let urut = text.split`|`
   let text1 = urut[0]
   let text2 = urut[1]
@@ -14,14 +14,15 @@ let urut = text.split`|`
     let ter = json.results
 
     for (let i = 0; i < ter.length; i++) {
-        let out = ter[i].media[0].gif.url
-        let stiker = await sticker(null, global.API(out), global.packname, global.author)
-    if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-    throw stiker.toString()
+        let out = ter[i].media[0].mp4.url
+        await conn.sendButton(m.chat, `*${ter[i].title}*`, wm, out, [
+                ['To Sticker', `${usedPrefix}s`]
+            ], m)
     }
   }
 
 if (command == 'getteles') {
+if (!text) throw `Contoh penggunaan ${usedPrefix}${command} https://t.me/addsticker/...`
     let gas = await fetch(`https://api-xfar05.herokuapp.com/api/telesticker?url=${text}`)
     let json = await gas.json()
     let ter = json.result
