@@ -113,8 +113,8 @@ await conn.sendButton(m.chat, caption, wm, `${imgr + command}`, [
 if (command == 'repeat') {
 if (!args[0]) throw `Cth. .repeat 7|Hai`
 let urut = text.split`|`
-let string = '' + urut[0]
-let count = urut[1]
+let string = '' + urut[1]
+let count = urut[0]
 let caption = string.repeat(count);
 await conn.reply(m.chat, caption, m, frep)
          }
@@ -123,7 +123,7 @@ if (command == 'repeat2') {
 if (!args[0]) throw `Cth. .repeat2 7|Hai`
 let urut = text.split`|`
 let caption = '';
-let i = 0;
+let i = 1;
 while (i < `${urut[0]}`) {
   caption += '\n' + i + ' ' + `${urut[1]}`;
   i++;
