@@ -29,14 +29,15 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
   if (!isY && !isLimit) m.reply(isLimit ? `Size ${video.filesizeH}\nUkuran file diatas ${limit} MB, download sendiri: ${audio}` : wait)
-  if (!isLimit) await conn.sendFile(m.chat, link, title + '.mp4', `
+  if (!isLimit) await conn.sendFile(m.chat, link, title + '.mp4', `▣═━–〈 *YT VIDEO* 〉–━═▣
 *📌Title:* ${title}
 *🗎 Filesize:* ${video.fileSizeH}
 
-Noh 
+⌕ Nih bang videonya ^_^
+▣═━━━━━━━━━━━━━━═▣
 `.trim(), m, false, {
     ..._thumb,
-    asDocument: true
+    asDocument: false
   })
 }
 handler.help = ['mp4', 'v', ''].map(v => 'yt' + v + ` <url> <without message>`)

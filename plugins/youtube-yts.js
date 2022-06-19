@@ -1,5 +1,9 @@
 import { youtubeSearch } from '@bochilteam/scraper'
-let handler = async (m, { text }) => {
+
+let handler = async(m, { conn, usedPrefix, text, args, command }) => {
+let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+let imgr = flaaa.getRandom()
+
   if (!text) throw 'Cari apa?'
   const { video, channel } = await youtubeSearch(text)
   let teks = [...video, ...channel].map(v => {
@@ -16,8 +20,11 @@ let handler = async (m, { text }) => {
 🎥 ${v.videoCount} video
 `.trim()
     }
-  }).filter(v => v).join('\n\n========================\n\n')
-  m.reply(teks)
+  }).filter(v => v).join('\n\n▣═━–〈 *YT SEARCH* 〉–━═▣\n\n')
+  //m.reply(teks)
+  await conn.sendButton(m.chat, teks, wm, `${imgr + command}`, [
+                ['Yts!', `${usedPrefix + command} ${text}`]
+            ], m, fdoc)
 }
 handler.help = ['', 'earch'].map(v => 'yts' + v + ' <pencarian>')
 handler.tags = ['tools']
