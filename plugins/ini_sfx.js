@@ -21,11 +21,10 @@ ${usedPrefix + command} 10`
 let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
     let json = await gas.json()
     let ter = json.results
-    for (i in ter) {
+    for (let i in ter) {
   let tit = ter[i].name
   let tot = ter[i].sound
-
-        let nm = 1
+  let nm = 1
 let nm2 = 0
 for (let x of tot) {
 const yy = {
