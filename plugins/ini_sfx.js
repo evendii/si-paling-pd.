@@ -22,7 +22,7 @@ let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&pa
     let json = await gas.json()
 
 for (var i=0; i<json.results.length; i++) {
-   for (var key in json.jsonData[i]) {
+   for (var key in json.results[i]) {
        for (var j= 0; j<json.results[i][key].length; j++) {
            let ter = json.results[i][key][j]
       
