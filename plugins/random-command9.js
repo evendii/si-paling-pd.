@@ -113,10 +113,8 @@ await conn.sendButton(m.chat, caption, wm, `${imgr + command}`, [
 if (command == 'repeat') {
 if (!one) throw `Masukkan teks dan angka`
 let urut = text.split`|`
-let one = urut[1]
-let two = urut[2]
-let string = '' + one
-let count = two
+let string = '' + urut[0]
+let count = urut[1]
 let caption = string.repeat(count);
 await conn.reply(m.chat, caption, m, frep)
          }
@@ -124,8 +122,8 @@ await conn.reply(m.chat, caption, m, frep)
 if (command == 'repeat2') {
 if (!one) throw `Masukkan teks dan angka`
 let urut = text.split`|`
-let one = urut[1]
-let two = urut[2]
+let one = urut[0]
+let two = urut[1]
 let caption = '';
 let i = 0;
 while (i < `${one}`) {

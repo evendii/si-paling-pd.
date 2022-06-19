@@ -8,8 +8,8 @@ try {
     let mime = (q.msg || q).mimetype || ''
     if (/image|video/.test(mime)) {
     let urut = text.split`|`
-    let one = urut[1]
-    let two = urut[2]
+    let one = urut[0]
+    let two = urut[1]
       let img = await q.download()
       if (!img) throw `Reply stiker nya!\n ${usedPrefix + command} pack|auth`
       stiker = await sticker(img, false, one, two)
