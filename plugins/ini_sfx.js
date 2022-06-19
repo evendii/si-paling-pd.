@@ -24,19 +24,17 @@ let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&pa
     
        // let snd = ter.sound
        // let nme = ter.name
-        
-        var result = [];
-        for(var i in ter)
-        result.push([i, ter [i]]);
+       let tot = Object.values(ter[0])
+       let tit = Object.values(ter[1])
 
 
         let nm = 1
 let nm2 = 0
-for (let x of result) {
+for (let x of tot) {
 const yy = {
 title: 'Sound ke -'+ nm++,
 rows: [
-{title: `${ter[nm2++]}`,
+{title: `${tit[nm2++]}`,
  rowId: `${usedPrefix}get ${x}`}
  ]
 }
