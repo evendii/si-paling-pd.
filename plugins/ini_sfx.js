@@ -23,7 +23,7 @@ let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&pa
 
 for (var i=0; i<json.results.length; i++) {
        let tor = json.results[i].name
-       let ter json.results[i].sound
+       let ter = json.results[i].sound
 
 let nm = 1
 let nm2 = 0
