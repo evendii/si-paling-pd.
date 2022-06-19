@@ -114,11 +114,26 @@ if (command == 'repeat') {
 if (!args[0]) throw `Masukkan nomor`
 if (!text1) throw `Masukkan teks`
 let text1 = args.slice(1).join(' ')
-let caption = text1.repeat(`${args[0]}`)
+let caption = `${text1 + ''}`.repeat(`${args[0]}`)
 await conn.reply(m.chat, caption, m, frep)
          }
+         
+if (command == 'repeat2') {
+if (!thm) throw `Masukkan nomor`
+if (!text1) throw `Masukkan teks`
+let thm = args[0]
+let text1 = args.slice(1).join(' ')
+let caption = '';
+let i = 0;
+while (i < thm) {
+  caption += '\n' + i + ' ' + text1;
+  i++;
 }
-handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'rules', 'repeat']
+await conn.reply(m.chat, caption, m, frep)
+         }
+         
+}
+handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'rules', 'repeat', 'repeat2']
 handler.tags = ['random']
 
 export default handler
