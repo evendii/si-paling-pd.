@@ -21,12 +21,9 @@ ${usedPrefix + command} 10`
 let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
     let json = await gas.json()
     let ter = json.results
-    
-       // let snd = ter.sound
-       // let nme = ter.name
-       let tot = Object.values(ter[0])
-       let tit = Object.values(ter[1])
-
+    for (i in ter) {
+  let tit = ter[i].name
+  let tot = ter[i].sound
 
         let nm = 1
 let nm2 = 0
@@ -49,7 +46,7 @@ const LiM = {
   sections
 }
 conn.sendMessage(m.chat, LiM, m)
-}}
+}}}
 
 }
 handler.command = handler.help = ['sfx', 'sfx2']
