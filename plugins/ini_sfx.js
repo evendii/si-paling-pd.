@@ -28,15 +28,14 @@ let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&pa
 let nm2 = 0
 for (let x of snd) {
 const yy = {
-title: 'Game ke -'+ nm++,
+title: 'Sound ke -'+ nm++,
 rows: [
 {title: `${nme[nm2++]}`,
- rowId: `${usedPrefix}get ${snd}`}
+ rowId: `${usedPrefix}get ${x}`}
  ]
 }
 let h = []
 let sections = h.push(yy)
-}
 }
 
 const LiM = {
@@ -48,8 +47,8 @@ const LiM = {
 }
 conn.sendMessage(m.chat, LiM, m)
 }
-        
-        
+}
+
 }
 handler.command = handler.help = ['sfx', 'sfx2']
 handler.tags = ['random']
