@@ -20,9 +20,11 @@ if (!text) throw `Contoh:
 ${usedPrefix + command} 10`
 let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
     let json = await gas.json()
-    let ter = `${Array.from(json.results)}`
-        let snd = ter.sound
-        let nme = ter.name
+    let ter = json.results
+    let ee = ter.length
+
+        let snd = ter[ee].sound
+        let nme = ter[ee].name
         
         let nm = 1
 let nm2 = 0
@@ -36,6 +38,7 @@ rows: [
 }
 let h = []
 let sections = h.push(yy)
+
 const LiM = {
   text: `⚡ Silakan pilih opsi di tombol di bawah...`,
   footer: global.wm,
