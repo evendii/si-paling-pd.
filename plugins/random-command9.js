@@ -4,6 +4,7 @@ import fs from 'fs'
 let handler = async(m, { conn, groupMetadata, usedPrefix, text, args, command }) => {
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
+let imgr = flaaa.getRandom()
 
 if (command == 'urlscan') {
 if (!text) throw `Masukkan link`
@@ -113,7 +114,7 @@ if (command == 'repeat') {
 if (!args[0]) throw `Masukkan nomor`
 if (!text1) throw `Masukkan teks`
 let text1 = args.slice(1).join(' ')
-let caption = '' + text1 ''.repeat(`${args[0]}`)
+let caption = text1.repeat(`${args[0]}`)
 await conn.reply(m.chat, caption, m, frep)
          }
 }
