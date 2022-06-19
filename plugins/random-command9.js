@@ -89,8 +89,35 @@ if (command == 'fotoshibe') {
             ], m, fdoc)
 }
 
+if (command == 'rules') {
+let caption = `▣═━–〈 *RULES BOT* 〉–━═▣
+│
+┊ DILARANG TOXIC
+┊ DILARANG SPAM
+┊ DILARANG KIRIM VIRTEX
+┊ DILARANG KIRIM 18+ APAPUN ITU
+┊ DILARANG TELPON / VC
+┊ DILARANG CULIK BOT
+┊ DILARANG PROMOSI
+┊ BOT TIDAK MENERIMA SAVE KONTAK
+┊ KALO MELANGGAR AKAN LANGSUNG DIBAN DAN DI BLOKIR TANPA TOLERANSI SEDIKIT PUN
+┊
+│⌕ ❙❘❙❙❘❙❚❙❘❙❙❚❙❘❙❘❙❚❙❘❙❙❚❙❘❙❙❘❙❚❙❘ 
+▣═━–〈 *RULES BOT* 〉–━═▣`
+await conn.sendButton(m.chat, caption, wm, `${imgr + command}`, [
+                ['Ok!', `${usedPrefix}simi Oke`]
+            ], m, fdoc)
+         }
+         
+if (command == 'repeat') {
+if (!args[0]) throw `Masukkan nomor`
+if (!text1) throw `Masukkan teks`
+let text1 = args.slice(1).join(' ')
+let caption = '' + text1 ''.repeat(`${args[0]}`)
+await conn.reply(m.chat, caption, m, frep)
+         }
 }
-handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe']
+handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'rules', 'repeat']
 handler.tags = ['random']
 
 export default handler
