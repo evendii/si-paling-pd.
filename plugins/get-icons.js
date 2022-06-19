@@ -15,7 +15,7 @@ let urut = text.split`|`
 
     for (let i = 0; i < ter.length; i++) {
         let out = ter[i].media[0].mp4.url
-        await conn.sendButton(m.chat, `*${ter[0].title}*`, wm, out, [
+        await conn.sendButton(m.chat, `*Nih tenor ${text1} nya*`, wm, out, [
                 ['To Sticker', `${usedPrefix}s`]
             ], m)
     }

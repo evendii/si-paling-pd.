@@ -20,10 +20,9 @@ if (!text) throw `Contoh:
 ${usedPrefix + command} 10`
 let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
     let json = await gas.json()
-    let ter = json.results
-    for (let i = 0; i < ter.length; i++) {
-        let snd = ter[i].sound
-        let nme = ter[i].name
+    let ter = `${Array.from(json.results)}`
+        let snd = ter.sound
+        let nme = ter.name
         
         let nm = 1
 let nm2 = 0
@@ -45,9 +44,7 @@ const LiM = {
   sections
 }
 conn.sendMessage(m.chat, LiM, m)
-}
-}
-}
+}}
 
 }
 handler.command = handler.help = ['sfx', 'sfx2']
