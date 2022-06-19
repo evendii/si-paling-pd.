@@ -6,7 +6,7 @@ export async function before(m, { conn, args, usedPrefix, command, isAdmin, isBo
     if (!m.isGroup) return !1
     let chat = global.db.data.chats[m.chat]
     let bot = global.db.data.settings[this.user.jid] || {}
-    const isAntiToxic = isToxic.exec(m.text.includes)
+    const isAntiToxic = isToxic.exec(m.text)
     
     if (chat.antiToxic && isAntiToxic) {
         await conn.sendButton(m.chat, `*Kata Aneh Terdeteksi!*${isBotAdmin ? '' : '\n\n_Bot bukan atmin_'}`, author, ['off antitoxic', '/disable antitoxic'], m)
