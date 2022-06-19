@@ -8,30 +8,31 @@ let imgr = flaaa.getRandom()
 
 if (command == 'urlscan') {
 if (!text) throw `Masukkan link`
-let res = await fetch(`https://urlscan.io/api/v1/search/?q=${text}`)
-  let sul = await res.json()
-  await conn.sendButton(m.chat, `*Quotes:*
-  ${sul.results.task.visibility}
-  ${sul.results.task.method}
-  ${sul.results.task.domain}
-  ${sul.results.task.time}
-  ${sul.results.task.uuid}
-  ${sul.results.task.url}
+let json = await fetch(`https://urlscan.io/api/v1/search/?q=${text}`)
+        let jsons = await json.json()
+        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
+        for (let x of jsons.results) {
+        caption += `*Result:*
+  ${x.task.visibility}
+  ${x.task.method}
+  ${x.task.domain}
+  ${x.task.time}
+  ${x.task.uuid}
+  ${x.task.url}
   
-  ${sul.results.stats.uniqIPs}
-  ${sul.results.stats.uniqCountries}
-  ${sul.results.stats.dataLength}
-  ${sul.results.stats.encodedDataLength}
+  ${x.stats.uniqIPs}
+  ${x.stats.uniqCountries}
+  ${x.stats.dataLength}
+  ${x.stats.encodedDataLength}
   
-  ${sul.results.page.country}
-  ${sul.results.page.ip}
-  ${sul.results.page.title}
-  ${sul.results.page.url}
+  ${x.page.country}
+  ${x.page.ip}
+  ${x.page.title}
+  ${x.page.url}
   
-  ${sul.results.result}
-  `.trim(), wm, sul.results.screenshot, [
-                ['Menu', `${usedPrefix}menu`]
-            ], m, fdoc)
+  ${x.result}
+  `}
+        await conn.reply(m.chat, caption, m, frep)
 }
 
 if (command == 'fotoduck') {
