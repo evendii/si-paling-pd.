@@ -24,6 +24,7 @@ let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&pa
     for (let i = 0; i < ter.length; i++) {
         let snd = ter[i].sound
         let nme = ter[i].name
+        
         let nm = 1
 let nm2 = 0
 for (let x of snd) {
@@ -36,8 +37,6 @@ rows: [
 }
 let h = []
 let sections = h.push(yy)
-}
-
 const LiM = {
   text: `⚡ Silakan pilih opsi di tombol di bawah...`,
   footer: global.wm,
@@ -46,6 +45,7 @@ const LiM = {
   sections
 }
 conn.sendMessage(m.chat, LiM, m)
+}
 }
 }
 
