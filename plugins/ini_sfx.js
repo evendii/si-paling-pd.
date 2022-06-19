@@ -16,14 +16,14 @@ let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&p
 }
 
 if (command == 'sfx2') {
+if (!text) throw `Contoh:
+${usedPrefix + command} 10`
 let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
     let json = await gas.json()
     let ter = json.results
-
     for (let i = 0; i < ter.length; i++) {
         let snd = ter[i].sound
         let nme = ter[i].name
-    }
         let nm = 1
 let nm2 = 0
 for (let x of snd) {
@@ -36,6 +36,7 @@ rows: [
 }
 let h = []
 let sections = h.push(yy)
+}
 }
 
 const LiM = {
