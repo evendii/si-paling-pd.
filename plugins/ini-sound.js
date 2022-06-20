@@ -4,8 +4,8 @@ ${usedPrefix + command} 2
 Max Angka 70
 *Hanya Angka*`
 //LIST
-sections = []
-lm = [
+const sections = []
+const lm = [
 'anjay',
 'ara-ara',
 'ara-ara-cowok',
@@ -77,14 +77,14 @@ lm = [
 'yowaimo',
 'yoyowaimo'
 ]
-nm = 1
-nm2 = 0
+const nm = 1
+const nm2 = 0
 for (let x of lm) {
 const yy = {title: 'Sound ke -'+ nm++,
 rows: [
 {
 title: `${lm[nm2++]}`,
-description: ``,
+description: `Gwejh mau sound yang ini`,
 rowId: `/get https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${x}.mp3`
 }
 ]
