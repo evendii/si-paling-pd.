@@ -1,7 +1,7 @@
 import didyoumean from 'didyoumean'
 
-export async function before(m, { match, usedPrefix}) {
-let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${await conn.getName(m.sender)}`}}}}
+export async function before(m, { match, usedPrefix, command}) {
+let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${usedPrefix + command}`}}}}
 
 	if ((usedPrefix = (match[0] || '')[0])) {
 		let noPrefix = m.text.replace(usedPrefix, '')
