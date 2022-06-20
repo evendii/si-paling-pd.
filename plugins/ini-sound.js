@@ -3,16 +3,9 @@ if (!text) throw `Contoh:
 ${usedPrefix + command} 2
 
 List Number
-Max Angka 70`
+Max Angka 70
 
-if (isNumber(text) {
-//VN 1
-let vn = `https://hansxd.nasihosting.com/sound/sound${text}.mp3`
-await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
-type: 'audioMessage', 
-ptt: true 
-})
-} else if (!isNumber(text) { throw `Contoh:
+Contoh:
 ${usedPrefix + command} arigatou
 
 List Alphabet
@@ -86,8 +79,17 @@ List Alphabet
 • woi
 • yamete
 • yowaimo
-• yoyowaimo`
+• yoyowaimo
+`
 
+if (isNumber(text)) {
+//VN 1
+let vn = `https://hansxd.nasihosting.com/sound/sound${text}.mp3`
+await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
+type: 'audioMessage', 
+ptt: true 
+})
+} else if (!isNumber(text)) {
 //VN 2
 let vn = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${text}.mp3`
 await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
