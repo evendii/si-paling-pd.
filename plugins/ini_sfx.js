@@ -16,37 +16,22 @@ let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&p
 }
 
 if (command == 'sfx2') {
-if (!text) throw `Contoh:
-${usedPrefix + command} 10`
-let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
-for (let make in json.results) {
-    for (let i = 0; i < json.results[make].length; i++) {
-sections = []
-nm = 1
-nm2 = 0
-for (let x of json.results[make][i].sound) {
-const yy = {title: 'Urutan ke -'+ nm++,
-rows: [
-{
-title: `${json.results[make][i].name[nm2++]}`,
-description: ``,
-rowId: `${x}`
-}
-]
-}
-sections.push(yy)
-const listMessage = {
-  text: "Pilih Dibawah",
-  footer: wm,
-  title: "O P T I O N",
-  buttonText: "Klik disini",
-  sections
-}
-await conn.sendMessage(m.chat, listMessage, m)
-}
-}
-}
+if (!text) throw `Contoh penggunaan ${usedPrefix}${command} 2|2`
+let urut = text.split`|`
+  let text1 = urut[0]
+  let text2 = urut[1]
+  
+    let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text1}`)
+    let json = await gas.json()
+    let ter = json.results
 
+    for (let i = 0; i < ter.length; i++) {
+        let out = ter[i].sound[`${text2}`]
+        conn.sendFile(m.chat, out, 'song.mp3', null, m, true, {
+type: 'audioMessage', 
+ptt: true 
+})
+    }
 }
 
 }
