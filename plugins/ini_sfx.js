@@ -15,8 +15,40 @@ let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&p
         return m.reply(caption)
 }
 
+if (command == 'sfx2') {
+let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
+let ter = json.results
+
+    for (let i = 0; i < ter.length; i++) {
+        let out = ter[i].sound
+sections = []
+nm = 1
+nm2 = 0
+for (let x of out) {
+const yy = {title: 'Urutan ke -'+ nm++,
+rows: [
+{
+title: `${lm[nm2++]}`,
+description: ``,
+rowId: `${x}`
 }
-handler.command = handler.help = ['sfx']
+]
+}
+sections.push(yy)
+const listMessage = {
+  text: "Pilih Dibawah",
+  footer: wm,
+  title: "O P T I O N",
+  buttonText: "Klik disini",
+  sections
+}
+await conn.sendMessage(m.chat, listMessage, m)
+}
+}
+}
+
+}
+handler.command = handler.help = ['sfx', 'sfx2']
 handler.tags = ['random']
 
 export default handler
