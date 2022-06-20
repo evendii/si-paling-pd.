@@ -15,12 +15,12 @@ let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&p
 }
 
 if (command == 'sfx2') {
-if (!text) throw `Contoh penggunaan ${usedPrefix}${command} 2`
-    let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
+if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} 2`
+    let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${args[0]}`)
     let json = await gas.json()
     let ter = json.results
 
-    for (let i = 0; i < ter.length; i++) {
+    for (let i = args[1]; i < ter.length; i++) {
         let out = ter[i].sound
         await conn.sendFile(m.chat, out, 'song.mp3', null, m, true, {
 type: 'audioMessage', 
