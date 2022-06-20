@@ -5,7 +5,7 @@ let handler = async(m, { conn, text, args, usedPrefix, command }) => {
 let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${command}`}}}}
 
-let teks = encodeURIComponent(text)
+let teks = encodeURI(text)
 if (command == 'hartacustom') {
     let stiker = await sticker(null, global.API(`https://api.lolhuman.xyz/api/hartacustom?apikey=9b817532fadff8fc7cb86862&text=${teks}`), global.packname, global.author)
     if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, fdoc)

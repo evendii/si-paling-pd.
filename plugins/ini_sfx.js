@@ -32,7 +32,7 @@ try {
     let hasil = json.results
     let ke = args[1]
     let sound = hasil[ke].sound
-    await conn.sendFile(m.chat, sound, 'song.mp3', null, m, frep, {
+    await conn.sendFile(m.chat, sound, 'song.mp3', null, m, {
 type: 'audioMessage', 
 ptt: true 
 })

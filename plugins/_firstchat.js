@@ -5,7 +5,13 @@ if (m.chat.endsWith('broadcast') || m.fromMe || m.isGroup || db.data.settings[th
    let user = global.db.data.users[m.sender]
     const cooldown = 86400000
     if (new Date - user.pc < cooldown) return // setiap 24 jam sekali
-    await this.sendButton(m.chat, `👋 Hai *${conn.getName(m.sender)}*, ${user.banned ? 'kamu dibanned' : `Ada yang bisa *${this.user.name}* bantu?\nKetik *.menu* untuk melihat list fitur bot\nKetik *.join* untuk memasukkan bot ke grup kamu`}
-`.trim(), author, [[user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? '.owner' : '/menu']], m, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm}}}})
+    //await this.sendButton(m.chat, `👋 Hai *${conn.getName(m.sender)}*, ${user.banned ? 'kamu dibanned' : `Ada yang bisa *${this.user.name}* bantu?\nKetik *.menu* untuk melihat list fitur bot\nKetik *.join* untuk memasukkan bot ke grup kamu`}`.trim(), author, [[user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? '.owner' : '/menu']], m, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm}}}})
+    let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    let name = await conn.getName(who)
+    let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
+    //let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${name}`}}}}
+    this.sendButton(m.chat, `👋 Hai *${name} @${who.split("@")[0]}*, ${user.banned ? 'kamu dibanned' : `Ada yang bisa *${this.user.name}* bantu?\nKetik *.menu* untuk melihat list fitur bot\nKetik *.join* untuk memasukkan bot ke grup kamu`}
+`.trim(), wm, pp, [[user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? '.owner' : '/menu']], m, { mentions: this.parseMention(who)})
+
     user.pc = new Date * 1
 }
