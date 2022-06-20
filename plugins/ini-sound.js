@@ -76,13 +76,12 @@ let lm = [
 'yowaimo',
 'yoyowaimo'
 ]
-let nm = 1
-let nm2 = 0
+
 for (let x of lm) {
-let yy = {title: 'Sound ke -'+ nm++,
+const yy = {title: 'Sound ke -'+ 1++,
 rows: [
 {
-title: `${lm[nm2++]}`,
+title: `${lm[0++]}`,
 description: `Gwejh mau sound yang ini`,
 rowId: `/get https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${x}.mp3`
 }
@@ -90,7 +89,7 @@ rowId: `/get https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio
 }
 let h = []
 let sections = h.push(yy)
-let listM = {
+const listM = {
   text: "Pilih Sound Dibawah",
   footer: wm,
   title: "O P T I O N",
