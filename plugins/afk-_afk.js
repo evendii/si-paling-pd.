@@ -22,7 +22,7 @@ conn.sendButton(m.chat, caption, author, null, [
         let reason = user.afkReason || ''
         let caption = `
   *Jangan tag dia!*
-  *${conn.getName(user)}* sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
+  *${conn.getName(m.sender)}* sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
   Selama ${(new Date - afkTime).toTimeString()}
   `.trim()
 conn.sendButton(m.chat, caption, author, null, [
