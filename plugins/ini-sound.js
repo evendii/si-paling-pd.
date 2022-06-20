@@ -87,15 +87,15 @@ await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
 type: 'audioMessage', 
 ptt: true 
 })
-} catch {
+} catch (e) {
+return m.reply('Error')
+} finally {
 //VN 2
 let vn = `https://raw.githubusercontent.com/saipulanuar/Api-Github/main/audio/${text}.mp3`
 await conn.sendFile(m.chat, vn, 'song.mp3', null, m, true, {
 type: 'audioMessage', 
 ptt: true 
 })
-} catch (e) {
-return m.reply('Error')
 }
 
 }
