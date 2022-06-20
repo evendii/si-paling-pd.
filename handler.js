@@ -740,8 +740,8 @@ export async function participantsUpdate({ id, participants, action }) {
                     try {
                     } catch (e) {
                     } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || `Selamat datang @${user.split("@")[0]}.. 👋`).replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
-                            (chat.sBye || this.bye || conn.bye || `Dahhh @${user.split("@")[0]}... 👋`)).replace('@user', '@' + user.split('@')[0])
+                        text = (action === 'add' ? (chat.sWelcome || `Selamat datang ${await conn.getName(m.sender)} @${user.split("@")[0]}.. 👋`).replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
+                            (chat.sBye || `Dahhh ${await conn.getName(m.sender)} @${user.split("@")[0]}... 👋`)).replace('@user', '@' + user.split('@')[0])
                        
   let lea = await new Canvas.Goodbye()
   .setUsername(`${await conn.getName(user)}`)
