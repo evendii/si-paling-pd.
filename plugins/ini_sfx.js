@@ -19,17 +19,19 @@ if (command == 'sfx2') {
 if (!text) throw `Contoh:
 ${usedPrefix + command} 10`
 let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
-
-    for (let i = 0; i < json.results; i++) {
-        let out = ter[i].sound
+for (var make in json.results) {
+    for (var i = 0; i < json.results[make].length; i++) {
+        var nama = json.results[make][i].name;
+        var sound = json.results[make][i].sound;
+        
 sections = []
 nm = 1
 nm2 = 0
-for (let x of out) {
+for (let x of sound) {
 const yy = {title: 'Urutan ke -'+ nm++,
 rows: [
 {
-title: `${lm[nm2++]}`,
+title: `${nama[nm2++]}`,
 description: ``,
 rowId: `${x}`
 }
@@ -46,6 +48,8 @@ const listMessage = {
 await conn.sendMessage(m.chat, listMessage, m)
 }
 }
+}
+
 }
 
 }
