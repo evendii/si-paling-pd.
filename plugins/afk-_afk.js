@@ -2,12 +2,12 @@ export function before(m) {
     let user = global.db.data.users[m.sender]
     if (user.afk > -1) {
         let caption = `
-  *${conn.getName(user)} berhenti AFK* ${user.afkReason ? ' setelah ' + user.afkReason : ''}
+  *Kamu berhenti AFK* ${user.afkReason ? ' setelah ' + user.afkReason : ''}
   Selama ${(new Date - user.afk).toTimeString()}
   `.trim()
 conn.sendButton(m.chat, caption, author, null, [
         ['Afk Lagi', '.afk Saya Afk lagi :l']
-    ], m, { mentions: this.parseMention(caption) })
+    ], m)
         user.afk = -1
         user.afkReason = ''
     }
@@ -22,12 +22,12 @@ conn.sendButton(m.chat, caption, author, null, [
         let reason = user.afkReason || ''
         let caption = `
   *Jangan tag dia!*
-  *${conn.getName(m.sender)}* sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
+  Dia sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
   Selama ${(new Date - afkTime).toTimeString()}
   `.trim()
 conn.sendButton(m.chat, caption, author, null, [
-        ['Berhenti', 'Huuu']
-    ], m, { mentions: this.parseMention(caption) })
+        ['Berhenti', '/tts id kok berhenti']
+    ], m)
     }
     return true
 }
