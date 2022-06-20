@@ -740,8 +740,8 @@ export async function participantsUpdate({ id, participants, action }) {
                     try {
                     } catch (e) {
                     } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang bruh.. 👋').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
-                            (chat.sBye || this.bye || conn.bye || 'Dahhh bruh... 👋')).replace('@user', '@' + user.split('@')[0])
+                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || `Selamat datang @${user.split("@")[0]}.. 👋`).replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
+                            (chat.sBye || this.bye || conn.bye || `Dahhh @${user.split("@")[0]}... 👋`)).replace('@user', '@' + user.split('@')[0])
                        
   let lea = await new Canvas.Goodbye()
   .setUsername(`${await conn.getName(user)}`)
@@ -774,7 +774,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
   var buffa = await wel.toBuffer()
-                        this.sendButton(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), [["Menu", ".menu"],["Owner", ".owner"]], null, false, { mentions: [user] })
+                        this.sendButton(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), [["Menu", ".menu"],["Owner", ".owner"]], null, false, { mentions: this.parseMention(text) })
                     }
                 }
             }
