@@ -15,7 +15,7 @@ let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&p
 }
 
 if (command == 'sfx') {
-if (!args[0] || !args[1] || args[0].length < 999 || args[1].length < 10) throw `Contoh penggunaan ${usedPrefix}${command} 2 9
+if (!args[0] || !args[1]) throw `Contoh penggunaan ${usedPrefix}${command} 2 9
 *ket:*
 2 : page site
 9 : urutan sound
@@ -23,6 +23,7 @@ if (!args[0] || !args[1] || args[0].length < 999 || args[1].length < 10) throw `
 _Batas page ± 500_
 _Batas urutan 10_
 `
+try {
     let gas = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${args[0]}`)
     let json = await gas.json()
     let hasil = json.results
@@ -32,6 +33,9 @@ _Batas urutan 10_
 type: 'audioMessage', 
 ptt: true 
 })
+} catch (e) {
+m.reply('Error kan')
+}
 }
 
 }
