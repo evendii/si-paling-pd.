@@ -10,8 +10,8 @@ if (m.chat.endsWith('broadcast') || m.fromMe || m.isGroup || db.data.settings[th
     let name = await conn.getName(who)
     let pp = await conn.profilePictureUrl(who).catch(_ => './src/avatar_contact.png')
     //let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `${name}`}}}}
-    this.sendButton(m.chat, `👋 Hai *${name} @${who.split("@")[0]}*, ${user.banned ? 'kamu dibanned' : `Ada yang bisa *${this.user.name}* bantu?\nKetik *.menu* untuk melihat list fitur bot\nKetik *.join* untuk memasukkan bot ke grup kamu`}
-`.trim(), wm, pp, [[user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? '.owner' : '/menu']], m, { mentions: this.parseMention(who)})
-
+    let caption = `👋 Hai *${name} @${who.split("@")[0]}*, ${user.banned ? 'kamu dibanned' : `Ada yang bisa *${this.user.name}* bantu?\nKetik *.menu* untuk melihat list fitur bot\nKetik *.join* untuk memasukkan bot ke grup kamu`}
+`.trim()
+    this.sendButton(m.chat, caption, wm, pp, [[user.banned ? 'Pemilik Bot' : 'Menu', user.banned ? '.owner' : '/menu']], m, { mentions: this.parseMention(caption) })
     user.pc = new Date * 1
 }
