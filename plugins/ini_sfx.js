@@ -19,19 +19,16 @@ if (command == 'sfx2') {
 if (!text) throw `Contoh:
 ${usedPrefix + command} 10`
 let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&page=${text}`)
-for (var make in json.results) {
-    for (var i = 0; i < json.results[make].length; i++) {
-        var nama = json.results[make][i].name;
-        var sound = json.results[make][i].sound;
-        
+for (let make in json.results) {
+    for (let i = 0; i < json.results[make].length; i++) {
 sections = []
 nm = 1
 nm2 = 0
-for (let x of sound) {
+for (let x of json.results[make][i].sound) {
 const yy = {title: 'Urutan ke -'+ nm++,
 rows: [
 {
-title: `${nama[nm2++]}`,
+title: `${json.results[make][i].name[nm2++]}`,
 description: ``,
 rowId: `${x}`
 }
