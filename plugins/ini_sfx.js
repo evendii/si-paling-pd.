@@ -20,7 +20,7 @@ if (!args[0]) throw `Contoh penggunaan ${usedPrefix}${command} 2`
     let json = await gas.json()
     let ter = json.results
 
-    for (let i = args[1]; i < ter.length; i++) {
+    for (let i = args[1]) {
         let out = ter[i].sound
         await conn.sendFile(m.chat, out, 'song.mp3', null, m, true, {
 type: 'audioMessage', 
