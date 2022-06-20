@@ -1,5 +1,8 @@
 import fetch from 'node-fetch'
+import fs from 'fs'
+
 let handler = async(m, { conn, usedPrefix, text, args, command }) => {
+let frep = { contextInfo: { externalAdReply: {title: global.wm, body: global.author, sourceUrl: snh, thumbnail: fs.readFileSync('./thumbnail.jpg')}}}
 
 if (command == 'sfx2') {
 if (!text) throw `Contoh:
@@ -11,7 +14,7 @@ let json = await fetch(`http://www.myinstants.com/api/v1/instants/?format=json&p
         caption += `*Name :* ${x.name}
 *Sound :* ${x.sound}
 `}
-        return m.reply(caption)
+        return conn.reply(m.chat ,caption ,m ,frep)
 }
 
 if (command == 'sfx') {
@@ -29,12 +32,12 @@ try {
     let hasil = json.results
     let ke = args[1]
     let sound = hasil[ke].sound
-    await conn.sendFile(m.chat, sound, 'song.mp3', null, m, true, {
+    await conn.sendFile(m.chat, sound, 'song.mp3', null, m, frep, true, {
 type: 'audioMessage', 
 ptt: true 
 })
 } catch (e) {
-m.reply('Error kan')
+return m.reply('Error kan')
 }
 }
 
