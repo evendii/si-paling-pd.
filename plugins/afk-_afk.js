@@ -2,7 +2,7 @@ export function before(m) {
     let user = global.db.data.users[m.sender]
     if (user.afk > -1) {
         let caption = `
-  *@${user.split("@")[0]} berhenti AFK* ${user.afkReason ? ' setelah ' + user.afkReason : ''}
+  *@${user} berhenti AFK* ${user.afkReason ? ' setelah ' + user.afkReason : ''}
   Selama ${(new Date - user.afk).toTimeString()}
   `.trim()
 conn.sendButton(m.chat, caption, author, null, [
@@ -22,7 +22,7 @@ conn.sendButton(m.chat, caption, author, null, [
         let reason = user.afkReason || ''
         let caption = `
   *Jangan tag dia!*
-  *@${user.split("@")[0]}* sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
+  *@${user}* sedang AFK *${reason ? 'dengan alasan ' + reason : 'tanpa alasan'}*
   Selama ${(new Date - afkTime).toTimeString()}
   `.trim()
 conn.sendButton(m.chat, caption, author, null, [
