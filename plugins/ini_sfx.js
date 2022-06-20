@@ -26,7 +26,7 @@ let urut = text.split`|`
     let ter = json.results
 
     for (let i = 0; i < ter.length; i++) {
-        let out = ter[i].sound[`${text2}`]
+        let out = ter[i][text2].sound
         conn.sendFile(m.chat, out, 'song.mp3', null, m, true, {
 type: 'audioMessage', 
 ptt: true 
