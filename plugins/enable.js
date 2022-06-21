@@ -5,9 +5,9 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
    {
 	title: `${dmenub} List Options`,
 	rows: [
-	    {title: "✨ | Welcome", rowId: `${usedPrefix + command} welcome`},
-	    {title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
-	    {title: "🌎 | Public", rowId: `${usedPrefix + command} public`},
+	{title: "✨ | Welcome", rowId: `${usedPrefix + command} welcome`},
+	{title: "🚫 | Delete", rowId: `${usedPrefix + command} delete`},
+	{title: "🌎 | Public", rowId: `${usedPrefix + command} public`},
 	{title: "🗣️ | Simi", rowId: `${usedPrefix + command} simi`},
 	{title: "🔗 | AntiLinkWa", rowId: `${usedPrefix + command} antilink`},
 	{title: "🔗 | AntiLinkTik", rowId: `${usedPrefix + command} antilinktik`},
