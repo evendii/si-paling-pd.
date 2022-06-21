@@ -19,6 +19,7 @@ let fdoc = {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentM
 	{title: "👽 | AntiVirtex", rowId: `${usedPrefix + command} antivirtex`},
 	{title: "🤬 | AntiToxic", rowId: `${usedPrefix + command} antitoxic`},
 	{title: "🗿 | AntiSatir", rowId: `${usedPrefix + command} antisatir`},
+	{title: "❗ | AntiSpam", rowId: `${usedPrefix + command} antispam`},
 	{title: "⏏️ | AutoLevelup", rowId: `${usedPrefix + command} autolevelup`},
 	{title: "🎙️️ | AutoVn", rowId: `${usedPrefix + command} autovn`},
 	{title: "📷 | AutoSticker", rowId: `${usedPrefix + command} autosticker`},
@@ -183,6 +184,15 @@ const listMessage = {
         }
       }
       chat.antiSatir = isEnable
+      break
+      case 'antispam':
+      if (m.isGroup) {
+        if (!(isAdmin || isOwner)) {
+          global.dfail('admin', m, conn)
+          throw false
+        }
+      }
+      chat.antiSpam = isEnable
       break
       case 'simi':
         if (!isROwner) {
