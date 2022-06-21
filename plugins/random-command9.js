@@ -158,7 +158,7 @@ let json = await fetch(`https://psbdmp.ws/api/v3/search/${text}`)
 
 if (command == 'dmpdown') {
 if (!text) throw `Masukkan ID`
-let json = await fetch(`https://psbdmp.ws/api/v3/search/${text}`)
+let json = await fetch(`https://psbdmp.ws/api/v3/dump/${text}?key=6143730c1db586446444f0ec92799891`)
         let x = await json.json()
         let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
         caption += `*Result:*\n
