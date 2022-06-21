@@ -140,9 +140,39 @@ while (i < `${urut[0]}`) {
 }
 await conn.reply(m.chat, caption, m, frep)
          }
-         
+
+if (command == 'dmpsearch') {
+if (!text) throw `Masukkan Teks`
+let json = await fetch(`https://psbdmp.ws/api/v3/search/${text}`)
+        let jsons = await json.json()
+        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
+        for (let x of jsons.data) {
+        caption += `*Result:*\n
+*ID:* ${x.id}
+*length:* ${x.length}
+*time:* ${x.time}
+*text:* ${x.text}
+  `}
+        await conn.reply(m.chat, caption, m, frep)
 }
-handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'drinks', 'rules', 'repeat', 'repeat2']
+
+if (command == 'dmpdown') {
+if (!text) throw `Masukkan ID`
+let json = await fetch(`https://psbdmp.ws/api/v3/search/${text}`)
+        let x = await json.json()
+        let caption = `*⎔┉━「 ${command} 」━┉⎔*\n`
+        caption += `*Result:*\n
+*ID:* ${x.id}
+*length:* ${x.length}
+*time:* ${x.date}
+*content:* ${x.content}
+  `
+        await conn.sendButton(m.chat, caption, wm, x.getRandom(), [
+                ['Next', `${usedPrefix + command} ${text}`]
+            ], m, fdoc)
+}
+}
+handler.command = handler.help = ['urlscan', 'fotoduck', 'fotobear', 'fotodog', 'fotodog2', 'fotofox', 'fotoshibe', 'drinks', 'rules', 'repeat', 'repeat2', 'dmpsearch', 'dmpdown']
 handler.tags = ['random']
 
 export default handler
