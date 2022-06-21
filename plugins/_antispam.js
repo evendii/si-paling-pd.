@@ -1,5 +1,4 @@
-let handler = async (m, { conn, args, text, usedPrefix, command }) => {
-//export async function all(m) {
+export async function all(m) {
     if (!m.message)
         return
     this.spam = this.spam ? this.spam : {}
@@ -21,5 +20,3 @@ let handler = async (m, { conn, args, text, usedPrefix, command }) => {
             lastspam: 0
         }
 }
-
-export default handler
