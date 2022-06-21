@@ -167,7 +167,7 @@ let json = await fetch(`https://psbdmp.ws/api/v3/dump/${text}?key=6143730c1db586
 *time:* ${x.date}
 *content:* ${x.content}
   `
-        await conn.sendButton(m.chat, caption, wm, x.getRandom(), [
+        await conn.sendButton(m.chat, caption, wm, null, [
                 ['Next', `${usedPrefix + command} ${text}`]
             ], m, fdoc)
 }
