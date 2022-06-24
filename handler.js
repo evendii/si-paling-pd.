@@ -740,8 +740,10 @@ export async function participantsUpdate({ id, participants, action }) {
                     try {
                     } catch (e) {
                     } finally {
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang bruh.. 👋').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
-                            (chat.sBye || this.bye || conn.bye || 'Dahhh bruh... 👋')).replace('@user', '@' + user.split('@')[0])
+                      //  text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Selamat datang bruh.. 👋').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
+                       //     (chat.sBye || this.bye || conn.bye || 'Dahhh bruh... 👋')).replace('@user', '@' + user.split('@')[0])
+                       text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || '👋 Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || 'unknow') :
+                            (chat.sBye || this.bye || conn.bye || '👋 Bye, @user!')).replace('@user', await this.getName(user))
                        
   let lea = await new Canvas.Goodbye()
   .setUsername(`${await conn.getName(user)}`)
@@ -774,7 +776,14 @@ export async function participantsUpdate({ id, participants, action }) {
   .setBackground("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF7c3n7snGnpzS676fXaU2yxSjGsFNrCURXw&usqp=CAU")
   .toAttachment();
   var buffa = await wel.toBuffer()
-                        this.sendButton(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), [["Menu", ".menu"],["Owner", ".owner"]], null, false, { mentions: [user] })
+                        
+    this.sendHydrated(id, text, wm + '\n\n' + botdate, action === 'add' ? wel.toBuffer() : lea.toBuffer(), gcwangsaf, (action == 'add' ? '💌 Welcome' : '🐾 Dahh'), user.split`@`[0], '🌹 Bruh', [
+      ['Menu', '/menu'],
+      ['Owner', '/owner'],
+      ['Test', '/ping']
+    ], null, false, { mentions: [user] })
+
+                      //  this.sendButton(id, text, author, action === 'add' ? wel.toBuffer() : lea.toBuffer(), [["Menu", ".menu"],["Owner", ".owner"]], null, false, { mentions: [user] })
                     }
                 }
             }
