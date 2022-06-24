@@ -777,7 +777,7 @@ export async function participantsUpdate({ id, participants, action }) {
   .toAttachment();
   var buffa = await wel.toBuffer()
                         
-    this.sendHydrated(id, text, wm + '\n\n' + botdate, action === 'add' ? wel.toBuffer() : lea.toBuffer(), gcwangsaf, (action == 'add' ? '💌 Welcome' : '🐾 Dahh'), user.split`@`[0], '🌹 Bruh', [
+    this.sendHydrated(id, text, wm + '\n\n' + botdate, action === 'add' ? wel.toBuffer() : lea.toBuffer(), gcwangsaf, (action == 'add' ? 'Welcome' : 'Link Group'), user.split`@`[0], 'Nomor', [
       ['Menu', '/menu'],
       ['Owner', '/owner'],
       ['Test', '/ping']
