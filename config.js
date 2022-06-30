@@ -6,13 +6,8 @@ import moment from 'moment-timezone'
 
 /**Owner number**/
 global.owner = [
-  ['6282195322106', '️Owner1 Hinata-Md', true],
-  ['6282195322106', '️Owner2 Hinata-Md', true],
-  ['6282195322106', '️Owner3 Hinata-Md', true],
-  ['6282195322106', '️Owner4 Hinata-Md', true],
-  ['6282195322106', '️Owner5 Hinata-Md', true],
-  ['6282195322106', '️Owner6 Hinata-Md', true],
-  ['6282195322106', '️Owner Hinata-Md', true]
+  ['6289522183114', '️Owner1 Hinata-Md', true],
+ 
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
 global.mods = [] // Want some help?
